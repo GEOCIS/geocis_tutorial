@@ -9,6 +9,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$l.WorkingDirectory = '%~dp0';" ^
   "$l.Save();" ^
   "Write-Host ('Atalho criado: ' + $a)"
+powershell -NoProfile -Command "Get-CimInstance Win32_Process -Filter \"Name='powershell.exe'\" | Where-Object { $_.CommandLine -like '*vigiar_e_enviar.ps1*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
 start "" /min powershell -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "%~dp0vigiar_e_enviar.ps1"
 echo Envio automatico ativado. Ele passa a ligar sozinho sempre que voce entrar no Windows.
 pause
