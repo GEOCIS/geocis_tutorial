@@ -1,0 +1,100 @@
+---
+title: "Galeria de figuras"
+description: "Gráficos gerados pelos tutoriais e scripts de análise espectral. Clique em uma figura para ampliá-la."
+---
+
+Clique em qualquer figura para ampliá-la e use as setas para navegar entre elas.
+
+## Tutorial
+
+::: {layout-ncol=2}
+![Tutorial, figura 01](plots/tutorial_fig01.png){group="tutorial"}
+
+![Tutorial, figura 02](plots/tutorial_fig02.png){group="tutorial"}
+
+![Tutorial, figura 03](plots/tutorial_fig03.png){group="tutorial"}
+
+![Tutorial, figura 04](plots/tutorial_fig04.png){group="tutorial"}
+
+![Tutorial, figura 05](plots/tutorial_fig05.png){group="tutorial"}
+
+![Tutorial, figura 06](plots/tutorial_fig06.png){group="tutorial"}
+
+![Tutorial, figura 07](plots/tutorial_fig07.png){group="tutorial"}
+
+![Tutorial, figura 08](plots/tutorial_fig08.png){group="tutorial"}
+
+![Tutorial, figura 09](plots/tutorial_fig09.png){group="tutorial"}
+
+![Tutorial, figura 10](plots/tutorial_fig10.png){group="tutorial"}
+
+![Tutorial, figura 11](plots/tutorial_fig11.png){group="tutorial"}
+
+![Tutorial, figura 12](plots/tutorial_fig12.png){group="tutorial"}
+
+:::
+
+## Scripts
+
+::: {layout-ncol=2}
+![Scripts, figura 01](plots/scritps_fig01.png){group="scripts"}
+
+![Scripts, figura 02](plots/scritps_fig02.png){group="scripts"}
+
+![Scripts, figura 03](plots/scritps_fig03.png){group="scripts"}
+
+![Scripts, figura 04](plots/scritps_fig04.png){group="scripts"}
+
+![Scripts, figura 05](plots/scritps_fig05.png){group="scripts"}
+
+![Scripts, figura 06](plots/scritps_fig06.png){group="scripts"}
+
+![Scripts, figura 07](plots/scritps_fig07.png){group="scripts"}
+
+![Scripts, figura 08](plots/scritps_fig08.png){group="scripts"}
+
+![Scripts, figura 09](plots/scritps_fig09.png){group="scripts"}
+
+![Scripts, figura 10](plots/scritps_fig10.png){group="scripts"}
+
+![Scripts, figura 11](plots/scritps_fig11.png){group="scripts"}
+
+![Scripts, figura 12](plots/scritps_fig12.png){group="scripts"}
+
+![Scripts, figura 13](plots/scritps_fig13.png){group="scripts"}
+
+![Scripts, figura 14](plots/scritps_fig14.png){group="scripts"}
+
+![Scripts, figura 15](plots/scritps_fig15.png){group="scripts"}
+
+![Scripts, figura 16](plots/scritps_fig16.png){group="scripts"}
+
+![Scripts, figura 17](plots/scritps_fig17.png){group="scripts"}
+
+![Scripts, figura 18](plots/scritps_fig18.png){group="scripts"}
+
+![Scripts, figura 19](plots/scritps_fig19.png){group="scripts"}
+
+![Scripts, figura 20](plots/scritps_fig20.png){group="scripts"}
+
+![Scripts, figura 21](plots/scritps_fig21.png){group="scripts"}
+
+![Scripts, figura 22](plots/scritps_fig22.png){group="scripts"}
+
+![Scripts, figura 23](plots/scritps_fig23.png){group="scripts"}
+
+![Scripts, figura 24](plots/scritps_fig24.png){group="scripts"}
+
+![Scripts, figura 25](plots/scritps_fig25.png){group="scripts"}
+
+![Scripts, figura 26](plots/scritps_fig26.png){group="scripts"}
+
+![Scripts, figura 27](plots/scritps_fig27.png){group="scripts"}
+
+![Scripts, figura 28](plots/scritps_fig28.png){group="scripts"}
+
+![Scripts, figura 29](plots/scritps_fig29.png){group="scripts"}
+
+![Scripts, figura 30](plots/scritps_fig30.png){group="scripts"}
+
+:::

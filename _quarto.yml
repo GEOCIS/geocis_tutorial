@@ -1,0 +1,124 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "*/*.md"
+    # cópia duplicada do curso de espectroscopia dentro do curso de iniciantes
+    - "!curso_iniciantes_ferramentas/curso_espectroscopia_python/"
+  resources:
+    - plots/
+
+lang: pt
+
+website:
+  title: "Espectroscopia de Solos com Python"
+  description: "Cursos e tutoriais: do ambiente de programação à predição de atributos do solo com espectros Vis-NIR-SWIR."
+  page-navigation: true
+  back-to-top-navigation: true
+  reader-mode: true
+  search:
+    location: navbar
+    type: overlay
+
+  navbar:
+    left:
+      - text: Início
+        href: index.qmd
+      - text: Cursos
+        menu:
+          - text: "1 · Ferramentas para iniciantes"
+            href: curso_iniciantes_ferramentas/index.qmd
+          - text: "2 · Espectroscopia com Python"
+            href: curso_espectroscopia_python/index.qmd
+          - text: "3 · Metodologia"
+            href: metodologia_espectroscopia/index.qmd
+          - text: "4 · Capítulos do projeto"
+            href: capitulos_dados_espectrais/index.qmd
+      - text: Figuras
+        href: figuras.qmd
+      - text: Publicar no GitHub Pages
+        href: publicar.qmd
+
+  sidebar:
+    style: docked
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: Início
+      - section: "1 · Ferramentas para iniciantes"
+        href: curso_iniciantes_ferramentas/index.qmd
+        contents:
+          - curso_iniciantes_ferramentas/aula_01_introducao_ambiente.md
+          - curso_iniciantes_ferramentas/aula_02_instalacao_python.md
+          - curso_iniciantes_ferramentas/aula_03_vscode.md
+          - curso_iniciantes_ferramentas/aula_04_ambientes_virtuais_bibliotecas.md
+          - curso_iniciantes_ferramentas/aula_05_jupyter_notebook.md
+          - curso_iniciantes_ferramentas/aula_06_primeira_analise_dados.md
+          - curso_iniciantes_ferramentas/aula_07_git.md
+          - curso_iniciantes_ferramentas/aula_08_github.md
+          - curso_iniciantes_ferramentas/aula_09_copilot_projeto_integrador.md
+          - curso_iniciantes_ferramentas/apendices.md
+      - section: "2 · Espectroscopia com Python"
+        href: curso_espectroscopia_python/index.qmd
+        contents:
+          - curso_espectroscopia_python/00_preparacao.md
+          - curso_espectroscopia_python/aula_01_espectroscopia_bssl_fluxo.md
+          - curso_espectroscopia_python/aula_02_leitura_exploratoria.md
+          - curso_espectroscopia_python/aula_03_preprocessamento_I.md
+          - curso_espectroscopia_python/aula_04_preprocessamento_II.md
+          - curso_espectroscopia_python/aula_05_pca.md
+          - curso_espectroscopia_python/aula_06_cotovelo_kmeans.md
+          - curso_espectroscopia_python/aula_07_plsr_validacao_cruzada.md
+          - curso_espectroscopia_python/aula_08_random_forest_metricas.md
+          - curso_espectroscopia_python/aula_09_visualizacao_predicao.md
+          - curso_espectroscopia_python/aula_10_resultados_apresentacao.md
+          - curso_espectroscopia_python/apendice.md
+      - section: "3 · Metodologia"
+        href: metodologia_espectroscopia/index.qmd
+        contents:
+          - metodologia_espectroscopia/00_preparacao.md
+          - metodologia_espectroscopia/aula_01_delineamento.md
+          - metodologia_espectroscopia/aula_02_espectroscopia_e_referencia.md
+          - metodologia_espectroscopia/aula_03_amostragem_qualidade_exploratoria.md
+          - metodologia_espectroscopia/aula_04_preprocessamento.md
+          - metodologia_espectroscopia/aula_05_dimensionalidade_agrupamento.md
+          - metodologia_espectroscopia/aula_06_modelagem.md
+          - metodologia_espectroscopia/aula_07_validacao_metricas_incerteza.md
+          - metodologia_espectroscopia/aula_08_dominio_reprodutibilidade_redacao.md
+      - section: "4 · Capítulos do projeto"
+        href: capitulos_dados_espectrais/index.qmd
+        contents:
+          - capitulos_dados_espectrais/cap01_leitura_analise_exploratoria.md
+          - capitulos_dados_espectrais/cap02_preprocessamento.md
+          - capitulos_dados_espectrais/cap03_pca.md
+          - capitulos_dados_espectrais/cap04_clusterizacao_kmeans.md
+          - capitulos_dados_espectrais/cap05_modelagem_plsr_rf.md
+          - capitulos_dados_espectrais/cap06_material_metodologia.md
+          - capitulos_dados_espectrais/cap07_resultados.md
+          - capitulos_dados_espectrais/cap08_conclusao.md
+      - href: figuras.qmd
+        text: Galeria de figuras
+      - href: publicar.qmd
+        text: Publicar no GitHub Pages
+
+  page-footer:
+    center: "Espectroscopia de Solos com Python · feito com [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    filters:
+      - readme-links.lua
+    toc: true
+    toc-title: "Nesta página"
+    toc-depth: 3
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    anchor-sections: true
+    lightbox: auto
+    smooth-scroll: true

@@ -1,0 +1,74 @@
+---
+title: "Espectroscopia de Solos com Python"
+subtitle: "Cursos e tutoriais: do primeiro `python --version` à predição de atributos do solo com espectros Vis-NIR-SWIR"
+toc: false
+page-layout: full
+---
+
+Este site reúne quatro materiais que se complementam. Quem nunca programou começa pelas **ferramentas**; quem já tem o ambiente pronto pode ir direto para **Espectroscopia com Python**. A **Metodologia** discute por que cada etapa é feita, e os **Capítulos** são o texto de referência do projeto.
+
+::: {.trilha}
+[1]{.passo} Ferramentas → [2]{.passo} Espectroscopia com Python → [3]{.passo} Metodologia → [4]{.passo} Capítulos de referência
+:::
+
+::: {.grid .cartoes}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.cartao}
+### 1 · Ferramentas para iniciantes
+
+VS Code, Python, ambientes virtuais, Jupyter Notebook, Git, GitHub e GitHub Copilot, do zero ao primeiro projeto versionado.
+
+[9 aulas · 18 h]{.meta}
+
+[Começar o curso →](curso_iniciantes_ferramentas/index.qmd){.btn .btn-primary}
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.cartao}
+### 2 · Espectroscopia com Python
+
+Do dado ao modelo preditivo: exploração, pré-processamento, PCA, k-means, PLSR, Random Forest e predição de amostras novas.
+
+[10 aulas · 20 h]{.meta}
+
+[Começar o curso →](curso_espectroscopia_python/index.qmd){.btn .btn-primary}
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.cartao}
+### 3 · Metodologia
+
+Decidir, justificar e demonstrar: delineamento, amostragem, escolha de tratamentos, validação sem viés otimista e redação.
+
+[8 aulas · 16 h]{.meta}
+
+[Começar o curso →](metodologia_espectroscopia/index.qmd){.btn .btn-primary}
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.cartao}
+### 4 · Capítulos do projeto
+
+Texto de referência com o pipeline completo, de leitura dos espectros à conclusão, com código em Python.
+
+[8 capítulos]{.meta}
+
+[Ler os capítulos →](capitulos_dados_espectrais/index.qmd){.btn .btn-outline-primary}
+:::
+:::
+
+:::
+
+## Como usar este site
+
+- **Navegação:** a barra lateral lista todas as aulas na ordem. No fim de cada página há links para a anterior e a próxima.
+- **Busca:** use a lupa no topo (ou tecle `/`) para encontrar qualquer termo, como `Savitzky-Golay` ou `git commit`.
+- **Código:** passe o mouse sobre um bloco de código e clique no ícone para copiá-lo.
+- **Figuras:** a [galeria](figuras.qmd) reúne os gráficos gerados pelos scripts e tutoriais.
+- **Tema escuro:** o botão no canto superior direito alterna entre claro e escuro.
+
+Quer publicar uma cópia deste material ou um site parecido? Veja [Publicar no GitHub Pages](publicar.qmd).

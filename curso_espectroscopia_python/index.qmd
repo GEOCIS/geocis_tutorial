@@ -1,0 +1,6 @@
+---
+title: "Curso: Espectroscopia de solos com Python, do dado ao modelo preditivo"
+---
+
+<!-- Página do curso no site: reaproveita o README.md (que continua aparecendo no GitHub) -->
+{{< include README.md >}}

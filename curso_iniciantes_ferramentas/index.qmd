@@ -1,0 +1,6 @@
+---
+title: "Curso para iniciantes: VS Code, Python, Jupyter Notebook, Git, GitHub e GitHub Copilot"
+---
+
+<!-- Página do curso no site: reaproveita o README.md (que continua aparecendo no GitHub) -->
+{{< include README.md >}}

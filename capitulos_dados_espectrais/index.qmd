@@ -1,0 +1,6 @@
+---
+title: "Leitura, pré-processamento, análise e modelagem de dados espectrais de solo"
+---
+
+<!-- Página do curso no site: reaproveita o README.md (que continua aparecendo no GitHub) -->
+{{< include README.md >}}
