@@ -5,6 +5,8 @@ toc: false
 page-layout: full
 ---
 
+[![](imagens/geocis_capa.png){.capa-geocis fig-alt="GeoCiS, Grupo de Geotecnologias em Ciência do Solo, ESALQ/USP"}](https://esalqgeocis.wixsite.com/geocis)
+
 Este site reúne quatro materiais que se complementam. Quem nunca programou começa pelas **ferramentas**; quem já tem o ambiente pronto pode ir direto para **Espectroscopia com Python**. A **Metodologia** discute por que cada etapa é feita, e os **Capítulos** são o texto de referência do projeto.
 
 ::: {.trilha}

@@ -8,11 +8,13 @@ project:
     - "!curso_iniciantes_ferramentas/curso_espectroscopia_python/"
   resources:
     - plots/
+    - imagens/
 
 lang: pt
 
 website:
   title: "Espectroscopia de Solos com Python"
+  favicon: imagens/geocis_logo.png
   description: "Cursos e tutoriais: do ambiente de programação à predição de atributos do solo com espectros Vis-NIR-SWIR."
   page-navigation: true
   back-to-top-navigation: true
@@ -22,6 +24,8 @@ website:
     type: overlay
 
   navbar:
+    logo: imagens/geocis_logo.png
+    logo-alt: "Logo do GeoCiS"
     left:
       - text: Início
         href: index.qmd
