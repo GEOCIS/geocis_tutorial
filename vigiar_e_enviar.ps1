@@ -19,6 +19,22 @@ function Enviar {
     git -C $pasta add -A
     git -C $pasta diff --cached --quiet
     if ($LASTEXITCODE -eq 0) { return }
+
+    # O repositório é público: segura arquivos com cara de senha/chave, ou grandes demais
+    $suspeito = '(^|/)\.env|\.(pem|key|pfx|p12|kdbx)$|(^|/)id_(rsa|ed25519)|senha|password|secret|credencia|token'
+    $barrados = @()
+    foreach ($f in (git -C $pasta diff --cached --name-only --diff-filter=AM)) {
+        $caminho = Join-Path $pasta $f
+        $grande = (Test-Path $caminho) -and ((Get-Item $caminho).Length -gt 50MB)
+        if ($f -match $suspeito -or $grande) { $barrados += $f }
+    }
+    if ($barrados.Count -gt 0) {
+        foreach ($f in $barrados) { git -C $pasta reset -q -- $f }
+        Registrar ("BLOQUEADO (possível dado sensível ou arquivo > 50 MB, não enviado): " + ($barrados -join ", "))
+        git -C $pasta diff --cached --quiet
+        if ($LASTEXITCODE -eq 0) { return }
+    }
+
     $arquivos = (git -C $pasta diff --cached --name-only) -join ", "
     git -C $pasta commit -q -m ("Atualização automática {0:yyyy-MM-dd HH:mm}" -f (Get-Date))
     git -C $pasta pull -q --rebase

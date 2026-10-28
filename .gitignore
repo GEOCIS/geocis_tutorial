@@ -3,3 +3,16 @@
 
 **/*.quarto_ipynb
 envio_automatico.log
+
+# Nunca publicar: senhas, chaves e configurações locais
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+id_rsa*
+id_ed25519*
+.venv/
+__pycache__/
+.ipynb_checkpoints/
