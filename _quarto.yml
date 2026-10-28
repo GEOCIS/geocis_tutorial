@@ -37,8 +37,6 @@ website:
             href: capitulos_dados_espectrais/index.qmd
       - text: Figuras
         href: figuras.qmd
-      - text: Publicar no GitHub Pages
-        href: publicar.qmd
 
   sidebar:
     style: docked
@@ -99,8 +97,6 @@ website:
           - capitulos_dados_espectrais/cap08_conclusao.md
       - href: figuras.qmd
         text: Galeria de figuras
-      - href: publicar.qmd
-        text: Publicar no GitHub Pages
 
   page-footer:
     center: "Espectroscopia de Solos com Python · feito com [Quarto](https://quarto.org)"
