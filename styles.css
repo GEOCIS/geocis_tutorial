@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap');
+
 /* Página inicial */
 .trilha {
   margin: 1.25rem 0 1.75rem;
@@ -93,4 +95,85 @@ main table {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   opacity: 0.75;
+}
+
+/* ---------- Layout em faixas: menu branco, banner, migalhas, conteúdo centralizado ---------- */
+
+/* Menu do topo: branco, maiúsculas, fonte condensada */
+.navbar {
+  background-color: #fff !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.navbar .navbar-title { display: none; }
+
+.navbar .nav-link,
+.navbar .menu-text {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #222 !important;
+}
+
+.navbar .nav-item { margin-right: 1.4rem; }
+
+.navbar .nav-link:hover .menu-text { color: #2e7d32 !important; }
+
+.navbar .navbar-toggler-icon,
+.navbar .quarto-color-scheme-toggle,
+.navbar .quarto-reader-toggle,
+.navbar #quarto-search .aa-DetachedSearchButtonIcon { color: #222 !important; filter: none; }
+
+.navbar .dropdown-menu {
+  max-height: 70vh;
+  overflow-y: auto;
+  border-top: 3px solid #2e7d32;
+}
+
+/* Faixa verde com o banner */
+.faixa-geocis {
+  background: #1f5f2a;
+  text-align: center;
+  padding: 1.25rem 1rem;
+}
+
+.faixa-geocis img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 0.5rem;
+}
+
+/* Sem barra lateral: conteúdo centralizado (as aulas seguem no menu e em "anterior / próxima") */
+#quarto-sidebar,
+#quarto-sidebar-glass,
+.quarto-secondary-nav .quarto-btn-toggle { display: none !important; }
+
+#quarto-content {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Migalhas (início › curso › aula) numa faixa cinza */
+.quarto-title-breadcrumbs {
+  background: #f3f3f3;
+  margin: 0 0 1.25rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.95rem;
+}
+
+
+/* Tema escuro */
+.quarto-dark .navbar { background-color: #1e1e1e !important; }
+.quarto-dark .navbar .nav-link,
+.quarto-dark .navbar .menu-text,
+.quarto-dark .navbar .navbar-toggler-icon { color: #eee !important; }
+.quarto-dark .quarto-title-breadcrumbs { background: #2a2a2a; }
+
+@media (max-width: 991px) {
+  .navbar .nav-item { margin-right: 0; }
+  .faixa-geocis img { max-height: 120px; }
 }

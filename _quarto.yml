@@ -17,6 +17,7 @@ website:
   favicon: imagens/geocis_logo.png
   description: "Cursos e tutoriais: do ambiente de programação à predição de atributos do solo com espectros Vis-NIR-SWIR."
   page-navigation: true
+  bread-crumbs: true
   back-to-top-navigation: true
   reader-mode: true
   search:
@@ -29,16 +30,65 @@ website:
     left:
       - text: Início
         href: index.qmd
-      - text: Cursos
+      - text: Ferramentas
         menu:
-          - text: "1 · Ferramentas para iniciantes"
+          - text: "Apresentação do curso"
             href: curso_iniciantes_ferramentas/index.qmd
-          - text: "2 · Espectroscopia com Python"
+          - text: "---"
+          - href: curso_iniciantes_ferramentas/aula_01_introducao_ambiente.md
+          - href: curso_iniciantes_ferramentas/aula_02_instalacao_python.md
+          - href: curso_iniciantes_ferramentas/aula_03_vscode.md
+          - href: curso_iniciantes_ferramentas/aula_04_ambientes_virtuais_bibliotecas.md
+          - href: curso_iniciantes_ferramentas/aula_05_jupyter_notebook.md
+          - href: curso_iniciantes_ferramentas/aula_06_primeira_analise_dados.md
+          - href: curso_iniciantes_ferramentas/aula_07_git.md
+          - href: curso_iniciantes_ferramentas/aula_08_github.md
+          - href: curso_iniciantes_ferramentas/aula_09_copilot_projeto_integrador.md
+          - href: curso_iniciantes_ferramentas/apendices.md
+      - text: Espectroscopia
+        menu:
+          - text: "Apresentação do curso"
             href: curso_espectroscopia_python/index.qmd
-          - text: "3 · Metodologia"
+          - text: "---"
+          - href: curso_espectroscopia_python/00_preparacao.md
+          - href: curso_espectroscopia_python/aula_01_espectroscopia_bssl_fluxo.md
+          - href: curso_espectroscopia_python/aula_02_leitura_exploratoria.md
+          - href: curso_espectroscopia_python/aula_03_preprocessamento_I.md
+          - href: curso_espectroscopia_python/aula_04_preprocessamento_II.md
+          - href: curso_espectroscopia_python/aula_05_pca.md
+          - href: curso_espectroscopia_python/aula_06_cotovelo_kmeans.md
+          - href: curso_espectroscopia_python/aula_07_plsr_validacao_cruzada.md
+          - href: curso_espectroscopia_python/aula_08_random_forest_metricas.md
+          - href: curso_espectroscopia_python/aula_09_visualizacao_predicao.md
+          - href: curso_espectroscopia_python/aula_10_resultados_apresentacao.md
+          - href: curso_espectroscopia_python/apendice.md
+      - text: Metodologia
+        menu:
+          - text: "Apresentação do curso"
             href: metodologia_espectroscopia/index.qmd
-          - text: "4 · Capítulos do projeto"
+          - text: "---"
+          - href: metodologia_espectroscopia/00_preparacao.md
+          - href: metodologia_espectroscopia/aula_01_delineamento.md
+          - href: metodologia_espectroscopia/aula_02_espectroscopia_e_referencia.md
+          - href: metodologia_espectroscopia/aula_03_amostragem_qualidade_exploratoria.md
+          - href: metodologia_espectroscopia/aula_04_preprocessamento.md
+          - href: metodologia_espectroscopia/aula_05_dimensionalidade_agrupamento.md
+          - href: metodologia_espectroscopia/aula_06_modelagem.md
+          - href: metodologia_espectroscopia/aula_07_validacao_metricas_incerteza.md
+          - href: metodologia_espectroscopia/aula_08_dominio_reprodutibilidade_redacao.md
+      - text: Capítulos
+        menu:
+          - text: "Apresentação do curso"
             href: capitulos_dados_espectrais/index.qmd
+          - text: "---"
+          - href: capitulos_dados_espectrais/cap01_leitura_analise_exploratoria.md
+          - href: capitulos_dados_espectrais/cap02_preprocessamento.md
+          - href: capitulos_dados_espectrais/cap03_pca.md
+          - href: capitulos_dados_espectrais/cap04_clusterizacao_kmeans.md
+          - href: capitulos_dados_espectrais/cap05_modelagem_plsr_rf.md
+          - href: capitulos_dados_espectrais/cap06_material_metodologia.md
+          - href: capitulos_dados_espectrais/cap07_resultados.md
+          - href: capitulos_dados_espectrais/cap08_conclusao.md
       - text: Figuras
         href: figuras.qmd
 
@@ -126,6 +176,32 @@ format:
     # Segurança: o GitHub Pages não permite cabeçalhos HTTP próprios, então as regras vão em <meta>.
     # O site só carrega arquivos dele mesmo (e as fontes do Google usadas pelo tema);
     # 'unsafe-inline' é exigido pelos scripts embutidos do Quarto.
+    # Faixa com o banner do GeoCiS logo abaixo do menu, em todas as páginas
+    include-after-body:
+      text: |
+        <script>
+          (function () {
+            var logo = document.querySelector('.navbar-logo');
+            var topo = document.getElementById('quarto-header');
+            if (!logo || !topo) return;
+            var faixa = document.createElement('div');
+            faixa.className = 'faixa-geocis';
+            faixa.innerHTML = '<a href="https://esalqgeocis.wixsite.com/geocis"><img alt="GeoCiS, Grupo de Geotecnologias em Ciência do Solo, ESALQ/USP"></a>';
+            faixa.querySelector('img').src = logo.src.replace('geocis_logo.png', 'geocis_capa.png');
+            topo.after(faixa);
+
+            // Migalhas começam pelo ícone de casa, como "⌂ › Curso › Aula"
+            var migalhas = document.querySelector('.quarto-title-breadcrumbs .breadcrumb');
+            var inicio = document.querySelector('.navbar-brand');
+            if (migalhas && inicio) {
+              var casa = document.createElement('li');
+              casa.className = 'breadcrumb-item';
+              casa.innerHTML = '<a aria-label="Início"><i class="bi bi-house"></i></a>';
+              casa.querySelector('a').href = inicio.href;
+              migalhas.prepend(casa);
+            }
+          })();
+        </script>
     include-in-header:
       text: |
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
