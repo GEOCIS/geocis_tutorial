@@ -103,7 +103,7 @@ website:
         text: Galeria de figuras
 
   page-footer:
-    center: "Espectroscopia de Solos com Python · feito com [Quarto](https://quarto.org)"
+    center: "Autoria: Saturin Fahala et al. · Coordenação: Raul Roberto Poppiel · [GeoCiS](https://esalqgeocis.wixsite.com/geocis), ESALQ/USP"
 
 format:
   html:

@@ -69,3 +69,18 @@ main table {
 .navbar-logo {
   max-height: 40px;
 }
+
+/* Lista de autores na página inicial */
+.autores ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.autores p {
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+}
