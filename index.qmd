@@ -79,19 +79,19 @@ Texto de referência com o pipeline completo, de leitura dos espectros à conclu
 
 **Coordenação**
 
-- [Raul Roberto Poppiel](mailto:raulpoppiel@usp.br)
+- Raul Roberto Poppiel
 
 **Autoria principal**
 
-- [Saturin Fahala](mailto:fsaturin@usp.br)
+- Saturin Fahala
 
 **Coautores**
 
-- [José Alexandre Melo Demattê](mailto:jamdemat@usp.br)
-- [Iorrana Sacramento](mailto:iorranafigueiredos@gmail.com)
-- [Valentina Alarcón Rodríguez](mailto:valarcon@unal.edu.co)
-- [Daniel Francisco Rincón Bernal](mailto:drinconbe@unal.edu.co)
-- [Letícia Guadagnin Vogel](mailto:leticia.vogel@usp.br)
-- [Matheus Henrique Batista de Paula](mailto:matheushbp@usp.br)
+- José Alexandre Melo Demattê
+- Iorrana Sacramento
+- Valentina Alarcón Rodríguez
+- Daniel Francisco Rincón Bernal
+- Letícia Guadagnin Vogel
+- Matheus Henrique Batista de Paula
 
 :::
