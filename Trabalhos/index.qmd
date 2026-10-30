@@ -1,0 +1,15 @@
+---
+title: "Trabalhos: pipeline completo de análise espectral"
+---
+
+Pipeline em cinco etapas, do controle de qualidade dos espectros NIR e MIR até a modelagem preditiva com SHAP. Cada notebook usa os arquivos gerados pelo anterior, então rode na ordem. Os notebooks estão em inglês.
+
+| Etapa | Conteúdo | Notebook |
+|---|---|---|
+| Notebook 01 | Visualization and Quality Control | [ler](01_pipeline_visualizacion_qc.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/01_pipeline_visualizacion_qc.ipynb) |
+| Notebook 02 | Spectral Processing and Outlier Detection | [ler](02_pipeline_procesamiento_espectral.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/02_pipeline_procesamiento_espectral.ipynb) |
+| Notebook 03 | Exploratory Analysis | [ler](03_pipeline_analisis_exploratorio.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/03_pipeline_analisis_exploratorio.ipynb) |
+| Notebook 04 | Spectral Clustering | [ler](04_pipeline_clustering.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/04_pipeline_clustering.ipynb) |
+| Notebook 05 | Predictive Modeling and SHAP | [ler](05_pipeline_modelado_ml_shap.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/05_pipeline_modelado_ml_shap.ipynb) |
+
+Os dados (`Atributos_VIS.NIR_SP.csv` e `Atributos_MIR_SP.csv`) ficam na pasta `Data/` do projeto. Os resultados são salvos em `Outputs/pipeline/`.

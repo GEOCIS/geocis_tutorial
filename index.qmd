@@ -71,6 +71,7 @@ Texto de referência com o pipeline completo, de leitura dos espectros à conclu
 - **Notebooks:** os [notebooks das aulas práticas](notebooks/index.qmd) podem ser lidos no site ou baixados como `.ipynb`.
 - **Scripts:** o [código-fonte do pacote `geocis_espectral`](scripts/index.qmd), usado pelos notebooks.
 - **Práticas:** [exercícios por aula](praticas/index.qmd), com gabarito para conferir depois de tentar.
+- **Trabalhos:** o [pipeline completo em notebooks](Trabalhos/index.qmd), do controle de qualidade à modelagem com SHAP.
 - **Figuras:** a [galeria](figuras.qmd) reúne os gráficos gerados pelos scripts e tutoriais.
 - **Tema escuro:** o botão no canto superior direito alterna entre claro e escuro.
 

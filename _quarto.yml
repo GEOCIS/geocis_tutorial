@@ -10,6 +10,8 @@ project:
     - "praticas/index.qmd"
     - "praticas/*.ipynb"
     - "praticas/solucoes/*.ipynb"
+    - "Trabalhos/index.qmd"
+    - "Trabalhos/*.ipynb"
     # cópia duplicada do curso de espectroscopia dentro do curso de iniciantes
     - "!curso_iniciantes_ferramentas/curso_espectroscopia_python/"
   resources:
@@ -135,6 +137,16 @@ website:
           - href: praticas/aula_08_clustering.ipynb
           - href: praticas/aula_09_modelos_validacao.ipynb
           - href: praticas/aula_10_shap_rastreabilidade.ipynb
+      - text: Trabalhos
+        menu:
+          - text: "Lista de trabalhos"
+            href: Trabalhos/index.qmd
+          - text: "---"
+          - href: Trabalhos/01_pipeline_visualizacion_qc.ipynb
+          - href: Trabalhos/02_pipeline_procesamiento_espectral.ipynb
+          - href: Trabalhos/03_pipeline_analisis_exploratorio.ipynb
+          - href: Trabalhos/04_pipeline_clustering.ipynb
+          - href: Trabalhos/05_pipeline_modelado_ml_shap.ipynb
       - text: Figuras
         href: figuras.qmd
 
@@ -250,6 +262,14 @@ website:
                 text: "Gabarito · Aula 9"
               - href: praticas/solucoes/aula_10_shap_rastreabilidade.ipynb
                 text: "Gabarito · Aula 10"
+      - section: "8 · Trabalhos"
+        href: Trabalhos/index.qmd
+        contents:
+          - Trabalhos/01_pipeline_visualizacion_qc.ipynb
+          - Trabalhos/02_pipeline_procesamiento_espectral.ipynb
+          - Trabalhos/03_pipeline_analisis_exploratorio.ipynb
+          - Trabalhos/04_pipeline_clustering.ipynb
+          - Trabalhos/05_pipeline_modelado_ml_shap.ipynb
       - href: figuras.qmd
         text: Galeria de figuras
 
