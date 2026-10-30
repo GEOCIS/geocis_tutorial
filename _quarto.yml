@@ -16,7 +16,7 @@ lang: pt
 website:
   title: "Espectroscopia de Solos com Python"
   favicon: imagens/geocis_logo.png
-  description: "Cursos e tutoriais: do ambiente de programação à predição de atributos do solo com espectros Vis-NIR-SWIR."
+  description: "Tutoriais de solo com espectros Vis-NIR-SWIR."
   page-navigation: true
   bread-crumbs: true
   back-to-top-navigation: true
