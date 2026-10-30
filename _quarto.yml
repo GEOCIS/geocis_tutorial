@@ -4,6 +4,8 @@ project:
   render:
     - "*.qmd"
     - "*/*.md"
+    - "notebooks/index.qmd"
+    - "notebooks/*.ipynb"
     # cópia duplicada do curso de espectroscopia dentro do curso de iniciantes
     - "!curso_iniciantes_ferramentas/curso_espectroscopia_python/"
   resources:
@@ -90,6 +92,17 @@ website:
           - href: capitulos_dados_espectrais/cap06_material_metodologia.md
           - href: capitulos_dados_espectrais/cap07_resultados.md
           - href: capitulos_dados_espectrais/cap08_conclusao.md
+      - text: Notebooks
+        menu:
+          - text: "Lista de notebooks"
+            href: notebooks/index.qmd
+          - text: "---"
+          - href: notebooks/00_configuracao_e_dados.ipynb
+          - href: notebooks/01_visualizacao.ipynb
+          - href: notebooks/02_processamento_espectral.ipynb
+          - href: notebooks/03_analise_exploratoria.ipynb
+          - href: notebooks/04_agrupamento.ipynb
+          - href: notebooks/05_modelagem_ml_shap.ipynb
       - text: Figuras
         href: figuras.qmd
 
@@ -150,6 +163,15 @@ website:
           - capitulos_dados_espectrais/cap06_material_metodologia.md
           - capitulos_dados_espectrais/cap07_resultados.md
           - capitulos_dados_espectrais/cap08_conclusao.md
+      - section: "5 · Notebooks"
+        href: notebooks/index.qmd
+        contents:
+          - notebooks/00_configuracao_e_dados.ipynb
+          - notebooks/01_visualizacao.ipynb
+          - notebooks/02_processamento_espectral.ipynb
+          - notebooks/03_analise_exploratoria.ipynb
+          - notebooks/04_agrupamento.ipynb
+          - notebooks/05_modelagem_ml_shap.ipynb
       - href: figuras.qmd
         text: Galeria de figuras
 

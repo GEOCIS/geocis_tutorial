@@ -68,6 +68,7 @@ Texto de referência com o pipeline completo, de leitura dos espectros à conclu
 - **Navegação:** cada curso tem um menu no topo com todas as aulas na ordem. No fim de cada página há links para a anterior e a próxima.
 - **Busca:** use a lupa no topo (ou tecle `/`) para encontrar qualquer termo, como `Savitzky-Golay` ou `git commit`.
 - **Código:** passe o mouse sobre um bloco de código e clique no ícone para copiá-lo.
+- **Notebooks:** os [notebooks das aulas práticas](notebooks/index.qmd) podem ser lidos no site ou baixados como `.ipynb`.
 - **Figuras:** a [galeria](figuras.qmd) reúne os gráficos gerados pelos scripts e tutoriais.
 - **Tema escuro:** o botão no canto superior direito alterna entre claro e escuro.
 

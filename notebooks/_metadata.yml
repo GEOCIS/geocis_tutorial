@@ -1,0 +1,3 @@
+# Os notebooks são publicados com as saídas já salvas; o site nunca os executa.
+execute:
+  enabled: false

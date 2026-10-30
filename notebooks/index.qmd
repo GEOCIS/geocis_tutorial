@@ -1,0 +1,16 @@
+---
+title: "Notebooks: análise espectral de solos com o pacote geocis_espectral"
+---
+
+Notebooks Jupyter das aulas práticas, com o código e os resultados de cada etapa. Leia aqui no site ou baixe o arquivo `.ipynb` para rodar no VS Code ou no Jupyter.
+
+Para executar, você precisa do pacote `geocis_espectral` e dos dados do projeto. A configuração está explicada na Aula 0.
+
+| Aula | Conteúdo | Arquivo |
+|---|---|---|
+| [Aula 0](00_configuracao_e_dados.ipynb) | Configuração do ambiente e organização dos dados | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/notebooks/00_configuracao_e_dados.ipynb) |
+| [Aula 1](01_visualizacao.ipynb) | Visualização de dados espectrais | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/notebooks/01_visualizacao.ipynb) |
+| [Aula 2](02_processamento_espectral.ipynb) | Processamento espectral | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/notebooks/02_processamento_espectral.ipynb) |
+| [Aula 3](03_analise_exploratoria.ipynb) | Análise exploratória: PCA e correlação de Pearson | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/notebooks/03_analise_exploratoria.ipynb) |
+| [Aula 4](04_agrupamento.ipynb) | Agrupamento (clustering) e similaridade espectral | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/notebooks/04_agrupamento.ipynb) |
+| [Aula 5](05_modelagem_ml_shap.ipynb) | Modelagem preditiva com Machine Learning e interpretação via SHAP | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/notebooks/05_modelagem_ml_shap.ipynb) |
