@@ -1,0 +1,8 @@
+---
+title: "Módulo 2 · Processamento: processamento.py"
+---
+
+Savitzky-Golay, derivadas, SNV, MSC, detrend e remoção do contínuo. [Baixar `processamento.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/scripts/processamento.py)
+
+```{.python include="processamento.py"}
+```

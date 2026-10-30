@@ -1,0 +1,8 @@
+---
+title: "Módulo 1 · Visualização: visualizacao.py"
+---
+
+Gráficos de espectros, PCA, correlação, clusters e modelos. [Baixar `visualizacao.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/scripts/visualizacao.py)
+
+```{.python include="visualizacao.py"}
+```

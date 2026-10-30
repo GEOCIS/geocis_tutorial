@@ -1,0 +1,8 @@
+---
+title: "Módulo 0 · Dados: dados.py"
+---
+
+Leitura, organização e preparação dos dados espectrais. [Baixar `dados.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/scripts/dados.py)
+
+```{.python include="dados.py"}
+```

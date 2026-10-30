@@ -1,0 +1,18 @@
+---
+title: "Scripts: o pacote geocis_espectral"
+---
+
+Código-fonte do pacote `geocis_espectral`, com as rotinas reutilizáveis usadas nos [notebooks](../notebooks/index.qmd). Os notebooks só chamam essas funções e mostram os resultados.
+
+Para usar, baixe os arquivos e coloque todos numa pasta chamada `geocis_espectral` dentro do projeto. A Aula 0 dos notebooks explica a estrutura.
+
+| Módulo | Arquivo | Conteúdo |
+|---|---|---|
+| [Pacote geocis_espectral](pacote.qmd) | `__init__.py` | Ponto de entrada do pacote: importa os módulos temáticos. |
+| [Configuração](config.qmd) | `config.py` | Caminhos e constantes do projeto. |
+| [Módulo 0 · Dados](dados.qmd) | `dados.py` | Leitura, organização e preparação dos dados espectrais. |
+| [Módulo 1 · Visualização](visualizacao.qmd) | `visualizacao.py` | Gráficos de espectros, PCA, correlação, clusters e modelos. |
+| [Módulo 2 · Processamento](processamento.qmd) | `processamento.py` | Savitzky-Golay, derivadas, SNV, MSC, detrend e remoção do contínuo. |
+| [Módulo 3 · Análise exploratória](exploratoria.qmd) | `exploratoria.py` | PCA e correlação de Pearson. |
+| [Módulo 4 · Agrupamento](agrupamento.qmd) | `agrupamento.py` | k-means, ISODATA e métricas de similaridade espectral. |
+| [Módulo 5 · Modelagem](modelagem.qmd) | `modelagem.py` | PLSR, Random Forest, XGBoost, métricas e interpretação SHAP. |

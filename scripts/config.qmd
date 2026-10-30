@@ -1,0 +1,8 @@
+---
+title: "Configuração: config.py"
+---
+
+Caminhos e constantes do projeto. [Baixar `config.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/scripts/config.py)
+
+```{.python include="config.py"}
+```

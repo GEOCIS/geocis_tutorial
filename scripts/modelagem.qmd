@@ -1,0 +1,8 @@
+---
+title: "Módulo 5 · Modelagem: modelagem.py"
+---
+
+PLSR, Random Forest, XGBoost, métricas e interpretação SHAP. [Baixar `modelagem.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/scripts/modelagem.py)
+
+```{.python include="modelagem.py"}
+```

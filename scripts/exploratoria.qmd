@@ -1,0 +1,8 @@
+---
+title: "Módulo 3 · Análise exploratória: exploratoria.py"
+---
+
+PCA e correlação de Pearson. [Baixar `exploratoria.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/scripts/exploratoria.py)
+
+```{.python include="exploratoria.py"}
+```

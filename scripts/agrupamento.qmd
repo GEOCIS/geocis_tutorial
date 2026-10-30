@@ -1,0 +1,8 @@
+---
+title: "Módulo 4 · Agrupamento: agrupamento.py"
+---
+
+k-means, ISODATA e métricas de similaridade espectral. [Baixar `agrupamento.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/scripts/agrupamento.py)
+
+```{.python include="agrupamento.py"}
+```

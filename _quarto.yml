@@ -6,6 +6,7 @@ project:
     - "*/*.md"
     - "notebooks/index.qmd"
     - "notebooks/*.ipynb"
+    - "scripts/*.qmd"
     # cópia duplicada do curso de espectroscopia dentro do curso de iniciantes
     - "!curso_iniciantes_ferramentas/curso_espectroscopia_python/"
   resources:
@@ -103,6 +104,19 @@ website:
           - href: notebooks/03_analise_exploratoria.ipynb
           - href: notebooks/04_agrupamento.ipynb
           - href: notebooks/05_modelagem_ml_shap.ipynb
+      - text: Scripts
+        menu:
+          - text: "Lista de scripts"
+            href: scripts/index.qmd
+          - text: "---"
+          - href: scripts/pacote.qmd
+          - href: scripts/config.qmd
+          - href: scripts/dados.qmd
+          - href: scripts/visualizacao.qmd
+          - href: scripts/processamento.qmd
+          - href: scripts/exploratoria.qmd
+          - href: scripts/agrupamento.qmd
+          - href: scripts/modelagem.qmd
       - text: Figuras
         href: figuras.qmd
 
@@ -172,6 +186,17 @@ website:
           - notebooks/03_analise_exploratoria.ipynb
           - notebooks/04_agrupamento.ipynb
           - notebooks/05_modelagem_ml_shap.ipynb
+      - section: "6 · Scripts"
+        href: scripts/index.qmd
+        contents:
+          - scripts/pacote.qmd
+          - scripts/config.qmd
+          - scripts/dados.qmd
+          - scripts/visualizacao.qmd
+          - scripts/processamento.qmd
+          - scripts/exploratoria.qmd
+          - scripts/agrupamento.qmd
+          - scripts/modelagem.qmd
       - href: figuras.qmd
         text: Galeria de figuras
 
@@ -186,6 +211,7 @@ format:
     css: styles.css
     filters:
       - readme-links.lua
+      - incluir-codigo.lua
     toc: true
     toc-title: "Nesta página"
     toc-depth: 3

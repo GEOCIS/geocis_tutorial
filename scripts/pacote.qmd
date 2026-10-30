@@ -1,0 +1,8 @@
+---
+title: "Pacote geocis_espectral: __init__.py"
+---
+
+Ponto de entrada do pacote: importa os módulos temáticos. [Baixar `__init__.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/scripts/__init__.py)
+
+```{.python include="__init__.py"}
+```
