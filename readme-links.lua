@@ -6,9 +6,10 @@ end
 
 -- O "# Título" no início de cada .md vira o título da página (aba do navegador e cabeçalho).
 -- Nos index.qmd dos cursos, que já têm título, o "# Título" repetido do README é removido.
+-- Avisos em citação antes do título (como "> **Gabarito.**" nas soluções) ficam no lugar.
 function Pandoc(doc)
   local i = 1
-  while doc.blocks[i] and doc.blocks[i].t == "RawBlock" do i = i + 1 end
+  while doc.blocks[i] and (doc.blocks[i].t == "RawBlock" or doc.blocks[i].t == "BlockQuote") do i = i + 1 end
   local first = doc.blocks[i]
   if not (first and first.t == "Header" and first.level == 1) then return doc end
   if not doc.meta.title then

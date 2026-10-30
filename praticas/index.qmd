@@ -1,0 +1,29 @@
+---
+title: "Práticas: exercícios do curso de espectroscopia"
+---
+
+Exercícios em Jupyter Notebook, um por aula. Em cada notebook você escreve a função da aula. As funções das aulas anteriores já vêm prontas em `curso_utils.py`, então cada notebook roda sozinho.
+
+Tente resolver antes de abrir o **gabarito**.
+
+| Aula | Tema | Exercício | Gabarito |
+|---|---|---|---|
+| Aula 1 | Projeto, caminhos e configuração | [ler](aula_01_projeto_configuracao.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_01_projeto_configuracao.ipynb) | [ler](solucoes/aula_01_projeto_configuracao.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_01_projeto_configuracao.ipynb) |
+| Aula 2 | Ler um CSV espectral | [ler](aula_02_ler_csv_espectral.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_02_ler_csv_espectral.ipynb) | [ler](solucoes/aula_02_ler_csv_espectral.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_02_ler_csv_espectral.ipynb) |
+| Aula 3 | Validar antes de processar | [ler](aula_03_validar_dados.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_03_validar_dados.ipynb) | [ler](solucoes/aula_03_validar_dados.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_03_validar_dados.ipynb) |
+| Aula 4 | Gráficos de controle de qualidade | [ler](aula_04_graficos_qc.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_04_graficos_qc.ipynb) | [ler](solucoes/aula_04_graficos_qc.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_04_graficos_qc.ipynb) |
+| Aula 5 | Pré-processamento I: corte técnico e Savitzky-Golay | [ler](aula_05_corte_savitzky_golay.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_05_corte_savitzky_golay.ipynb) | [ler](solucoes/aula_05_corte_savitzky_golay.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_05_corte_savitzky_golay.ipynb) |
+| Aula 6 | Pré-processamento II: SNV e outliers por PCA | [ler](aula_06_snv_outliers.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_06_snv_outliers.ipynb) | [ler](solucoes/aula_06_snv_outliers.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_06_snv_outliers.ipynb) |
+| Aula 7 | PCA exploratória e correlação | [ler](aula_07_pca_correlacao.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_07_pca_correlacao.ipynb) | [ler](solucoes/aula_07_pca_correlacao.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_07_pca_correlacao.ipynb) |
+| Aula 8 | Clustering e escolha de K | [ler](aula_08_clustering.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_08_clustering.ipynb) | [ler](solucoes/aula_08_clustering.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_08_clustering.ipynb) |
+| Aula 9 | Modelos preditivos e validação honesta | [ler](aula_09_modelos_validacao.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_09_modelos_validacao.ipynb) | [ler](solucoes/aula_09_modelos_validacao.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_09_modelos_validacao.ipynb) |
+| Aula 10 | SHAP, rastreabilidade e organização | [ler](aula_10_shap_rastreabilidade.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/aula_10_shap_rastreabilidade.ipynb) | [ler](solucoes/aula_10_shap_rastreabilidade.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/solucoes/aula_10_shap_rastreabilidade.ipynb) |
+
+## Arquivos de apoio
+
+Baixe estes arquivos e coloque-os na mesma pasta dos notebooks. Os gabaritos ficam numa subpasta `solucoes/`.
+
+- [`curso_utils.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/curso_utils.py): funções das aulas, importadas por cada notebook.
+- [`visualizacao.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/visualizacao.py): funções de gráficos.
+
+Os dados (`Atributos_VIS.NIR_SP.csv` e `Atributos_MIR_SP.csv`) ficam na pasta `Data/`, um nível acima da pasta dos notebooks.

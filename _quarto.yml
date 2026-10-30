@@ -7,6 +7,9 @@ project:
     - "notebooks/index.qmd"
     - "notebooks/*.ipynb"
     - "scripts/*.qmd"
+    - "praticas/index.qmd"
+    - "praticas/*.ipynb"
+    - "praticas/solucoes/*.ipynb"
     # cópia duplicada do curso de espectroscopia dentro do curso de iniciantes
     - "!curso_iniciantes_ferramentas/curso_espectroscopia_python/"
   resources:
@@ -117,6 +120,21 @@ website:
           - href: scripts/exploratoria.qmd
           - href: scripts/agrupamento.qmd
           - href: scripts/modelagem.qmd
+      - text: Práticas
+        menu:
+          - text: "Lista de práticas"
+            href: praticas/index.qmd
+          - text: "---"
+          - href: praticas/aula_01_projeto_configuracao.ipynb
+          - href: praticas/aula_02_ler_csv_espectral.ipynb
+          - href: praticas/aula_03_validar_dados.ipynb
+          - href: praticas/aula_04_graficos_qc.ipynb
+          - href: praticas/aula_05_corte_savitzky_golay.ipynb
+          - href: praticas/aula_06_snv_outliers.ipynb
+          - href: praticas/aula_07_pca_correlacao.ipynb
+          - href: praticas/aula_08_clustering.ipynb
+          - href: praticas/aula_09_modelos_validacao.ipynb
+          - href: praticas/aula_10_shap_rastreabilidade.ipynb
       - text: Figuras
         href: figuras.qmd
 
@@ -197,6 +215,41 @@ website:
           - scripts/exploratoria.qmd
           - scripts/agrupamento.qmd
           - scripts/modelagem.qmd
+      - section: "7 · Práticas"
+        href: praticas/index.qmd
+        contents:
+          - praticas/aula_01_projeto_configuracao.ipynb
+          - praticas/aula_02_ler_csv_espectral.ipynb
+          - praticas/aula_03_validar_dados.ipynb
+          - praticas/aula_04_graficos_qc.ipynb
+          - praticas/aula_05_corte_savitzky_golay.ipynb
+          - praticas/aula_06_snv_outliers.ipynb
+          - praticas/aula_07_pca_correlacao.ipynb
+          - praticas/aula_08_clustering.ipynb
+          - praticas/aula_09_modelos_validacao.ipynb
+          - praticas/aula_10_shap_rastreabilidade.ipynb
+          - section: "Gabaritos"
+            contents:
+              - href: praticas/solucoes/aula_01_projeto_configuracao.ipynb
+                text: "Gabarito · Aula 1"
+              - href: praticas/solucoes/aula_02_ler_csv_espectral.ipynb
+                text: "Gabarito · Aula 2"
+              - href: praticas/solucoes/aula_03_validar_dados.ipynb
+                text: "Gabarito · Aula 3"
+              - href: praticas/solucoes/aula_04_graficos_qc.ipynb
+                text: "Gabarito · Aula 4"
+              - href: praticas/solucoes/aula_05_corte_savitzky_golay.ipynb
+                text: "Gabarito · Aula 5"
+              - href: praticas/solucoes/aula_06_snv_outliers.ipynb
+                text: "Gabarito · Aula 6"
+              - href: praticas/solucoes/aula_07_pca_correlacao.ipynb
+                text: "Gabarito · Aula 7"
+              - href: praticas/solucoes/aula_08_clustering.ipynb
+                text: "Gabarito · Aula 8"
+              - href: praticas/solucoes/aula_09_modelos_validacao.ipynb
+                text: "Gabarito · Aula 9"
+              - href: praticas/solucoes/aula_10_shap_rastreabilidade.ipynb
+                text: "Gabarito · Aula 10"
       - href: figuras.qmd
         text: Galeria de figuras
 
