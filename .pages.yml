@@ -1,0 +1,64 @@
+# Painel de edição do site (Pages CMS): https://app.pagescms.org
+# Entra-se com a conta do GitHub; cada "Salvar" vira um commit em main e a Action publica o site.
+# O corpo usa o editor de código Markdown (não o visual) para não estragar a sintaxe do Quarto (::: , {{< >}}).
+
+media:
+  input: imagens
+  output: /imagens
+
+content:
+  - name: inicio
+    label: Página inicial
+    type: file
+    path: index.qmd
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Título, type: string }
+      - { name: subtitle, label: Subtítulo, type: string }
+      - { name: body, label: Conteúdo, type: code, options: { format: markdown } }
+
+  - name: figuras
+    label: Galeria de figuras
+    type: file
+    path: figuras.qmd
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Título, type: string }
+      - { name: body, label: Conteúdo, type: code, options: { format: markdown } }
+
+  - name: ferramentas
+    label: "1 · Ferramentas"
+    type: collection
+    path: curso_iniciantes_ferramentas
+    subfolders: false
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Título (opcional), type: string }
+      - { name: body, label: Conteúdo, type: code, options: { format: markdown } }
+
+  - name: espectroscopia
+    label: "2 · Espectroscopia com Python"
+    type: collection
+    path: curso_espectroscopia_python
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Título (opcional), type: string }
+      - { name: body, label: Conteúdo, type: code, options: { format: markdown } }
+
+  - name: metodologia
+    label: "3 · Metodologia"
+    type: collection
+    path: metodologia_espectroscopia
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Título (opcional), type: string }
+      - { name: body, label: Conteúdo, type: code, options: { format: markdown } }
+
+  - name: capitulos
+    label: "4 · Capítulos"
+    type: collection
+    path: capitulos_dados_espectrais
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Título (opcional), type: string }
+      - { name: body, label: Conteúdo, type: code, options: { format: markdown } }
