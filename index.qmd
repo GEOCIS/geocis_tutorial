@@ -1,6 +1,6 @@
 ---
 title: "Espectroscopia de Solos com Python"
-subtitle: "Cursos e tutoriais: do primeiro `python --version` à predição de atributos do solo com espectros Vis-NIR-SWIR"
+subtitle: "Tutoriais de solo com espectros Vis-NIR-SWIR"
 toc: false
 ---
 
