@@ -1,6 +1,11 @@
 ---
-title: "Curso: Metodologia da predição de atributos do solo por espectroscopia"
+title: "Fundamentos: metodologia da predição de atributos do solo por espectroscopia"
 ---
+
+::: {.callout-tip}
+**Fundamentos — por que fazer.** Este curso discute as **decisões** por trás de cada etapa: por que fazer assim, que armadilhas evitar e que alternativas existem. A execução passo a passo está no [Curso prático](../curso_espectroscopia_python/index.qmd), e o relato completo, no [Texto de referência](../capitulos_dados_espectrais/index.qmd). O [guia](../guia.qmd) liga cada aula às partes correspondentes das outras seções.
+:::
+
 
 <!-- Página do curso no site: reaproveita o README.md (que continua aparecendo no GitHub) -->
 {{< include README.md >}}

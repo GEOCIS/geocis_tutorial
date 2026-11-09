@@ -16,7 +16,8 @@ O conjunto é dividido em calibração (treino), usado para ajustar o modelo e e
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-Xtr, Xte, ytr, yte = train_test_split(X_snv, y, test_size=0.3, random_state=42)
+# X_final, y_final: espectros pré-processados e sem outliers (capítulo 2)
+Xtr, Xte, ytr, yte = train_test_split(X_final, y_final, test_size=0.3, random_state=42)
 print(Xtr.shape, Xte.shape)
 ```
 

@@ -1,15 +1,40 @@
 ---
-title: "Trabalhos: pipeline completo de análise espectral"
+title: "Estudo de caso: pipeline aplicado NIR + MIR"
 ---
 
-Pipeline em cinco etapas, do controle de qualidade dos espectros NIR e MIR até a modelagem preditiva com SHAP. Cada notebook usa os arquivos gerados pelo anterior, então rode na ordem. Os notebooks estão em inglês.
+## Para que serve esta seção
+
+Esta seção apresenta um pipeline completo, em cinco notebooks encadeados, para aplicar a análise espectral a **dados próprios**, do controle de qualidade dos espectros NIR e MIR até a modelagem preditiva com SHAP.
+
+Ela se diferencia da seção [Notebooks](../notebooks/index.qmd):
+
+| | Notebooks | Estudo de caso (esta seção) |
+|---|---|---|
+| Objetivo | Aulas didáticas: uma técnica por vez | Pipeline aplicado, do início ao fim |
+| Código | Funções do pacote `geocis_espectral` | Notebooks independentes, encadeados por arquivos |
+| Dados | Base pareada VIS-NIR-SWIR + MIR do curso | Seus arquivos de NIR e MIR, separados, em `Data/` |
+| Parâmetros | Definidos em cada aula | Centralizados em `Reference/parameters.yaml` |
+| Agrupamento | k-means e ISODATA, com escolha de k pela silhueta e pelo cotovelo | k-means com escolha de $K$ pelo cotovelo quantitativo de Shi (2021) |
+| Modelagem | PLSR, Random Forest e XGBoost, um modelo por atributo e faixa | PLSR, Random Forest, Cubist e HistGradientBoosting, um modelo por atributo e domínio; o grupo espectral de cada amostra é anexado às predições |
+
+Use os **Notebooks** para aprender cada técnica e o **Estudo de caso** quando quiser rodar o fluxo completo em um novo conjunto de dados.
+
+## Notebooks do pipeline
+
+Cada notebook usa os arquivos gerados pelo anterior, então execute-os na ordem.
 
 | Etapa | Conteúdo | Notebook |
 |---|---|---|
-| Notebook 01 | Visualization and Quality Control | [ler](01_pipeline_visualizacion_qc.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/01_pipeline_visualizacion_qc.ipynb) |
-| Notebook 02 | Spectral Processing and Outlier Detection | [ler](02_pipeline_procesamiento_espectral.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/02_pipeline_procesamiento_espectral.ipynb) |
-| Notebook 03 | Exploratory Analysis | [ler](03_pipeline_analisis_exploratorio.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/03_pipeline_analisis_exploratorio.ipynb) |
-| Notebook 04 | Spectral Clustering | [ler](04_pipeline_clustering.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/04_pipeline_clustering.ipynb) |
-| Notebook 05 | Predictive Modeling and SHAP | [ler](05_pipeline_modelado_ml_shap.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/05_pipeline_modelado_ml_shap.ipynb) |
+| Notebook 01 | Visualização e controle de qualidade | [ler](01_pipeline_visualizacion_qc.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/01_pipeline_visualizacion_qc.ipynb) |
+| Notebook 02 | Processamento espectral e detecção de outliers | [ler](02_pipeline_procesamiento_espectral.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/02_pipeline_procesamiento_espectral.ipynb) |
+| Notebook 03 | Análise exploratória: PCA e correlação de Pearson | [ler](03_pipeline_analisis_exploratorio.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/03_pipeline_analisis_exploratorio.ipynb) |
+| Notebook 04 | Agrupamento espectral | [ler](04_pipeline_clustering.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/04_pipeline_clustering.ipynb) |
+| Notebook 05 | Modelagem preditiva e SHAP | [ler](05_pipeline_modelado_ml_shap.ipynb) · [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/Trabalhos/05_pipeline_modelado_ml_shap.ipynb) |
 
-Os dados (`Atributos_VIS.NIR_SP.csv` e `Atributos_MIR_SP.csv`) ficam na pasta `Data/` do projeto. Os resultados são salvos em `Outputs/pipeline/`.
+::: {.callout-note}
+O texto e os comentários do código estão em português. As mensagens impressas pelo código, os rótulos dos gráficos e os demais resultados salvos nos notebooks continuam em inglês, porque os notebooks não foram executados de novo depois da tradução.
+:::
+
+## Dados e resultados
+
+Os dados (`Atributos_VIS.NIR_SP.csv` e `Atributos_MIR_SP.csv`) ficam na pasta `Data/` do projeto. Os resultados de cada etapa são salvos em `Outputs/pipeline/`, e as figuras em `Outputs/pipeline/Figures/`.

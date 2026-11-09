@@ -84,7 +84,7 @@ Após o SNV, os espectros devem apresentar menor dispersão vertical entre amost
 
 ## 7. Detecção de outliers
 
-Outliers espectrais podem decorrer de falhas de medição, contaminação, amostras de natureza muito distinta (por exemplo, solos orgânicos em um conjunto de solos minerais) ou erros de registro. Eles distorcem os modelos, especialmente os lineares. Dois critérios complementares são usados.
+Outliers espectrais podem decorrer de falhas de medição, contaminação, amostras de natureza muito distinta (por exemplo, solos orgânicos em um conjunto de solos minerais) ou erros de registro. Eles distorcem os modelos, especialmente os lineares. Três critérios complementares são usados, os mesmos em todo o projeto: o z-score do espectro médio, a distância de Mahalanobis (T² de Hotelling) e o resíduo de reconstrução (Q) no espaço dos componentes principais.
 
 **a) Desvio do espectro médio (z-score).** Calcula-se a média de cada espectro e verifica-se quão distante ela está da média do conjunto, em unidades de desvio-padrão. Como o SNV centraliza cada espectro em média zero, esse critério deve ser aplicado antes do SNV, sobre a absorbância suavizada:
 
@@ -94,28 +94,35 @@ z = np.abs((m - m.mean()) / m.std())
 print('Possíveis outliers (z > 3):', (z > 3).sum())
 ```
 
-**b) Distância de Mahalanobis no espaço dos componentes principais.** Projeta-se o conjunto em poucos componentes principais e mede-se a distância de cada amostra ao centro da nuvem, considerando a variância de cada componente. Amostras com distância muito acima do restante são candidatas a outlier:
+**b) Distância de Mahalanobis (T²) no espaço dos componentes principais.** Projeta-se o conjunto em poucos componentes principais e mede-se a distância de cada amostra ao centro da nuvem, considerando a variância de cada componente. Um T² alto indica uma amostra extrema, embora com formato de espectro coerente com o conjunto.
+
+**c) Resíduo de reconstrução (Q).** Mede a parte do espectro que os componentes retidos não conseguem reproduzir. Um Q alto indica feições que o restante do conjunto não tem, como contaminação ou erro de medição. T² e Q se complementam: uma amostra pode estar dentro da nuvem (T² baixo) e ainda assim ter um formato anômalo (Q alto).
 
 ```python
 from sklearn.decomposition import PCA
 
-pca = PCA(n_components=5).fit(X_snv)
+k = 5
+pca = PCA(n_components=k).fit(X_snv)
 scores = pca.transform(X_snv)
-d2 = ((scores ** 2) / pca.explained_variance_).sum(axis=1)   # Mahalanobis ao quadrado
-limite = np.percentile(d2, 99)
-outliers = np.where(d2 > limite)[0]
-print(len(outliers), 'amostras acima do percentil 99')
+t2 = ((scores ** 2) / pca.explained_variance_).sum(axis=1)       # T² (Mahalanobis ao quadrado)
+q = ((X_snv - pca.inverse_transform(scores)) ** 2).sum(axis=1)   # Q (resíduo de reconstrução)
+
+outlier = (z > 3) | (t2 > np.percentile(t2, 99)) | (q > np.percentile(q, 99))
+print('z-score:', (z > 3).sum(), '| T²:', (t2 > np.percentile(t2, 99)).sum(),
+      '| Q:', (q > np.percentile(q, 99)).sum(), '| total sinalizado:', outlier.sum())
 ```
 
-O limite (percentil 99, ou um ponto de corte da distribuição qui-quadrado) é uma escolha do analista. Duas recomendações importantes: a remoção deve ser baseada nos espectros e não no valor do atributo-alvo, para não enviesar a avaliação do modelo; e cada amostra removida deve ser inspecionada e registrada, relatando-se o número de amostras antes e depois da limpeza.
+Os limites (z > 3 e percentil 99 para T² e Q, ou pontos de corte das distribuições teóricas) são uma escolha do analista. Duas recomendações importantes: a remoção deve ser baseada nos espectros e não no valor do atributo-alvo, para não enviesar a avaliação do modelo; e cada amostra sinalizada deve ser inspecionada antes de ser removida, relatando-se o número de amostras antes e depois da limpeza.
+
+Depois da inspeção, as amostras confirmadas como outliers são removidas. **`X_final` e `y_final` passam a ser os dados de entrada de todos os capítulos seguintes** (PCA, clusterização e modelagem):
 
 ```python
-mantem = np.setdiff1d(np.arange(X_snv.shape[0]), outliers)
-X_final, y_final = X_snv[mantem], y[mantem]
+X_final, y_final = X_snv[~outlier], y[~outlier]
+print('Amostras antes:', X_snv.shape[0], '| depois:', X_final.shape[0])
 ```
 
 ## 8. Síntese e encaminhamentos
 
-O pré-processamento transformou os espectros brutos em dados mais adequados à modelagem: bordas ruidosas foram removidas, a reflectância foi convertida em absorbância, o ruído foi atenuado pelo filtro de Savitzky-Golay, os efeitos de espalhamento foram corrigidos pelo SNV e as amostras atípicas foram identificadas. A primeira derivada fica como alternativa ao SNV para remover a linha de base, e a melhor combinação de tratamentos deve ser escolhida comparando o desempenho dos modelos em validação cruzada.
+O pré-processamento transformou os espectros brutos em dados mais adequados à modelagem: bordas ruidosas foram removidas, a reflectância foi convertida em absorbância, o ruído foi atenuado pelo filtro de Savitzky-Golay, os efeitos de espalhamento foram corrigidos pelo SNV e as amostras atípicas foram identificadas (z-score, T² e Q) e removidas, resultando em `X_final` e `y_final`. A primeira derivada fica como alternativa ao SNV para remover a linha de base, e a melhor combinação de tratamentos deve ser escolhida comparando o desempenho dos modelos em validação cruzada.
 
 Com os espectros tratados, o próximo passo é explorar a estrutura dos dados com a análise de componentes principais (PCA) e a clusterização pelo método do cotovelo, antes de calibrar os modelos PLSR e Random Forest.

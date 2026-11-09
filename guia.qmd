@@ -1,0 +1,39 @@
+---
+title: "Guia: como os materiais se relacionam"
+description: "Para que serve cada seção do site e onde encontrar cada etapa do pipeline em cada uma delas."
+---
+
+Todas as seções tratam do **mesmo pipeline** de análise espectral (leitura, pré-processamento, PCA, agrupamento, modelagem e predição). O que muda é a **pergunta** que cada uma responde:
+
+| Seção | Pergunta que responde | Formato | Use quando quiser… |
+|---|---|---|---|
+| [Ferramentas](curso_iniciantes_ferramentas/index.qmd) | Como preparar o ambiente? | 9 aulas | instalar Python, VS Code, Jupyter, Git e GitHub |
+| [Curso prático](curso_espectroscopia_python/index.qmd) | **Como fazer** cada etapa? | 10 aulas com prática guiada | executar o pipeline passo a passo, em sala ou sozinho |
+| [Fundamentos](metodologia_espectroscopia/index.qmd) | **Por que** fazer assim e quais as alternativas? | 8 aulas de discussão e experimentos | justificar escolhas, evitar armadilhas e escrever a metodologia |
+| [Texto de referência](capitulos_dados_espectrais/index.qmd) | **Como relatar** o trabalho? | 8 capítulos corridos | ler o pipeline completo de uma vez ou usar como modelo de relatório, TCC ou dissertação |
+| [Notebooks](notebooks/index.qmd) | Como usar o pacote `geocis_espectral`? | 6 notebooks executados | rodar as rotinas do grupo nos dados do GeoCiS |
+| [Práticas](praticas/index.qmd) | Eu sei fazer sozinho? | 10 exercícios com gabarito | treinar cada etapa e conferir |
+| [Estudo de caso](Trabalhos/index.qmd) | Como fica um pipeline aplicado e configurável? | 5 notebooks encadeados | aplicar o fluxo completo a dados próprios (NIR e MIR) |
+| [Scripts](scripts/index.qmd) | O que tem dentro do pacote? | código-fonte comentado | consultar ou adaptar uma função |
+
+O caminho sugerido é **Ferramentas → Curso prático → Fundamentos → Texto de referência**. Notebooks, Práticas e Estudo de caso acompanham o curso prático.
+
+## Cada etapa do pipeline em cada seção
+
+| Etapa | Curso prático | Fundamentos | Texto de referência | Notebooks | Práticas | Estudo de caso |
+|---|---|---|---|---|---|---|
+| Delineamento e visão geral | [Aula 1](curso_espectroscopia_python/aula_01_espectroscopia_bssl_fluxo.md) | [Aulas 1 e 2](metodologia_espectroscopia/aula_01_delineamento.md) | [Cap. 6](capitulos_dados_espectrais/cap06_material_metodologia.md) | [Aula 0](notebooks/00_configuracao_e_dados.ipynb) | [Aula 1](praticas/aula_01_projeto_configuracao.ipynb) | — |
+| Leitura e análise exploratória | [Aula 2](curso_espectroscopia_python/aula_02_leitura_exploratoria.md) | [Aula 3](metodologia_espectroscopia/aula_03_amostragem_qualidade_exploratoria.md) | [Cap. 1](capitulos_dados_espectrais/cap01_leitura_analise_exploratoria.md) | [Aula 1](notebooks/01_visualizacao.ipynb) | [Aulas 2 a 4](praticas/aula_02_ler_csv_espectral.ipynb) | [Notebook 01](Trabalhos/01_pipeline_visualizacion_qc.ipynb) |
+| Pré-processamento e outliers (z-score, T² e Q) | [Aulas 3 e 4](curso_espectroscopia_python/aula_03_preprocessamento_I.md) | [Aula 4](metodologia_espectroscopia/aula_04_preprocessamento.md) | [Cap. 2](capitulos_dados_espectrais/cap02_preprocessamento.md) | [Aula 2](notebooks/02_processamento_espectral.ipynb) | [Aulas 5 e 6](praticas/aula_05_corte_savitzky_golay.ipynb) | [Notebook 02](Trabalhos/02_pipeline_procesamiento_espectral.ipynb) |
+| PCA e correlação | [Aula 5](curso_espectroscopia_python/aula_05_pca.md) | [Aula 5](metodologia_espectroscopia/aula_05_dimensionalidade_agrupamento.md) | [Cap. 3](capitulos_dados_espectrais/cap03_pca.md) | [Aula 3](notebooks/03_analise_exploratoria.ipynb) | [Aula 7](praticas/aula_07_pca_correlacao.ipynb) | [Notebook 03](Trabalhos/03_pipeline_analisis_exploratorio.ipynb) |
+| Agrupamento (k-means) | [Aula 6](curso_espectroscopia_python/aula_06_cotovelo_kmeans.md) | [Aula 5](metodologia_espectroscopia/aula_05_dimensionalidade_agrupamento.md) | [Cap. 4](capitulos_dados_espectrais/cap04_clusterizacao_kmeans.md) | [Aula 4](notebooks/04_agrupamento.ipynb) | [Aula 8](praticas/aula_08_clustering.ipynb) | [Notebook 04](Trabalhos/04_pipeline_clustering.ipynb) |
+| Modelagem e validação (PLSR, Random Forest) | [Aulas 7 e 8](curso_espectroscopia_python/aula_07_plsr_validacao_cruzada.md) | [Aulas 6 e 7](metodologia_espectroscopia/aula_06_modelagem.md) | [Cap. 5](capitulos_dados_espectrais/cap05_modelagem_plsr_rf.md) | [Aula 5](notebooks/05_modelagem_ml_shap.ipynb) | [Aula 9](praticas/aula_09_modelos_validacao.ipynb) | [Notebook 05](Trabalhos/05_pipeline_modelado_ml_shap.ipynb) |
+| Interpretação, predição e domínio de aplicação (T² e Q) | [Aula 9](curso_espectroscopia_python/aula_09_visualizacao_predicao.md) | [Aula 8](metodologia_espectroscopia/aula_08_dominio_reprodutibilidade_redacao.md) | [Cap. 6, seção 8](capitulos_dados_espectrais/cap06_material_metodologia.md) | [Aula 5](notebooks/05_modelagem_ml_shap.ipynb) | [Aula 10](praticas/aula_10_shap_rastreabilidade.ipynb) | [Notebook 05](Trabalhos/05_pipeline_modelado_ml_shap.ipynb) |
+| Resultados, conclusão e redação | [Aula 10](curso_espectroscopia_python/aula_10_resultados_apresentacao.md) | [Aula 8](metodologia_espectroscopia/aula_08_dominio_reprodutibilidade_redacao.md) | [Caps. 7 e 8](capitulos_dados_espectrais/cap07_resultados.md) | — | — | — |
+
+## Mesmas decisões em todas as seções
+
+Os materiais seguem as mesmas escolhas metodológicas, resumidas no [quadro de decisões dos Fundamentos](metodologia_espectroscopia/index.qmd). Dois pontos que aparecem em várias seções:
+
+- **Outliers:** três critérios complementares, o z-score do espectro médio, o T² de Hotelling e o resíduo Q do PCA. As amostras removidas saem de **todas** as etapas seguintes (PCA, agrupamento e modelagem).
+- **Domínio de aplicação:** uma amostra nova só tem a predição aceita se o T² **e** o Q ficarem abaixo dos limites definidos na calibração.

@@ -22,7 +22,7 @@ Cada aula de 2 horas tem objetivos, roteiro com tempos, conteúdo conceitual des
 
 **Público:** estudantes de graduação e pós-graduação em agronomia, ciência do solo e áreas afins, com noções básicas de estatística e de Python.
 
-**Como este curso se diferencia:** o curso organizado por capítulos ensina a executar cada notebook do pipeline. Este curso trata do raciocínio metodológico por trás dele: como planejar o estudo, que armadilhas evitar, como escolher e justificar métodos e como relatar tudo de forma reprodutível. Os dois cursos se complementam.
+**Como este curso se diferencia:** o Curso prático ensina a executar cada notebook do pipeline, e o Texto de referência apresenta o trabalho completo em capítulos. Este curso trata do raciocínio metodológico por trás deles: como planejar o estudo, que armadilhas evitar, como escolher e justificar métodos e como relatar tudo de forma reprodutível. Os três materiais se complementam.
 
 **Objetivo geral:** ao final, o aluno será capaz de delinear um estudo de predição de atributos do solo com espectros, escolher e justificar as etapas de pré-processamento, redução de dimensionalidade e modelagem, validar os modelos sem viés otimista e redigir a seção de metodologia de um trabalho científico.
 

@@ -50,7 +50,7 @@ O banco foi importado com a biblioteca pandas, e as colunas foram separadas em e
 
 ## 5. Pré-processamento espectral
 
-As bordas ruidosas do espectro (abaixo de 450 nm e acima de 2450 nm) foram removidas. A reflectância foi convertida em pseudo-absorbância, A = log10(1/R), e os espectros foram suavizados com o filtro de Savitzky-Golay (janela de 11 pontos, polinômio de grau 2). A primeira derivada, calculada pelo mesmo filtro, foi avaliada como alternativa para remover deslocamentos de linha de base, e o SNV foi aplicado para corrigir efeitos de espalhamento. Espectros atípicos foram identificados pelo desvio em relação ao espectro médio e pela distância de Mahalanobis no espaço dos componentes principais, e as amostras removidas foram registradas.
+As bordas ruidosas do espectro (abaixo de 450 nm e acima de 2450 nm) foram removidas. A reflectância foi convertida em pseudo-absorbância, A = log10(1/R), e os espectros foram suavizados com o filtro de Savitzky-Golay (janela de 11 pontos, polinômio de grau 2). A primeira derivada, calculada pelo mesmo filtro, foi avaliada como alternativa para remover deslocamentos de linha de base, e o SNV foi aplicado para corrigir efeitos de espalhamento. Espectros atípicos foram identificados por três critérios complementares: o desvio do espectro médio (z-score > 3) e, no espaço dos cinco primeiros componentes principais, a distância de Mahalanobis (T² de Hotelling) e o resíduo de reconstrução (Q), ambos com limite no percentil 99. As amostras sinalizadas foram inspecionadas e as removidas foram registradas. Todas as etapas seguintes usaram o conjunto sem outliers.
 
 ## 6. PCA e análise de agrupamentos
 
@@ -107,21 +107,28 @@ novas['pred_RF'] = pred_rf
 
 ### 8.3 Verificação do domínio de aplicação
 
-Um modelo só é confiável para amostras semelhantes às da calibração. Antes de aceitar uma predição, verifica-se se o espectro da nova amostra está dentro do domínio dos dados de treino, usando a distância de Mahalanobis (T²) no espaço dos componentes principais, com limite definido na calibração:
+Um modelo só é confiável para amostras semelhantes às da calibração. Antes de aceitar uma predição, verifica-se se o espectro da nova amostra está dentro do domínio dos dados de treino com os mesmos dois indicadores do PCA usados na detecção de outliers (capítulo 3, seção 4): a distância de Mahalanobis (T²), que acusa amostras afastadas do centro da calibração, e o resíduo de reconstrução (Q), que acusa espectros com feições que a calibração não tem. Os limites são definidos **na calibração** (percentil 99), e a amostra está no domínio se ficar abaixo dos dois:
 
 ```python
 pca_m = modelo['pca']
 var = pca_m.explained_variance_
 
-t2_cal = ((pca_m.transform(Xtr) ** 2) / var).sum(axis=1)
-limite = np.percentile(t2_cal, 99)
+def t2_q(X):
+    sc = pca_m.transform(X)
+    t2 = ((sc ** 2) / var).sum(axis=1)
+    q = ((X - pca_m.inverse_transform(sc)) ** 2).sum(axis=1)
+    return t2, q
 
-t2_novas = ((pca_m.transform(X_novas_pp) ** 2) / var).sum(axis=1)
-novas['dentro_dominio'] = t2_novas <= limite
+t2_cal, q_cal = t2_q(Xtr)
+lim_t2, lim_q = np.percentile(t2_cal, 99), np.percentile(q_cal, 99)
+
+t2_novas, q_novas = t2_q(X_novas_pp)
+novas['T2'], novas['Q'] = t2_novas, q_novas
+novas['dentro_dominio'] = (t2_novas <= lim_t2) & (q_novas <= lim_q)
 print(novas['dentro_dominio'].value_counts())
 ```
 
-Predições de amostras fora do domínio devem ser sinalizadas e interpretadas com cautela, ou excluídas, pois representam extrapolação do modelo. Também é recomendável comparar, em um gráfico de escores, a posição das novas amostras com a nuvem de calibração.
+Usar só o T² deixaria passar espectros com formato anômalo que, projetados nos PCs, caem perto do centro da nuvem; o Q é o que identifica esses casos. Predições de amostras fora do domínio devem ser sinalizadas e interpretadas com cautela, ou excluídas, pois representam extrapolação do modelo. Também é recomendável comparar, em um gráfico de escores, a posição das novas amostras com a nuvem de calibração.
 
 ## 9. Considerações finais
 

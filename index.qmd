@@ -5,10 +5,10 @@ toc: false
 ---
 
 
-Este site reúne quatro materiais que se complementam. Quem nunca programou começa pelas **ferramentas**; quem já tem o ambiente pronto pode ir direto para **Espectroscopia com Python**. A **Metodologia** discute por que cada etapa é feita, e os **Capítulos** são o texto de referência do projeto.
+Os materiais tratam do **mesmo pipeline** de análise espectral, cada um com um propósito: o **Curso prático** ensina *como fazer* cada etapa, os **Fundamentos** discutem *por que fazer assim* e quais as alternativas, e o **Texto de referência** mostra *como relatar* o trabalho completo. Quem nunca programou começa pelas **Ferramentas**. O [guia](guia.qmd) mostra onde cada etapa aparece em cada seção.
 
 ::: {.trilha}
-[1]{.passo} Ferramentas → [2]{.passo} Espectroscopia com Python → [3]{.passo} Metodologia → [4]{.passo} Capítulos de referência
+[1]{.passo} Ferramentas → [2]{.passo} Curso prático: como fazer → [3]{.passo} Fundamentos: por que fazer → [4]{.passo} Texto de referência: como relatar
 :::
 
 ::: {.grid .cartoes}
@@ -27,9 +27,9 @@ VS Code, Python, ambientes virtuais, Jupyter Notebook, Git, GitHub e GitHub Copi
 
 ::: {.g-col-12 .g-col-md-6}
 ::: {.cartao}
-### 2 · Espectroscopia com Python
+### 2 · Curso prático: como fazer
 
-Do dado ao modelo preditivo: exploração, pré-processamento, PCA, k-means, PLSR, Random Forest e predição de amostras novas.
+Espectroscopia com Python, do dado ao modelo preditivo: execução guiada de cada etapa, da exploração à predição de amostras novas.
 
 [10 aulas · 20 h]{.meta}
 
@@ -39,9 +39,9 @@ Do dado ao modelo preditivo: exploração, pré-processamento, PCA, k-means, PLS
 
 ::: {.g-col-12 .g-col-md-6}
 ::: {.cartao}
-### 3 · Metodologia
+### 3 · Fundamentos: por que fazer
 
-Decidir, justificar e demonstrar: delineamento, amostragem, escolha de tratamentos, validação sem viés otimista e redação.
+As decisões por trás de cada etapa: delineamento, amostragem, escolha de tratamentos, validação sem viés otimista e alternativas.
 
 [8 aulas · 16 h]{.meta}
 
@@ -51,9 +51,9 @@ Decidir, justificar e demonstrar: delineamento, amostragem, escolha de tratament
 
 ::: {.g-col-12 .g-col-md-6}
 ::: {.cartao}
-### 4 · Capítulos do projeto
+### 4 · Texto de referência: como relatar
 
-Texto de referência com o pipeline completo, de leitura dos espectros à conclusão, com código em Python.
+O pipeline completo em capítulos corridos, da leitura dos espectros à conclusão, como modelo de relatório, TCC ou dissertação.
 
 [8 capítulos]{.meta}
 
@@ -65,13 +65,14 @@ Texto de referência com o pipeline completo, de leitura dos espectros à conclu
 
 ## Como usar este site
 
+- **Guia:** o [guia](guia.qmd) explica para que serve cada seção e liga cada etapa do pipeline às aulas, capítulos e notebooks correspondentes.
 - **Navegação:** cada curso tem um menu no topo com todas as aulas na ordem. No fim de cada página há links para a anterior e a próxima.
 - **Busca:** use a lupa no topo (ou tecle `/`) para encontrar qualquer termo, como `Savitzky-Golay` ou `git commit`.
 - **Código:** passe o mouse sobre um bloco de código e clique no ícone para copiá-lo.
 - **Notebooks:** os [notebooks das aulas práticas](notebooks/index.qmd) podem ser lidos no site ou baixados como `.ipynb`.
 - **Scripts:** o [código-fonte do pacote `geocis_espectral`](scripts/index.qmd), usado pelos notebooks.
 - **Práticas:** [exercícios por aula](praticas/index.qmd), com gabarito para conferir depois de tentar.
-- **Trabalhos:** o [pipeline completo em notebooks](Trabalhos/index.qmd), do controle de qualidade à modelagem com SHAP.
+- **Estudo de caso:** um [pipeline aplicado e configurável](Trabalhos/index.qmd) para NIR e MIR, do controle de qualidade à modelagem com SHAP, para usar com dados próprios.
 - **Figuras:** a [galeria](figuras.qmd) reúne os gráficos gerados pelos scripts e tutoriais.
 - **Tema escuro:** o botão no canto superior direito alterna entre claro e escuro.
 

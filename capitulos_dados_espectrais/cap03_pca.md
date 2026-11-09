@@ -8,7 +8,7 @@
 
 Um espectro Vis-NIR-SWIR de solo possui centenas de bandas (variáveis) fortemente correlacionadas entre si, pois bandas vizinhas medem praticamente a mesma informação. Essa alta dimensionalidade e colinearidade dificultam a visualização e a interpretação dos dados e prejudicam modelos que não lidam bem com muitas variáveis redundantes. A análise de componentes principais (PCA, *Principal Component Analysis*) resolve esse problema ao resumir a variação do conjunto em poucas variáveis novas, não correlacionadas entre si, chamadas componentes principais (PCs).
 
-Neste projeto, o PCA tem três usos: (i) explorar a estrutura dos espectros e a separação entre grupos de solos, (ii) auxiliar na detecção de outliers e (iii) fornecer uma representação compacta dos espectros para a clusterização pelo método do cotovelo e para modelos como o Random Forest.
+Neste projeto, o PCA tem três usos: (i) explorar a estrutura dos espectros e a separação entre grupos de solos, (ii) fornecer os indicadores T² e Q, usados na detecção de outliers (capítulo 2) e na verificação do domínio de aplicação (capítulo 6), e (iii) fornecer uma representação compacta dos espectros para a clusterização pelo método do cotovelo e para modelos como o Random Forest.
 
 ## 2. Fundamentos
 
@@ -23,15 +23,15 @@ A biblioteca scikit-learn centraliza os dados (subtrai a média de cada banda) a
 
 ## 3. Aplicação aos espectros pré-processados
 
-O PCA é aplicado à matriz de espectros após o corte das bordas, a suavização e o SNV, de modo que os componentes reflitam a variação química e mineralógica e não ruído ou efeitos físicos:
+O PCA é aplicado à matriz `X_final` do capítulo anterior, isto é, aos espectros com corte das bordas, suavização e SNV e **já sem os outliers** (removidos pelos critérios z-score, T² e Q). Assim, os componentes refletem a variação química e mineralógica, e não ruído, efeitos físicos ou poucas amostras anômalas:
 
 ```python
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import numpy as np
 
-pca = PCA(n_components=10).fit(X_snv)
-scores = pca.transform(X_snv)
+pca = PCA(n_components=10).fit(X_final)
+scores = pca.transform(X_final)
 
 var_exp = pca.explained_variance_ratio_
 print(var_exp.round(3))
@@ -58,7 +58,7 @@ Não há um critério único para o número de componentes. Os mais usados são:
 A projeção das amostras nos dois primeiros componentes permite visualizar a estrutura do conjunto. Colorir os pontos pelo valor do atributo de interesse mostra se há relação entre a posição no espaço espectral e o atributo:
 
 ```python
-plt.scatter(scores[:, 0], scores[:, 1], c=y, cmap='viridis', s=12)
+plt.scatter(scores[:, 0], scores[:, 1], c=y_final, cmap='viridis', s=12)
 plt.colorbar(label=COL_ALVO)
 plt.xlabel(f'PC1 ({var_exp[0]*100:.1f}%)')
 plt.ylabel(f'PC2 ({var_exp[1]*100:.1f}%)')
@@ -80,24 +80,31 @@ plt.legend(); plt.show()
 
 Picos ou vales nas proximidades de 1400 e 1900 nm indicam influência da água e da hidroxila; na região de 2200 nm, de argilominerais como a caulinita; e no visível, da cor do solo, associada à matéria orgânica e aos óxidos de ferro (hematita e goethita). Essa leitura dá sentido físico aos componentes e aumenta a confiança de que os modelos exploram feições reais e não artefatos.
 
-## 4. Detecção de outliers no espaço dos PCs
+## 4. Os indicadores T² e Q
 
-Além de explorar a estrutura dos dados, o PCA permite identificar espectros atípicos por dois indicadores complementares: a distância de Mahalanobis (ou T² de Hotelling), que mede o quão afastada do centro está a amostra dentro do espaço dos PCs retidos; e o resíduo de reconstrução (Q), que mede a parte do espectro que os PCs retidos não conseguem reproduzir.
+O PCA fornece dois indicadores complementares para avaliar se uma amostra é típica do conjunto. Eles são usados em dois pontos do projeto: na **detecção de outliers** (capítulo 2, junto com o z-score) e na **verificação do domínio de aplicação** de amostras novas (capítulo 6, seção 8.3).
+
+- **T² de Hotelling** (distância de Mahalanobis no espaço dos PCs retidos): mede o quanto a amostra está afastada do centro da nuvem, ponderando cada componente pela sua variância. T² alto indica uma amostra extrema, mas com formato de espectro coerente com o conjunto (por exemplo, um solo muito argiloso).
+- **Q** (resíduo de reconstrução): mede a parte do espectro que os PCs retidos não reproduzem. Q alto indica feições que o restante do conjunto não tem, como contaminação ou erro de medição.
+
+Como a remoção já foi feita no capítulo 2, aqui os indicadores servem de diagnóstico: o gráfico T² × Q de `X_final` mostra como as amostras restantes se distribuem e quais estão perto dos limites.
 
 ```python
 k = 5
-pca_k = PCA(n_components=k).fit(X_snv)
-sc = pca_k.transform(X_snv)
+pca_k = PCA(n_components=k).fit(X_final)
+sc = pca_k.transform(X_final)
 
 t2 = ((sc ** 2) / pca_k.explained_variance_).sum(axis=1)
-X_rec = pca_k.inverse_transform(sc)
-q = ((X_snv - X_rec) ** 2).sum(axis=1)
+q = ((X_final - pca_k.inverse_transform(sc)) ** 2).sum(axis=1)
+lim_t2, lim_q = np.percentile(t2, 99), np.percentile(q, 99)
 
-suspeitos = np.where((t2 > np.percentile(t2, 99)) | (q > np.percentile(q, 99)))[0]
-print(len(suspeitos), 'amostras suspeitas')
+plt.scatter(t2, q, s=8, alpha=0.5)
+plt.axvline(lim_t2, color='red', ls='--'); plt.axhline(lim_q, color='red', ls='--')
+plt.xlabel('T² de Hotelling'); plt.ylabel('Q (resíduo de reconstrução)')
+plt.show()
 ```
 
-Amostras com T² alto são extremas em relação ao padrão do conjunto; amostras com Q alto contêm feições que o modelo de componentes não explica, por exemplo contaminação ou erro de medição. Como já indicado no capítulo de pré-processamento, a remoção deve ser decidida pela análise dos espectros, nunca pelo valor do atributo-alvo, e deve ser registrada.
+O gráfico tem quatro regiões: T² e Q baixos (amostra típica); T² alto e Q baixo (extrema, mas coerente); T² baixo e Q alto (formato anômalo); e ambos altos (muito atípica). Por definição, cerca de 1% das amostras sempre fica acima do percentil 99, então **o diagnóstico não deve ser repetido em ciclos de remoção**: a decisão de excluir uma amostra é tomada uma única vez, no capítulo 2, com base na inspeção dos espectros e nunca no valor do atributo-alvo.
 
 ## 5. PCA como etapa para clusterização e modelagem
 
@@ -112,9 +119,9 @@ Para o PLSR, o PCA não é necessário, pois o método já constrói suas própr
 
 1. **Evitar vazamento de informação**: na etapa exploratória, o PCA pode ser ajustado ao conjunto todo. Porém, quando os escores forem usados como entrada de um modelo preditivo, o PCA deve ser ajustado apenas nos dados de calibração e depois aplicado (`transform`) aos dados de validação.
 2. **Variância não é relevância**: os primeiros componentes capturam a maior variância dos espectros, que nem sempre é a mais relacionada ao atributo de interesse. Um atributo pode depender de componentes de menor variância, por isso o número de PCs deve ser definido também pelo desempenho do modelo.
-3. **Sensibilidade a outliers**: poucos espectros extremos podem dominar os primeiros componentes. A identificação e o tratamento prévio de outliers tornam os PCs mais representativos do conjunto.
+3. **Sensibilidade a outliers**: poucos espectros extremos podem dominar os primeiros componentes. Por isso o PCA deste capítulo é ajustado em `X_final`, depois da remoção de outliers do capítulo 2.
 4. **Interpretação cautelosa**: os componentes são combinações lineares das bandas e não correspondem necessariamente a um constituinte químico específico do solo.
 
 ## 7. Síntese e encaminhamentos
 
-O PCA permitiu resumir centenas de bandas espectrais correlacionadas em poucos componentes, avaliar a variância explicada, visualizar a estrutura do conjunto de amostras, interpretar as regiões espectrais mais influentes e apoiar a detecção de espectros atípicos. Os escores obtidos servem de base para a etapa seguinte, a clusterização pelo método do cotovelo, e para a modelagem de predição com PLSR e Random Forest.
+O PCA permitiu resumir centenas de bandas espectrais correlacionadas em poucos componentes, avaliar a variância explicada, visualizar a estrutura do conjunto de amostras, interpretar as regiões espectrais mais influentes e definir os indicadores T² e Q, usados na detecção de outliers e no domínio de aplicação. Os escores obtidos servem de base para a etapa seguinte, a clusterização pelo método do cotovelo, e para a modelagem de predição com PLSR e Random Forest.

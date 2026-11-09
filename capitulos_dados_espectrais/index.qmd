@@ -1,6 +1,11 @@
 ---
-title: "Leitura, pré-processamento, análise e modelagem de dados espectrais de solo"
+title: "Texto de referência: leitura, pré-processamento, análise e modelagem de dados espectrais de solo"
 ---
+
+::: {.callout-tip}
+**Texto de referência — como relatar.** Os capítulos apresentam o pipeline completo em texto corrido, como um relatório, TCC ou dissertação, e podem servir de modelo para a redação do seu trabalho. Para aprender a executar cada etapa, veja o [Curso prático](../curso_espectroscopia_python/index.qmd); para a justificativa das escolhas, os [Fundamentos](../metodologia_espectroscopia/index.qmd). O [guia](../guia.qmd) liga cada capítulo às partes correspondentes das outras seções.
+:::
+
 
 <!-- Página do curso no site: reaproveita o README.md (que continua aparecendo no GitHub) -->
 {{< include README.md >}}

@@ -1,6 +1,11 @@
 ---
-title: "Curso: Espectroscopia de solos com Python, do dado ao modelo preditivo"
+title: "Curso prático: espectroscopia de solos com Python, do dado ao modelo preditivo"
 ---
+
+::: {.callout-tip}
+**Curso prático — como fazer.** Este curso ensina a **executar** cada etapa do pipeline, com prática guiada e exercícios. O mesmo pipeline aparece nos [Fundamentos](../metodologia_espectroscopia/index.qmd), que discutem **por que** cada escolha é feita e quais as alternativas, e no [Texto de referência](../capitulos_dados_espectrais/index.qmd), que mostra **como relatar** o trabalho completo. O [guia](../guia.qmd) liga cada aula às partes correspondentes das outras seções.
+:::
+
 
 <!-- Página do curso no site: reaproveita o README.md (que continua aparecendo no GitHub) -->
 {{< include README.md >}}

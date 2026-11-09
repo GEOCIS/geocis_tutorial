@@ -21,7 +21,7 @@
 
 ### Domínio de aplicação
 
-O modelo é confiável para amostras semelhantes às da calibração. Para decidir se uma amostra nova está no domínio, comparam-se os seus T² e Q (aula 3 do curso por capítulos) com limites definidos **na calibração** (por exemplo, o percentil 99). Opções para as amostras fora do domínio: sinalizar e relatar a predição como extrapolação, descartar, ou analisar em laboratório e **incorporá-las à calibração** (atualização do modelo). A escolha do limite equilibra o risco de aceitar predições ruins e o de rejeitar predições boas.
+O modelo é confiável para amostras semelhantes às da calibração. Para decidir se uma amostra nova está no domínio, comparam-se os seus T² e Q (definidos no [capítulo 3, seção 4, do Texto de referência](../capitulos_dados_espectrais/cap03_pca.md)) com limites definidos **na calibração** (por exemplo, o percentil 99). Opções para as amostras fora do domínio: sinalizar e relatar a predição como extrapolação, descartar, ou analisar em laboratório e **incorporá-las à calibração** (atualização do modelo). A escolha do limite equilibra o risco de aceitar predições ruins e o de rejeitar predições boas.
 
 ### Transferência entre instrumentos e protocolos
 

@@ -39,6 +39,8 @@ website:
     left:
       - text: Início
         href: index.qmd
+      - text: Guia
+        href: guia.qmd
       - text: Ferramentas
         menu:
           - text: "Apresentação do curso"
@@ -54,7 +56,7 @@ website:
           - href: curso_iniciantes_ferramentas/aula_08_github.md
           - href: curso_iniciantes_ferramentas/aula_09_copilot_projeto_integrador.md
           - href: curso_iniciantes_ferramentas/apendices.md
-      - text: Espectroscopia
+      - text: Curso prático
         menu:
           - text: "Apresentação do curso"
             href: curso_espectroscopia_python/index.qmd
@@ -71,7 +73,7 @@ website:
           - href: curso_espectroscopia_python/aula_09_visualizacao_predicao.md
           - href: curso_espectroscopia_python/aula_10_resultados_apresentacao.md
           - href: curso_espectroscopia_python/apendice.md
-      - text: Metodologia
+      - text: Fundamentos
         menu:
           - text: "Apresentação do curso"
             href: metodologia_espectroscopia/index.qmd
@@ -85,7 +87,7 @@ website:
           - href: metodologia_espectroscopia/aula_06_modelagem.md
           - href: metodologia_espectroscopia/aula_07_validacao_metricas_incerteza.md
           - href: metodologia_espectroscopia/aula_08_dominio_reprodutibilidade_redacao.md
-      - text: Capítulos
+      - text: Texto de referência
         menu:
           - text: "Apresentação do curso"
             href: capitulos_dados_espectrais/index.qmd
@@ -137,9 +139,9 @@ website:
           - href: praticas/aula_08_clustering.ipynb
           - href: praticas/aula_09_modelos_validacao.ipynb
           - href: praticas/aula_10_shap_rastreabilidade.ipynb
-      - text: Trabalhos
+      - text: Estudo de caso
         menu:
-          - text: "Lista de trabalhos"
+          - text: "Apresentação do estudo de caso"
             href: Trabalhos/index.qmd
           - text: "---"
           - href: Trabalhos/01_pipeline_visualizacion_qc.ipynb
@@ -156,6 +158,8 @@ website:
     contents:
       - href: index.qmd
         text: Início
+      - href: guia.qmd
+        text: "Guia: como os materiais se relacionam"
       - section: "1 · Ferramentas para iniciantes"
         href: curso_iniciantes_ferramentas/index.qmd
         contents:
@@ -169,7 +173,7 @@ website:
           - curso_iniciantes_ferramentas/aula_08_github.md
           - curso_iniciantes_ferramentas/aula_09_copilot_projeto_integrador.md
           - curso_iniciantes_ferramentas/apendices.md
-      - section: "2 · Espectroscopia com Python"
+      - section: "2 · Curso prático: como fazer"
         href: curso_espectroscopia_python/index.qmd
         contents:
           - curso_espectroscopia_python/00_preparacao.md
@@ -184,7 +188,7 @@ website:
           - curso_espectroscopia_python/aula_09_visualizacao_predicao.md
           - curso_espectroscopia_python/aula_10_resultados_apresentacao.md
           - curso_espectroscopia_python/apendice.md
-      - section: "3 · Metodologia"
+      - section: "3 · Fundamentos: por que fazer"
         href: metodologia_espectroscopia/index.qmd
         contents:
           - metodologia_espectroscopia/00_preparacao.md
@@ -196,7 +200,7 @@ website:
           - metodologia_espectroscopia/aula_06_modelagem.md
           - metodologia_espectroscopia/aula_07_validacao_metricas_incerteza.md
           - metodologia_espectroscopia/aula_08_dominio_reprodutibilidade_redacao.md
-      - section: "4 · Capítulos do projeto"
+      - section: "4 · Texto de referência: como relatar"
         href: capitulos_dados_espectrais/index.qmd
         contents:
           - capitulos_dados_espectrais/cap01_leitura_analise_exploratoria.md
@@ -262,7 +266,7 @@ website:
                 text: "Gabarito · Aula 9"
               - href: praticas/solucoes/aula_10_shap_rastreabilidade.ipynb
                 text: "Gabarito · Aula 10"
-      - section: "8 · Trabalhos"
+      - section: "8 · Estudo de caso: pipeline NIR + MIR"
         href: Trabalhos/index.qmd
         contents:
           - Trabalhos/01_pipeline_visualizacion_qc.ipynb
