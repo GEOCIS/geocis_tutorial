@@ -101,7 +101,7 @@ for i in idx:
 
 - (1) Com os dados sintéticos, a matéria orgânica tem distribuição mais assimétrica e valores mais altos. Se a assimetria for forte e as caudas longas, uma transformação logarítmica pode ser testada, avaliando o efeito nas métricas.
 - (2) A matéria orgânica no banco sintético escurece o espectro inteiro (efeito multiplicativo), então a correlação tende a ser negativa e mais distribuída ao longo do espectro, enquanto a argila concentra a correlação nas bandas de absorção.
-- (3) `df[cols_ref].std() / df[cols_ref].mean()` dá o coeficiente de variação (para colunas numéricas).
+- (3) [`df[cols_ref].std() / df[cols_ref].mean()`](../pipeline_bssl/01_leitura_exploratoria.ipynb#estatística-descritiva-e-valores-faltantes) dá o coeficiente de variação (para colunas numéricas).
 - (4) O mesmo banco serve a vários atributos, cada um com suas ausências, e descartar amostras de todo o banco por falta de um atributo desperdiçaria informação.
 - (5) Os espectros anômalos gerados aleatoriamente costumam ter reflectâncias altas e formas irregulares.
 - (6) As bandas de maior correlação ficam em torno das feições de 1400, 1900 e 2200 nm.
@@ -112,7 +112,7 @@ for i in idx:
 
 - **A coluna alvo não é encontrada:** o nome em [`COL_ALVO`](../pipeline_bssl/config.qmd#cb1-18) precisa ser idêntico ao do CSV, com atenção a maiúsculas e acentos.
 - **Colunas espectrais não reconhecidas:** os nomes das bandas devem ser numéricos; se houver prefixo (por exemplo, [`X350`](../pipeline_bssl/config.qmd#cb1-19)), preencher [`PREFIXO`](../pipeline_bssl/config.qmd#cb1-19).
-- **Erro de ordem das bandas:** `comprimentos_onda` exige ordem crescente; reordenar as colunas se necessário.
+- **Erro de ordem das bandas:** [`comprimentos_onda`](../pipeline_bssl/utils.qmd#cb1-33) exige ordem crescente; reordenar as colunas se necessário.
 - **Números lidos como texto:** CSV com vírgula decimal exige [`pd.read_csv(..., decimal=",", sep=";")`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura).
 
 ## Perguntas de verificação
