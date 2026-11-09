@@ -140,7 +140,7 @@ Para explicar a ideia, usar a analogia de fotografar um objeto tridimensional: o
 
 #### Prática guiada: notebook 03, seção 1
 
-1. Carregar `espectros_pp.npz` e `df_pp.pkl` (células iniciais).
+1. Carregar [`espectros_pp.npz`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) e [`df_pp.pkl`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) (células iniciais).
 2. Ajustar `PCA(n_components=cfg.N_PCS_EXPLORA)` aos espectros com SNV (`X_snv`).
 3. Ler a variância explicada e a acumulada impressas, e o gráfico de *scree*.
 4. Interpretar o gráfico de escores (PC1 × PC2) colorido pelo atributo: há gradiente? Há agrupamentos? Há pontos isolados?

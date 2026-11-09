@@ -20,7 +20,7 @@ O gerador de dados sintéticos permite **praticar sem acesso ao banco real da BS
    ```
 
 3. Execute os notebooks **na ordem**, de 01 a 05. Cada um lê os arquivos salvos pelo anterior na pasta
-   [`resultados/`](config.qmd#cb1-13), e as figuras vão para `resultados/figuras/`. Com os dados sintéticos, os cinco rodam em cerca de 1 minuto.
+   [`resultados/`](config.qmd#cb1-13), e as figuras vão para [`resultados/figuras/`](config.qmd#cb1-14). Com os dados sintéticos, os cinco rodam em cerca de 1 minuto.
 
 Para usar o banco real, coloque o arquivo em `dados/` e ajuste [`ARQUIVO`](config.qmd#cb1-11) e [`COL_ALVO`](config.qmd#cb1-18) em [`config.py`](config.qmd)
 (veja o `README.md` da pasta).

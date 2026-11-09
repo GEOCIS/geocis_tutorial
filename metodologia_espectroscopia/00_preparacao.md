@@ -4,7 +4,7 @@
 
 ## Pré-requisitos
 
-- **Pipeline executado:** a turma deve ter a pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) com os dados sintéticos gerados (`python gerar_dados_sinteticos.py`) e os notebooks 01 a 04 executados, com os dados sintéticos ou com a BSSL. As atividades reutilizam os arquivos da pasta [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): `dados_brutos.npz`, `df_limpo.pkl`, `df_pp.pkl`, `espectros_pp.npz`, `modelo_solo.joblib` e `predicoes_validacao.csv`.
+- **Pipeline executado:** a turma deve ter a pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) com os dados sintéticos gerados (`python gerar_dados_sinteticos.py`) e os notebooks 01 a 04 executados, com os dados sintéticos ou com a BSSL. As atividades reutilizam os arquivos da pasta [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): [`dados_brutos.npz`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), [`df_limpo.pkl`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), [`df_pp.pkl`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`espectros_pp.npz`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`modelo_solo.joblib`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento) e [`predicoes_validacao.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento).
 - **Dados sintéticos:** foram gerados apenas para treinar o método. São muito "bem comportados" (relação praticamente linear e ruído baixo), então o desempenho é alto. Isso é útil para mostrar o efeito de cada decisão, mas **os números não são resultados científicos** e não devem ser relatados como tais.
 - **Valores de referência:** os números citados nos gabaritos vêm de execuções de teste com os dados sintéticos, com `SEED = 42` e as bibliotecas instaladas na época. Servem como ordem de grandeza: os alunos obterão valores parecidos, mas não idênticos, e eles devem ser conferidos antes da aula. O que importa em cada atividade é o **padrão** observado, e não o valor exato.
 - **Banco real:** com a BSSL, ajustar [`config.py`](../pipeline_bssl/config.qmd) e a coluna de identificação das amostras ([`id`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-74)) usada na célula de preparação. Em bancos grandes, usar uma subamostra se as atividades ficarem lentas.
@@ -65,7 +65,7 @@ Variáveis disponíveis depois da célula:
 | `X_sg`, `X_snv` | Absorbância suavizada (Savitzky-Golay), com e sem SNV, calculadas na hora |
 | `Xsg`, `Xd1`, `Xsnv` | Os mesmos tratamentos (e a 1ª derivada) salvos pelo notebook 02 |
 | `y`, `wl` | Atributo-alvo (argila) e comprimentos de onda após o corte |
-| `df`, `df_pp` | Tabelas do banco limpo e do banco sem outliers (com a coluna `cluster`) |
+| `df`, `df_pp` | Tabelas do banco limpo e do banco sem outliers (com a coluna [`cluster`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos)) |
 | `modelo` | Dicionário do modelo final do notebook 04 (`nlv`, `tratamento` etc.) |
 | `Xtr`, `Xte`, `ytr`, `yte` | Divisão calibração/validação sobre `X_snv` |
 | `cv`, `rmse`, `rmsecv`, `nlv` | Validação cruzada de 10 partições, funções de erro e nº de LVs escolhido |

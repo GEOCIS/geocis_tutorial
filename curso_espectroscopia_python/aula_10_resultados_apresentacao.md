@@ -36,7 +36,7 @@
 
 #### Conteúdo
 
-**Do arquivo ao texto.** Os resultados vêm de arquivos em [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): a tabela de métricas (`metricas.csv`), as figuras (`resultados/figuras/`) e as predições (`predicoes_validacao.csv` e `predicoes_novas_amostras.csv`). O texto deve citar esses números e figuras, nunca valores de memória nem de dados sintéticos de teste.
+**Do arquivo ao texto.** Os resultados vêm de arquivos em [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): a tabela de métricas ([`metricas.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento)), as figuras ([`resultados/figuras/`](../pipeline_bssl/config.qmd#cb1-14)) e as predições ([`predicoes_validacao.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento) e [`predicoes_novas_amostras.csv`](../pipeline_bssl/05_visualizacao_predicao.ipynb#predição-de-amostras-novas)). O texto deve citar esses números e figuras, nunca valores de memória nem de dados sintéticos de teste.
 
 Para montar a tabela de métricas do relatório a partir do arquivo:
 

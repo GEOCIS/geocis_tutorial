@@ -44,7 +44,7 @@ Pontos a destacar:
 - **Seção 4 (distribuição):** histograma e boxplot do atributo. Observar caudas longas e possíveis grupos.
 - **Seção 5 (espectros brutos):** 50 espectros e o espectro médio com faixa de desvio-padrão. Observar feições, ruído nas pontas e espectros fora do padrão.
 - **Seção 6 (correlação por banda):** correlação de cada banda com o atributo, calculada de forma vetorizada. Observar as regiões do espectro mais associadas ao atributo.
-- **Seção 7 (salvar):** grava `dados_brutos.npz` e `df_limpo.pkl` para o notebook 02.
+- **Seção 7 (salvar):** grava [`dados_brutos.npz`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar) e [`df_limpo.pkl`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar) para o notebook 02.
 
 **Referência com os dados sintéticos:** 900 amostras com 431 bandas (350 a 2500 nm); 40 sem argila, restando 860; assimetria da argila de cerca de 0,4.
 

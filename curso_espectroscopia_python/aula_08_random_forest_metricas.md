@@ -143,7 +143,7 @@ Orientação de Chang et al. (2001) para o RPD: abaixo de 1,4, modelo pouco conf
 
 1. **Random Forest.** Executar a busca de hiperparâmetros (pode levar alguns minutos) e ler os melhores parâmetros e o RMSECV impressos.
 2. **Tabela de métricas.** Interpretar as linhas de PLSR (calibração, validação cruzada e validação) e de Random Forest (calibração e validação). Comparar o PLSR e o Random Forest na validação.
-3. **Domínio de aplicação e salvamento.** Entender o PCA do domínio (`N_PCS_DOMINIO`) e os limites de T² e Q guardados. Conferir os arquivos `modelo_solo.joblib`, `metricas.csv` e `predicoes_validacao.csv`.
+3. **Domínio de aplicação e salvamento.** Entender o PCA do domínio (`N_PCS_DOMINIO`) e os limites de T² e Q guardados. Conferir os arquivos [`modelo_solo.joblib`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento), [`metricas.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento) e [`predicoes_validacao.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento).
 
 #### Exercícios
 

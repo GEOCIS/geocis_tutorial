@@ -11,7 +11,7 @@ python gerar_dados_sinteticos.py          # cria dados/bssl.csv e dados/novas_am
 # executar os notebooks 01 a 05, na ordem, com "Run All"
 ```
 
-Saídas esperadas em [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): `dados_brutos.npz`, `df_limpo.pkl`, `espectros_pp.npz`, `df_pp.pkl`, `cluster_model.joblib`, `modelo_solo.joblib`, `metricas.csv`, `predicoes_validacao.csv`, `predicoes_novas_amostras.csv` e a pasta `figuras/` com os gráficos de cada etapa.
+Saídas esperadas em [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): [`dados_brutos.npz`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), [`df_limpo.pkl`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), [`espectros_pp.npz`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`df_pp.pkl`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`cluster_model.joblib`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos), [`modelo_solo.joblib`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento), [`metricas.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento), [`predicoes_validacao.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento), [`predicoes_novas_amostras.csv`](../pipeline_bssl/05_visualizacao_predicao.ipynb#predição-de-amostras-novas) e a pasta `figuras/` com os gráficos de cada etapa.
 
 **Erros mais comuns em sala:**
 

@@ -127,7 +127,7 @@ Tabela de K (2 a 5) com tamanho dos grupos e silhueta, o K escolhido com justifi
 2. Definir [`K`](../pipeline_bssl/config.qmd#cb1-38) em [`config.py`](../pipeline_bssl/config.qmd) (por exemplo, 3) e executar a célula do k-means final.
 3. Ler a contagem de amostras por grupo e a estatística do atributo por grupo (`groupby`). Os grupos diferem no atributo?
 4. Interpretar o gráfico de escores com os centroides e os espectros médios por grupo.
-5. Conferir que `df_pp.pkl` foi atualizado com a coluna `cluster` e que `cluster_model.joblib` foi salvo.
+5. Conferir que [`df_pp.pkl`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) foi atualizado com a coluna [`cluster`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos) e que [`cluster_model.joblib`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos) foi salvo.
 
 #### Exercícios
 

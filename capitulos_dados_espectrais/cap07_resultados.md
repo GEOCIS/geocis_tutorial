@@ -10,7 +10,7 @@
 
 Após a leitura e a limpeza (notebook 01), o conjunto para o atributo \[atributo\] ficou com \[n\] amostras, de um total inicial de \[n inicial\], sendo \[n removidas\] excluídas por ausência do valor medido em laboratório. Os espectros possuem \[n bandas\] bandas, entre \[350\] e \[2500\] nm.
 
-O atributo apresentou média de \[valor\] \[unidade\], desvio-padrão de \[valor\], mínimo de \[valor\] e máximo de \[valor\], com assimetria de \[valor\] (`df_limpo.pkl`, saída de `describe()`). A distribuição foi \[simétrica / assimétrica à direita / bimodal\] (figura `01_distribuicao_alvo.png`), o que \[justificou / não justificou\] transformação da variável resposta.
+O atributo apresentou média de \[valor\] \[unidade\], desvio-padrão de \[valor\], mínimo de \[valor\] e máximo de \[valor\], com assimetria de \[valor\] ([`df_limpo.pkl`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), saída de `describe()`). A distribuição foi \[simétrica / assimétrica à direita / bimodal\] (figura `01_distribuicao_alvo.png`), o que \[justificou / não justificou\] transformação da variável resposta.
 
 Os espectros brutos (figura `01_espectros_brutos.png`) apresentaram as feições esperadas para solos: aumento da reflectância do visível para o infravermelho próximo e absorções em torno de 1400, 1900 e 2200 nm, associadas à água, à hidroxila e aos argilominerais. As bandas mais correlacionadas com o atributo se concentraram em \[regiões espectrais\] (figura `01_correlacao_bandas.png`).
 
@@ -36,7 +36,7 @@ Na calibração (\[n\] amostras), o pré-tratamento com menor RMSECV no PLSR foi
 
 ### 5.2 Métricas
 
-O desempenho nas \[n\] amostras de validação independentes é apresentado abaixo (`metricas.csv`).
+O desempenho nas \[n\] amostras de validação independentes é apresentado abaixo ([`metricas.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento)).
 
 | Modelo | Conjunto | n | R² | RMSE | RPD | RPIQ | Viés |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -60,7 +60,7 @@ Os coeficientes de regressão e o VIP do PLSR (figura `05_plsr_coef_vip.png`) de
 
 ## 7. Predição de novas amostras e domínio de aplicação
 
-O modelo salvo (`modelo_solo.joblib`) foi aplicado a \[n\] amostras novas. Pelos indicadores T² e Q, \[n\] amostras (\[%\]) ficaram dentro do domínio de aplicação definido na calibração e \[n\] ficaram fora (figura `05_novas_vs_calibracao.png`). As predições das amostras fora do domínio foram \[sinalizadas / descartadas\], por representarem extrapolação. Os valores preditos pelos dois modelos tiveram concordância de \[valor\] (diferença média de \[valor\] \[unidade\]), registrada em `predicoes_novas_amostras.csv`.
+O modelo salvo ([`modelo_solo.joblib`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento)) foi aplicado a \[n\] amostras novas. Pelos indicadores T² e Q, \[n\] amostras (\[%\]) ficaram dentro do domínio de aplicação definido na calibração e \[n\] ficaram fora (figura `05_novas_vs_calibracao.png`). As predições das amostras fora do domínio foram \[sinalizadas / descartadas\], por representarem extrapolação. Os valores preditos pelos dois modelos tiveram concordância de \[valor\] (diferença média de \[valor\] \[unidade\]), registrada em [`predicoes_novas_amostras.csv`](../pipeline_bssl/05_visualizacao_predicao.ipynb#predição-de-amostras-novas).
 
 ## 8. Discussão
 
@@ -80,9 +80,9 @@ O \[PLSR / Random Forest\] foi superior para \[atributo\]. O PLSR tem a vantagem
 O projeto resultou nos seguintes produtos:
 
 - **Pipeline reprodutível em cinco notebooks**: leitura e exploração, pré-processamento, PCA e clusterização, modelagem, e visualização e predição, controlados por um único arquivo de configuração ([`config.py`](../pipeline_bssl/config.qmd)) e por funções reutilizáveis ([`utils.py`](../pipeline_bssl/utils.qmd)), que permitem repetir a análise para outros atributos alterando apenas a coluna-alvo.
-- **Modelo de predição salvo** (`modelo_solo.joblib`), com pré-tratamento, número de variáveis latentes, PCA do domínio e limites de T² e Q, pronto para aplicação a novas amostras.
+- **Modelo de predição salvo** ([`modelo_solo.joblib`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento)), com pré-tratamento, número de variáveis latentes, PCA do domínio e limites de T² e Q, pronto para aplicação a novas amostras.
 - **Resultados quantitativos**: tabela de métricas (R², RMSE, RPD, RPIQ e viés) para PLSR e Random Forest em calibração, validação cruzada e validação.
-- **Figuras** para relatórios e apresentações, salvas em `resultados/figuras/`.
+- **Figuras** para relatórios e apresentações, salvas em [`resultados/figuras/`](../pipeline_bssl/config.qmd#cb1-14).
 - **Predições** para amostras novas, com indicação de pertencimento ao domínio de aplicação.
 - **Documentação metodológica** em forma de capítulos, cobrindo o material, os métodos e a interpretação dos resultados.
 
