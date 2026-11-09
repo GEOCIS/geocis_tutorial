@@ -141,7 +141,7 @@ Gráfico do RMSECV por número de LVs, tabela de comparação dos pré-tratament
 
 #### Exercícios
 
-1. Em [`config.py`](../pipeline_bssl/config.qmd), definir `TRATAMENTO_FIXO = 'snv'` e depois `'d1'`, executar o notebook e comparar o número de LVs e o RMSECV. Voltar a `None` ao final.
+1. Em [`config.py`](../pipeline_bssl/config.qmd), definir `TRATAMENTO_FIXO = 'snv'` e depois [`'d1'`](../pipeline_bssl/utils.qmd#cb1-71), executar o notebook e comparar o número de LVs e o RMSECV. Voltar a `None` ao final.
 2. **Regra do erro-padrão (1-SE).** Escolher o menor número de LVs cujo erro esteja dentro de um erro-padrão do mínimo, o que favorece modelos mais simples:
 
 ```python

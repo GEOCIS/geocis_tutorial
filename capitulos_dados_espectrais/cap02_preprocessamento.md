@@ -30,7 +30,7 @@ A reflectância (R) varia de forma não linear com a concentração dos constitu
 Xabs = np.log10(1 / np.clip(X, 1e-6, None))
 ```
 
-O `np.clip` evita divisão por zero ou logaritmo de valores não positivos, que podem ocorrer em bandas com ruído. Se muitas amostras forem afetadas, isso indica um problema na medição, que deve ser investigado, e não apenas mascarado.
+O [`np.clip`](../pipeline_bssl/utils.qmd#cb1-80) evita divisão por zero ou logaritmo de valores não positivos, que podem ocorrer em bandas com ruído. Se muitas amostras forem afetadas, isso indica um problema na medição, que deve ser investigado, e não apenas mascarado.
 
 ## 4. Suavização de Savitzky-Golay
 

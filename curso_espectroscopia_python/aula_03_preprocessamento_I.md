@@ -38,13 +38,13 @@ Um espectro bruto mistura a informação desejada (composição) com variações
 | Relação não linear com a concentração | Feições de absorção pouco destacadas | Absorbância |
 | Deslocamento de linha de base | Espectros paralelos, em alturas diferentes | Derivadas |
 
-### Corte das bordas (`utils.corta`)
+### Corte das bordas ([`utils.corta`](../pipeline_bssl/utils.qmd#cb1-47))
 
-A razão sinal/ruído é baixa no início do visível e acima de cerca de 2400 nm, regiões com pouca energia e muito ruído. No pipeline, `WL_MIN = 450` e `WL_MAX = 2450`. Os limites dependem do sensor e devem ser conferidos nos espectros brutos.
+A razão sinal/ruído é baixa no início do visível e acima de cerca de 2400 nm, regiões com pouca energia e muito ruído. No pipeline, [`WL_MIN = 450`](../pipeline_bssl/config.qmd#cb1-25) e [`WL_MAX = 2450`](../pipeline_bssl/config.qmd#cb1-25). Os limites dependem do sensor e devem ser conferidos nos espectros brutos.
 
 ### Absorbância (A = log10(1/R))
 
-Transforma a reflectância em uma grandeza que se relaciona de forma mais linear com a concentração dos constituintes e realça as feições de absorção. O `np.clip` evita logaritmo de zero ou de valores negativos.
+Transforma a reflectância em uma grandeza que se relaciona de forma mais linear com a concentração dos constituintes e realça as feições de absorção. O [`np.clip`](../pipeline_bssl/utils.qmd#cb1-80) evita logaritmo de zero ou de valores negativos.
 
 ### Filtro de Savitzky-Golay (suavização)
 
@@ -59,7 +59,7 @@ Remove o deslocamento aditivo da linha de base e realça (separa) feições sobr
 
 ### Os tratamentos no pipeline
 
-São chamados por `utils.preprocessa(X, wl, tratamento)`, com `tratamento` igual a `'abs'`, `'sg'`, `'d1'` ou `'snv'`. O `'snv'` é visto na aula 4.
+São chamados por [`utils.preprocessa(X, wl, tratamento)`](../pipeline_bssl/utils.qmd#cb1-65), com [`tratamento`](../pipeline_bssl/utils.qmd#cb1-65) igual a [`'abs'`](../pipeline_bssl/utils.qmd#cb1-69), [`'sg'`](../pipeline_bssl/utils.qmd#cb1-70), [`'d1'`](../pipeline_bssl/utils.qmd#cb1-71) ou [`'snv'`](../pipeline_bssl/utils.qmd#cb1-72). O [`'snv'`](../pipeline_bssl/utils.qmd#cb1-72) é visto na aula 4.
 
 **Referência com os dados sintéticos:** após o corte, restam 401 bandas entre 450 e 2450 nm.
 
@@ -67,8 +67,8 @@ São chamados por `utils.preprocessa(X, wl, tratamento)`, com `tratamento` igual
 
 No notebook 02, executar as células da seção 1 e comentar:
 
-1. `utils.corta` reduz a matriz de 431 para cerca de 401 bandas (de 450 a 2450 nm).
-2. `utils.preprocessa(X, wl_orig, tratamento)` aplica a sequência completa.
+1. [`utils.corta`](../pipeline_bssl/utils.qmd#cb1-47) reduz a matriz de 431 para cerca de 401 bandas (de 450 a 2450 nm).
+2. [`utils.preprocessa(X, wl_orig, tratamento)`](../pipeline_bssl/utils.qmd#cb1-65) aplica a sequência completa.
 3. A figura com cinco painéis mostra a progressão: reflectância cortada, absorbância, suavizado, 1ª derivada e SG + SNV. Pedir que os alunos descrevam o que mudou de um painel para o outro. Onde aparece o ruído da derivada?
 
 ### Experimento A: janelas de 5, 11 e 21 pontos (notebook separado)
@@ -101,7 +101,7 @@ Discutir: com janela 5, a derivada fica ruidosa; com janela 21, as feições est
 
 ### Experimento B: janelas de 5 a 51 pontos, com o resíduo (dentro do notebook 02)
 
-Em uma célula nova do notebook 02 (depois de calcular `X_abs`), comparar janelas em um espectro:
+Em uma célula nova do notebook 02 (depois de calcular [`X_abs`](../pipeline_bssl/02_preprocessamento.ipynb#tratamentos-espectrais)), comparar janelas em um espectro:
 
 ```python
 from scipy.signal import savgol_filter
@@ -137,7 +137,7 @@ ruido = (X_abs - X_suav).std(axis=1)
 print('Ruído médio:', ruido.mean().round(5), '| máximo:', ruido.max().round(5))
 ```
 
-5. Verificar o efeito de **não** cortar as bordas: calcular a absorbância com `utils.preprocessa` alterando temporariamente `cfg.WL_MIN` para 350 e `cfg.WL_MAX` para 2500, e comparar o ruído médio com o do exercício 4.
+5. Verificar o efeito de **não** cortar as bordas: calcular a absorbância com `utils.preprocessa` alterando temporariamente [`cfg.WL_MIN`](../pipeline_bssl/config.qmd#cb1-25) para 350 e [`cfg.WL_MAX`](../pipeline_bssl/config.qmd#cb1-25) para 2500, e comparar o ruído médio com o do exercício 4.
 6. Responder: por que a derivada pode melhorar a predição mesmo amplificando o ruído?
 
 <details>
@@ -145,7 +145,7 @@ print('Ruído médio:', ruido.mean().round(5), '| máximo:', ruido.max().round(5
 
 - (1) Janelas de 5 pontos deixam bastante ruído, e janelas de 21 ou mais alisam as feições estreitas. Em dados de passo de 5 nm, a janela de 11 pontos cobre 50 nm, o que costuma preservar as feições largas dos argilominerais.
 - (2) Com grau mais alto, o polinômio acompanha melhor o sinal, inclusive o ruído, e a suavização diminui. Com grau 2, a suavização é mais forte.
-- (3) `np.std(Xabs[0] - savgol_filter(Xabs[0], janela, 2))` aumenta com o tamanho da janela, pois uma janela maior remove mais variação (inclusive parte do sinal).
+- (3) [`np.std(Xabs[0] - savgol_filter(Xabs[0], janela, 2))`](../pipeline_bssl/utils.qmd#cb1-85) aumenta com o tamanho da janela, pois uma janela maior remove mais variação (inclusive parte do sinal).
 - (4) O valor exato depende dos dados.
 - (5) Sem o corte, o ruído médio é maior, porque as extremidades foram geradas com ruído amplificado no banco sintético.
 - (6) A derivada elimina o deslocamento de linha de base entre amostras, que é variação sem relação com o atributo. O ganho em remover essa variação pode superar a perda causada pelo ruído, desde que a janela seja bem escolhida.
@@ -156,9 +156,9 @@ print('Ruído médio:', ruido.mean().round(5), '| máximo:', ruido.max().round(5
 
 ## Problemas comuns
 
-- **Erro `window_length must be odd` ou maior que o grau:** a janela precisa ser ímpar e maior que `polyorder`.
+- **Erro [`window_length must be odd`](../pipeline_bssl/config.qmd#cb1-26) ou maior que o grau:** a janela precisa ser ímpar e maior que [`polyorder`](../pipeline_bssl/config.qmd#cb1-27).
 - **Bordas ainda ruidosas:** revisar [`WL_MIN`](../pipeline_bssl/config.qmd#cb1-25) e [`WL_MAX`](../pipeline_bssl/config.qmd#cb1-25) conforme a inspeção dos espectros.
-- **Valores negativos de reflectância:** indicam ruído ou problema de medição; investigar antes de mascarar com `np.clip`.
+- **Valores negativos de reflectância:** indicam ruído ou problema de medição; investigar antes de mascarar com [`np.clip`](../pipeline_bssl/utils.qmd#cb1-80).
 
 ## Perguntas de verificação
 
