@@ -43,7 +43,7 @@
 
 **Importância no Random Forest.** Mostra quais componentes principais mais contribuem. Como cada componente é uma combinação das bandas, a interpretação espectral exige cruzar com os loadings da aula 5.
 
-**Predição de amostras novas.** Três cuidados: (1) aplicar **o mesmo pré-processamento**, na mesma ordem e com os mesmos parâmetros, o que é garantido por `utils.preprocessa` e pelo tratamento guardado no modelo; (2) garantir que as bandas coincidam com as da calibração, e interpolar quando a grade espectral for diferente (`utils.reamostra`); (3) verificar o **domínio de aplicação**.
+**Predição de amostras novas.** Três cuidados: (1) aplicar **o mesmo pré-processamento**, na mesma ordem e com os mesmos parâmetros, o que é garantido por [`utils.preprocessa`](../pipeline_bssl/utils.qmd#cb1-65) e pelo tratamento guardado no modelo; (2) garantir que as bandas coincidam com as da calibração, e interpolar quando a grade espectral for diferente (`utils.reamostra`); (3) verificar o **domínio de aplicação**.
 
 **Domínio de aplicação.** Um modelo só é confiável para amostras semelhantes às da calibração. Calcula-se o T² e o Q das novas amostras com o PCA do domínio ajustado na calibração e comparam-se com os limites guardados (percentil 99 da calibração). Amostras acima dos limites estão fora do domínio, e suas predições são extrapolações, que devem ser sinalizadas, tratadas com cautela ou descartadas.
 

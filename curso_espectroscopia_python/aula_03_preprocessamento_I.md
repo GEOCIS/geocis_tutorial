@@ -137,7 +137,7 @@ ruido = (X_abs - X_suav).std(axis=1)
 print('Ruído médio:', ruido.mean().round(5), '| máximo:', ruido.max().round(5))
 ```
 
-5. Verificar o efeito de **não** cortar as bordas: calcular a absorbância com `utils.preprocessa` alterando temporariamente [`cfg.WL_MIN`](../pipeline_bssl/config.qmd#cb1-25) para 350 e [`cfg.WL_MAX`](../pipeline_bssl/config.qmd#cb1-25) para 2500, e comparar o ruído médio com o do exercício 4.
+5. Verificar o efeito de **não** cortar as bordas: calcular a absorbância com [`utils.preprocessa`](../pipeline_bssl/utils.qmd#cb1-65) alterando temporariamente [`cfg.WL_MIN`](../pipeline_bssl/config.qmd#cb1-25) para 350 e [`cfg.WL_MAX`](../pipeline_bssl/config.qmd#cb1-25) para 2500, e comparar o ruído médio com o do exercício 4.
 6. Responder: por que a derivada pode melhorar a predição mesmo amplificando o ruído?
 
 <details>
