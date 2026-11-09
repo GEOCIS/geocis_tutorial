@@ -11,7 +11,7 @@
 **Tópicos:**
 
 - Leitura do CSV com pandas e separação de colunas espectrais e de atributos.
-- Estatística descritiva (`describe`), distribuição e assimetria do atributo-alvo.
+- Estatística descritiva ([`describe`](../pipeline_bssl/01_leitura_exploratoria.ipynb#estatística-descritiva-e-valores-faltantes)), distribuição e assimetria do atributo-alvo.
 - Valores faltantes: diagnóstico e decisão de tratamento.
 - Espectros brutos: forma geral, feições de absorção, espectro médio ± desvio-padrão e correlação por banda com o atributo.
 
@@ -38,9 +38,9 @@ Pontos a destacar:
 
 **O que cada seção do notebook faz e o que observar:**
 
-- **Seção 1 (leitura):** lê o CSV e separa as colunas espectrais (nome numérico) das de atributos com `utils.identificar_colunas`, e extrai os comprimentos de onda com `utils.comprimentos_onda`, que exige ordem crescente. Observar: o número de bandas e a faixa espectral.
-- **Seção 2 (estatística e faltantes):** `describe()` mostra média, desvio, mínimo, quartis e máximo; a tabela de faltantes mostra a proporção de valores ausentes. Observar valores impossíveis (por exemplo, argila acima de 100) e atributos com muita ausência.
-- **Seção 3 (limpeza):** remove amostras sem o atributo-alvo e com bandas ausentes. Cada atributo usa o seu subconjunto de amostras. Observar a assimetria (`skew`): valores acima de 1 em módulo sugerem distribuição bem assimétrica.
+- **Seção 1 (leitura):** lê o CSV e separa as colunas espectrais (nome numérico) das de atributos com [`utils.identificar_colunas`](../pipeline_bssl/utils.qmd#cb1-17), e extrai os comprimentos de onda com [`utils.comprimentos_onda`](../pipeline_bssl/utils.qmd#cb1-33), que exige ordem crescente. Observar: o número de bandas e a faixa espectral.
+- **Seção 2 (estatística e faltantes):** [`describe()`](../pipeline_bssl/01_leitura_exploratoria.ipynb#estatística-descritiva-e-valores-faltantes) mostra média, desvio, mínimo, quartis e máximo; a tabela de faltantes mostra a proporção de valores ausentes. Observar valores impossíveis (por exemplo, argila acima de 100) e atributos com muita ausência.
+- **Seção 3 (limpeza):** remove amostras sem o atributo-alvo e com bandas ausentes. Cada atributo usa o seu subconjunto de amostras. Observar a assimetria ([`skew`](../pipeline_bssl/01_leitura_exploratoria.ipynb#limpeza)): valores acima de 1 em módulo sugerem distribuição bem assimétrica.
 - **Seção 4 (distribuição):** histograma e boxplot do atributo. Observar caudas longas e possíveis grupos.
 - **Seção 5 (espectros brutos):** 50 espectros e o espectro médio com faixa de desvio-padrão. Observar feições, ruído nas pontas e espectros fora do padrão.
 - **Seção 6 (correlação por banda):** correlação de cada banda com o atributo, calculada de forma vetorizada. Observar as regiões do espectro mais associadas ao atributo.
@@ -52,13 +52,13 @@ Pontos a destacar:
 
 Executar com `Shift+Enter`, comentando cada resultado e pedindo previsão antes de cada um ("o que vocês esperam ver?"):
 
-1. **Leitura e separação de colunas.** A função `utils.identificar_colunas` classifica como espectrais as colunas cujo nome é numérico. Conferir que o resultado mostra 431 bandas, de 350 a 2500 nm, e as colunas de atributos [`id`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-74), [`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) e [`mo`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-72).
-2. **Estatística descritiva e faltantes.** Observar `describe()` e a tabela de faltantes ([`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) tem cerca de 4,4% de valores ausentes, por construção).
+1. **Leitura e separação de colunas.** A função [`utils.identificar_colunas`](../pipeline_bssl/utils.qmd#cb1-17) classifica como espectrais as colunas cujo nome é numérico. Conferir que o resultado mostra 431 bandas, de 350 a 2500 nm, e as colunas de atributos [`id`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-74), [`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) e [`mo`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-72).
+2. **Estatística descritiva e faltantes.** Observar [`describe()`](../pipeline_bssl/01_leitura_exploratoria.ipynb#estatística-descritiva-e-valores-faltantes) e a tabela de faltantes ([`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) tem cerca de 4,4% de valores ausentes, por construção).
 3. **Limpeza.** Observar a mensagem de amostras antes e depois (900 para cerca de 860). Discutir por que as amostras sem alvo são removidas.
 4. **Distribuição do alvo.** Interpretar o histograma e o boxplot, e a assimetria impressa.
 5. **Espectros brutos.** Ver os 50 espectros e a média ± desvio-padrão. Notar a diferença de altura entre espectros (efeito de espalhamento) e o aumento da reflectância com o comprimento de onda.
 6. **Correlação por banda.** No banco sintético, esperar correlação negativa em torno de 1400, 1900 e 2200 nm, pois mais argila reduz a reflectância nessas bandas.
-7. **Saídas.** Conferir que `resultados/dados_brutos.npz` e `resultados/df_limpo.pkl` foram criados.
+7. **Saídas.** Conferir que [`resultados/dados_brutos.npz`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar) e [`resultados/df_limpo.pkl`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar) foram criados.
 
 Depois, em uma célula extra, mostrar como investigar um valor suspeito:
 
@@ -111,9 +111,9 @@ for i in idx:
 ## Problemas comuns
 
 - **A coluna alvo não é encontrada:** o nome em [`COL_ALVO`](../pipeline_bssl/config.qmd#cb1-18) precisa ser idêntico ao do CSV, com atenção a maiúsculas e acentos.
-- **Colunas espectrais não reconhecidas:** os nomes das bandas devem ser numéricos; se houver prefixo (por exemplo, `X350`), preencher `PREFIXO`.
+- **Colunas espectrais não reconhecidas:** os nomes das bandas devem ser numéricos; se houver prefixo (por exemplo, [`X350`](../pipeline_bssl/config.qmd#cb1-19)), preencher [`PREFIXO`](../pipeline_bssl/config.qmd#cb1-19).
 - **Erro de ordem das bandas:** `comprimentos_onda` exige ordem crescente; reordenar as colunas se necessário.
-- **Números lidos como texto:** CSV com vírgula decimal exige `pd.read_csv(..., decimal=",", sep=";")`.
+- **Números lidos como texto:** CSV com vírgula decimal exige [`pd.read_csv(..., decimal=",", sep=";")`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura).
 
 ## Perguntas de verificação
 

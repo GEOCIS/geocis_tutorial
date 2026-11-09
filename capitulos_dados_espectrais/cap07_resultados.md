@@ -10,7 +10,7 @@
 
 Após a leitura e a limpeza (notebook 01), o conjunto para o atributo \[atributo\] ficou com \[n\] amostras, de um total inicial de \[n inicial\], sendo \[n removidas\] excluídas por ausência do valor medido em laboratório. Os espectros possuem \[n bandas\] bandas, entre \[350\] e \[2500\] nm.
 
-O atributo apresentou média de \[valor\] \[unidade\], desvio-padrão de \[valor\], mínimo de \[valor\] e máximo de \[valor\], com assimetria de \[valor\] ([`df_limpo.pkl`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), saída de `describe()`). A distribuição foi \[simétrica / assimétrica à direita / bimodal\] (figura `01_distribuicao_alvo.png`), o que \[justificou / não justificou\] transformação da variável resposta.
+O atributo apresentou média de \[valor\] \[unidade\], desvio-padrão de \[valor\], mínimo de \[valor\] e máximo de \[valor\], com assimetria de \[valor\] ([`df_limpo.pkl`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), saída de [`describe()`](../pipeline_bssl/01_leitura_exploratoria.ipynb#estatística-descritiva-e-valores-faltantes)). A distribuição foi \[simétrica / assimétrica à direita / bimodal\] (figura `01_distribuicao_alvo.png`), o que \[justificou / não justificou\] transformação da variável resposta.
 
 Os espectros brutos (figura `01_espectros_brutos.png`) apresentaram as feições esperadas para solos: aumento da reflectância do visível para o infravermelho próximo e absorções em torno de 1400, 1900 e 2200 nm, associadas à água, à hidroxila e aos argilominerais. As bandas mais correlacionadas com o atributo se concentraram em \[regiões espectrais\] (figura `01_correlacao_bandas.png`).
 
