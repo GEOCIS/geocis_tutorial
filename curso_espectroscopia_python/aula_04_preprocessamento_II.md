@@ -2,7 +2,7 @@
 
 [← Aula 3](aula_03_preprocessamento_I.md) · [Plano do curso](README.md) · [Aula 5 →](aula_05_pca.md)
 
-**Capítulo:** Pré-processamento. **Notebook:** `02_preprocessamento.ipynb` (seções 2 e 3).
+**Capítulo:** Pré-processamento. **Notebook:** [`02_preprocessamento.ipynb`](../pipeline_bssl/02_preprocessamento.ipynb) (seções 2 e 3).
 
 **Materiais:** notebook 02, saídas do notebook 01.
 
@@ -94,7 +94,7 @@ print('Maiores Q: ', np.argsort(-q)[:10])
 ## Exercícios
 
 1. Alterar `PERC_OUTLIER` para 95, 99 e 99,9 (ou executar o experimento acima) e registrar quantas amostras são sinalizadas em cada caso. Explicar por que o número diminui com limites mais altos. Qual limite é mais razoável e por quê?
-2. Verificar se os espectros anômalos do banco sintético (gerados nas 8 primeiras linhas do arquivo original) foram detectados. Como algumas dessas linhas podem ter sido removidas na limpeza do notebook 01 (se o valor de `argila` estava ausente), a comparação deve usar o `id` das amostras:
+2. Verificar se os espectros anômalos do banco sintético (gerados nas 8 primeiras linhas do arquivo original) foram detectados. Como algumas dessas linhas podem ter sido removidas na limpeza do notebook 01 (se o valor de [`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) estava ausente), a comparação deve usar o [`id`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-74) das amostras:
 
 ```python
 ids_anomalos = [f'S{i:04d}' for i in range(8)]

@@ -28,7 +28,7 @@ Cada aula de 2 horas tem objetivos, roteiro com tempos, conteúdo conceitual des
 
 **Carga horária:** 8 aulas de 2 horas (16 horas), com discussão de artigos e atividades de decisão em dados sintéticos e reais.
 
-**Materiais:** capítulos do projeto (material e metodologia, pré-processamento, PCA, k-means, modelagem), pasta `pipeline_bssl` e gerador de dados sintéticos.
+**Materiais:** capítulos do projeto (material e metodologia, pré-processamento, PCA, k-means, modelagem), pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) e gerador de dados sintéticos.
 
 ## 2. Cronograma
 

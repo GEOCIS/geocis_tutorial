@@ -23,7 +23,7 @@
 
 ## Material de aula: versão 1
 
-**Capítulo:** Modelagem preditiva. **Notebook:** `04_modelagem.ipynb` (seções 1 a 3).
+**Capítulo:** Modelagem preditiva. **Notebook:** [`04_modelagem.ipynb`](../pipeline_bssl/04_modelagem.ipynb) (seções 1 a 3).
 
 **Materiais:** notebook 04, saídas dos notebooks 02 e 03. A execução completa do notebook 04 leva alguns minutos (a comparação dos pré-tratamentos e a busca do Random Forest são as partes mais demoradas).
 
@@ -42,7 +42,7 @@
 
 **O número de variáveis latentes** é o principal parâmetro: poucas LVs levam a **subajuste** (modelo simples demais); muitas levam a **sobreajuste** (o modelo memoriza o ruído da calibração e generaliza mal).
 
-**Divisão dos dados (seção 1).** O conjunto é dividido em calibração (`1 - TEST_SIZE`) e validação (`TEST_SIZE`). A divisão é **estratificada pelos grupos do k-means**, para que todos os tipos de espectro estejam nos dois conjuntos. A validação não pode ser usada para tomar decisões; ela só serve para avaliar o resultado final.
+**Divisão dos dados (seção 1).** O conjunto é dividido em calibração (`1 - TEST_SIZE`) e validação ([`TEST_SIZE`](../pipeline_bssl/config.qmd#cb1-41)). A divisão é **estratificada pelos grupos do k-means**, para que todos os tipos de espectro estejam nos dois conjuntos. A validação não pode ser usada para tomar decisões; ela só serve para avaliar o resultado final.
 
 **Validação cruzada (seção 2).** A calibração é dividida em `CV_FOLDS` (10) partes; o modelo é treinado em nove e testado na restante, repetindo para todas. O erro resultante (**RMSECV**) estima o desempenho em amostras novas, usando apenas a calibração. O notebook:
 
@@ -73,7 +73,7 @@ plt.xlabel("Variáveis latentes"); plt.ylabel("RMSE"); plt.legend(); plt.show()
 
 A curva de calibração sempre cai com mais LVs, enquanto a de validação cruzada para de cair ou sobe. A distância entre as duas indica sobreajuste.
 
-3. **Variabilidade da divisão.** Alterar `SEED` em `config.py` (por exemplo, 1, 2 e 3), reexecutar o notebook e anotar o RMSECV e o número de LVs. Discutir a estabilidade.
+3. **Variabilidade da divisão.** Alterar `SEED` em [`config.py`](../pipeline_bssl/config.qmd) (por exemplo, 1, 2 e 3), reexecutar o notebook e anotar o RMSECV e o número de LVs. Discutir a estabilidade.
 
 #### Exercícios
 
@@ -110,7 +110,7 @@ Gráfico do RMSECV por número de LVs, tabela de comparação dos pré-tratament
 
 ## Material de aula: versão 2
 
-**Capítulo:** Modelagem preditiva (PLSR). **Notebook:** `04_modelagem.ipynb` (seções 1 a 3).
+**Capítulo:** Modelagem preditiva (PLSR). **Notebook:** [`04_modelagem.ipynb`](../pipeline_bssl/04_modelagem.ipynb) (seções 1 a 3).
 
 #### Roteiro (120 min)
 
@@ -141,7 +141,7 @@ Gráfico do RMSECV por número de LVs, tabela de comparação dos pré-tratament
 
 #### Exercícios
 
-1. Em `config.py`, definir `TRATAMENTO_FIXO = 'snv'` e depois `'d1'`, executar o notebook e comparar o número de LVs e o RMSECV. Voltar a `None` ao final.
+1. Em [`config.py`](../pipeline_bssl/config.qmd), definir `TRATAMENTO_FIXO = 'snv'` e depois `'d1'`, executar o notebook e comparar o número de LVs e o RMSECV. Voltar a `None` ao final.
 2. **Regra do erro-padrão (1-SE).** Escolher o menor número de LVs cujo erro esteja dentro de um erro-padrão do mínimo, o que favorece modelos mais simples:
 
 ```python

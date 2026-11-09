@@ -2,9 +2,9 @@
 
 [← Aula 2](aula_02_leitura_exploratoria.md) · [Plano do curso](README.md) · [Aula 4 →](aula_04_preprocessamento_II.md)
 
-**Capítulo:** Pré-processamento. **Notebook:** `02_preprocessamento.ipynb` (seção 1 e parte da 2).
+**Capítulo:** Pré-processamento. **Notebook:** [`02_preprocessamento.ipynb`](../pipeline_bssl/02_preprocessamento.ipynb) (seção 1 e parte da 2).
 
-**Materiais:** notebook 02, saídas do notebook 01 em `resultados/`.
+**Materiais:** notebook 02, saídas do notebook 01 em [`resultados/`](../pipeline_bssl/config.qmd#cb1-13).
 
 **Objetivos:** aplicar e comparar tratamentos que reduzem ruído e realçam feições.
 
@@ -50,8 +50,8 @@ Transforma a reflectância em uma grandeza que se relaciona de forma mais linear
 
 Em cada janela móvel de pontos vizinhos, ajusta-se um polinômio por mínimos quadrados, e o valor central é substituído pelo valor ajustado. Reduz ruído e preserva a forma das feições melhor que uma média móvel. Os parâmetros:
 
-- **Janela** (`SG_JANELA`, ímpar): maior janela, mais suavização e mais risco de distorcer feições estreitas.
-- **Grau do polinômio** (`SG_GRAU`): menor grau, mais suavização.
+- **Janela** ([`SG_JANELA`](../pipeline_bssl/config.qmd#cb1-26), ímpar): maior janela, mais suavização e mais risco de distorcer feições estreitas.
+- **Grau do polinômio** ([`SG_GRAU`](../pipeline_bssl/config.qmd#cb1-27)): menor grau, mais suavização.
 
 ### Primeira derivada (Savitzky-Golay com `deriv=1`)
 
@@ -127,8 +127,8 @@ O desvio-padrão do resíduo (absorbância menos suavizado) aumenta com a janela
 
 ## Exercícios
 
-1. Em `config.py`, alterar `SG_JANELA` para 5 e depois para 21, reexecutar o notebook 02 e descrever as diferenças, comparando o painel "SG + SNV" de cada caso. Descrever em duas frases qual janela preserva melhor as feições perto de 2200 nm.
-2. Testar `SG_GRAU` igual a 2 e a 4, mantendo a janela em 11, e explicar o efeito.
+1. Em [`config.py`](../pipeline_bssl/config.qmd), alterar [`SG_JANELA`](../pipeline_bssl/config.qmd#cb1-26) para 5 e depois para 21, reexecutar o notebook 02 e descrever as diferenças, comparando o painel "SG + SNV" de cada caso. Descrever em duas frases qual janela preserva melhor as feições perto de 2200 nm.
+2. Testar [`SG_GRAU`](../pipeline_bssl/config.qmd#cb1-27) igual a 2 e a 4, mantendo a janela em 11, e explicar o efeito.
 3. Calcular, para um espectro, o desvio-padrão da diferença entre o espectro bruto e o suavizado, como medida do ruído removido, para cada janela.
 4. Estimar o ruído médio dos espectros com a janela padrão:
 
@@ -157,7 +157,7 @@ print('Ruído médio:', ruido.mean().round(5), '| máximo:', ruido.max().round(5
 ## Problemas comuns
 
 - **Erro `window_length must be odd` ou maior que o grau:** a janela precisa ser ímpar e maior que `polyorder`.
-- **Bordas ainda ruidosas:** revisar `WL_MIN` e `WL_MAX` conforme a inspeção dos espectros.
+- **Bordas ainda ruidosas:** revisar [`WL_MIN`](../pipeline_bssl/config.qmd#cb1-25) e [`WL_MAX`](../pipeline_bssl/config.qmd#cb1-25) conforme a inspeção dos espectros.
 - **Valores negativos de reflectância:** indicam ruído ou problema de medição; investigar antes de mascarar com `np.clip`.
 
 ## Perguntas de verificação

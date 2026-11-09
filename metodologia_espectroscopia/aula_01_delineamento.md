@@ -78,7 +78,7 @@ Verificar antes de começar: número de amostras do atributo, cobertura da varia
 
 ### Estrutura do fluxo
 
-Exploração, pré-processamento, modelagem, validação e aplicação. Cada etapa do protocolo corresponde a uma etapa do pipeline e a uma decisão registrável em `config.py`.
+Exploração, pré-processamento, modelagem, validação e aplicação. Cada etapa do protocolo corresponde a uma etapa do pipeline e a uma decisão registrável em [`config.py`](../pipeline_bssl/config.qmd).
 
 ## Modelo de protocolo de análise
 

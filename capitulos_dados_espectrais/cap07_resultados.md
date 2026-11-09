@@ -4,7 +4,7 @@
 
 *Capítulo do projeto de predição de atributos físicos e químicos do solo com espectroscopia Vis-NIR-SWIR (BSSL), em Python e Jupyter Notebook*
 
-> Os valores entre colchetes \[ \] devem ser preenchidos com os resultados da execução do pipeline no banco real da BSSL. Cada trecho indica o arquivo de onde o número ou a figura deve ser retirado (pasta `resultados/`). Os dados sintéticos usados apenas para testar o código não devem ser relatados como resultado.
+> Os valores entre colchetes \[ \] devem ser preenchidos com os resultados da execução do pipeline no banco real da BSSL. Cada trecho indica o arquivo de onde o número ou a figura deve ser retirado (pasta [`resultados/`](../pipeline_bssl/config.qmd#cb1-13)). Os dados sintéticos usados apenas para testar o código não devem ser relatados como resultado.
 
 ## 1. Caracterização do banco de dados
 
@@ -79,7 +79,7 @@ O \[PLSR / Random Forest\] foi superior para \[atributo\]. O PLSR tem a vantagem
 
 O projeto resultou nos seguintes produtos:
 
-- **Pipeline reprodutível em cinco notebooks**: leitura e exploração, pré-processamento, PCA e clusterização, modelagem, e visualização e predição, controlados por um único arquivo de configuração (`config.py`) e por funções reutilizáveis (`utils.py`), que permitem repetir a análise para outros atributos alterando apenas a coluna-alvo.
+- **Pipeline reprodutível em cinco notebooks**: leitura e exploração, pré-processamento, PCA e clusterização, modelagem, e visualização e predição, controlados por um único arquivo de configuração ([`config.py`](../pipeline_bssl/config.qmd)) e por funções reutilizáveis ([`utils.py`](../pipeline_bssl/utils.qmd)), que permitem repetir a análise para outros atributos alterando apenas a coluna-alvo.
 - **Modelo de predição salvo** (`modelo_solo.joblib`), com pré-tratamento, número de variáveis latentes, PCA do domínio e limites de T² e Q, pronto para aplicação a novas amostras.
 - **Resultados quantitativos**: tabela de métricas (R², RMSE, RPD, RPIQ e viés) para PLSR e Random Forest em calibração, validação cruzada e validação.
 - **Figuras** para relatórios e apresentações, salvas em `resultados/figuras/`.

@@ -4,14 +4,14 @@
 
 ## Pré-requisitos
 
-- **Pipeline executado:** a turma deve ter a pasta `pipeline_bssl` com os dados sintéticos gerados (`python gerar_dados_sinteticos.py`) e os notebooks 01 a 04 executados, com os dados sintéticos ou com a BSSL. As atividades reutilizam os arquivos da pasta `resultados/`: `dados_brutos.npz`, `df_limpo.pkl`, `df_pp.pkl`, `espectros_pp.npz`, `modelo_solo.joblib` e `predicoes_validacao.csv`.
+- **Pipeline executado:** a turma deve ter a pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) com os dados sintéticos gerados (`python gerar_dados_sinteticos.py`) e os notebooks 01 a 04 executados, com os dados sintéticos ou com a BSSL. As atividades reutilizam os arquivos da pasta [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): `dados_brutos.npz`, `df_limpo.pkl`, `df_pp.pkl`, `espectros_pp.npz`, `modelo_solo.joblib` e `predicoes_validacao.csv`.
 - **Dados sintéticos:** foram gerados apenas para treinar o método. São muito "bem comportados" (relação praticamente linear e ruído baixo), então o desempenho é alto. Isso é útil para mostrar o efeito de cada decisão, mas **os números não são resultados científicos** e não devem ser relatados como tais.
 - **Valores de referência:** os números citados nos gabaritos vêm de execuções de teste com os dados sintéticos, com `SEED = 42` e as bibliotecas instaladas na época. Servem como ordem de grandeza: os alunos obterão valores parecidos, mas não idênticos, e eles devem ser conferidos antes da aula. O que importa em cada atividade é o **padrão** observado, e não o valor exato.
-- **Banco real:** com a BSSL, ajustar `config.py` e a coluna de identificação das amostras (`id`) usada na célula de preparação. Em bancos grandes, usar uma subamostra se as atividades ficarem lentas.
+- **Banco real:** com a BSSL, ajustar [`config.py`](../pipeline_bssl/config.qmd) e a coluna de identificação das amostras ([`id`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-74)) usada na célula de preparação. Em bancos grandes, usar uma subamostra se as atividades ficarem lentas.
 
 ## Célula de preparação (executar no início das aulas 2 a 8)
 
-Em um notebook novo na pasta `pipeline_bssl` (por exemplo, `metodologia_aula02.ipynb`), executar:
+Em um notebook novo na pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) (por exemplo, `metodologia_aula02.ipynb`), executar:
 
 ```python
 import warnings; warnings.filterwarnings('ignore')

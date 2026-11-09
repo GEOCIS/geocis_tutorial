@@ -1,0 +1,9 @@
+---
+title: "Configuração: config.py"
+code-line-numbers: true
+---
+
+Caminhos e parâmetros de todas as etapas do pipeline. Para mudar uma decisão metodológica (atributo-alvo, corte, janela do filtro, k, proporção de validação etc.), altere aqui e rode os notebooks de novo. [Baixar `config.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/config.py) · [Voltar ao pipeline](index.qmd)
+
+```{.python include="config.py"}
+```

@@ -12,7 +12,7 @@ project:
     - "praticas/solucoes/*.ipynb"
     - "Trabalhos/index.qmd"
     - "Trabalhos/*.ipynb"
-    - "pipeline_bssl/index.qmd"
+    - "pipeline_bssl/*.qmd"
     - "pipeline_bssl/*.ipynb"
     - "!pipeline_bssl/README.md"
     # cópia duplicada do curso de espectroscopia dentro do curso de iniciantes
@@ -202,6 +202,9 @@ website:
               - pipeline_bssl/03_pca_clusterizacao.ipynb
               - pipeline_bssl/04_modelagem.ipynb
               - pipeline_bssl/05_visualizacao_predicao.ipynb
+              - pipeline_bssl/config.qmd
+              - pipeline_bssl/utils.qmd
+              - pipeline_bssl/gerar_dados_sinteticos.qmd
       - section: "3 · Fundamentos: por que fazer"
         href: metodologia_espectroscopia/index.qmd
         contents:

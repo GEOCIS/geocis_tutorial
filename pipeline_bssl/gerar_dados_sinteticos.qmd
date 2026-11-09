@@ -1,0 +1,9 @@
+---
+title: "Gerador de dados sintéticos: gerar_dados_sinteticos.py"
+code-line-numbers: true
+---
+
+Gera o banco sintético no formato da BSSL (dados/bssl.csv, 900 amostras) e as amostras novas (dados/novas_amostras.csv, 50 amostras), para praticar sem o banco real. [Baixar `gerar_dados_sinteticos.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/gerar_dados_sinteticos.py) · [Voltar ao pipeline](index.qmd)
+
+```{.python include="gerar_dados_sinteticos.py"}
+```

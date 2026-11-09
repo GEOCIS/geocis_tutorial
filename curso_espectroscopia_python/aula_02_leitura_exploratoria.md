@@ -2,7 +2,7 @@
 
 [← Aula 1](aula_01_espectroscopia_bssl_fluxo.md) · [Plano do curso](README.md) · [Aula 3 →](aula_03_preprocessamento_I.md)
 
-**Capítulo:** Leitura e análise exploratória/descritiva. **Notebook:** `01_leitura_exploratoria.ipynb`.
+**Capítulo:** Leitura e análise exploratória/descritiva. **Notebook:** [`01_leitura_exploratoria.ipynb`](../pipeline_bssl/01_leitura_exploratoria.ipynb).
 
 **Materiais:** notebook 01, dados sintéticos (ou banco real).
 
@@ -52,8 +52,8 @@ Pontos a destacar:
 
 Executar com `Shift+Enter`, comentando cada resultado e pedindo previsão antes de cada um ("o que vocês esperam ver?"):
 
-1. **Leitura e separação de colunas.** A função `utils.identificar_colunas` classifica como espectrais as colunas cujo nome é numérico. Conferir que o resultado mostra 431 bandas, de 350 a 2500 nm, e as colunas de atributos `id`, `argila` e `mo`.
-2. **Estatística descritiva e faltantes.** Observar `describe()` e a tabela de faltantes (`argila` tem cerca de 4,4% de valores ausentes, por construção).
+1. **Leitura e separação de colunas.** A função `utils.identificar_colunas` classifica como espectrais as colunas cujo nome é numérico. Conferir que o resultado mostra 431 bandas, de 350 a 2500 nm, e as colunas de atributos [`id`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-74), [`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) e [`mo`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-72).
+2. **Estatística descritiva e faltantes.** Observar `describe()` e a tabela de faltantes ([`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) tem cerca de 4,4% de valores ausentes, por construção).
 3. **Limpeza.** Observar a mensagem de amostras antes e depois (900 para cerca de 860). Discutir por que as amostras sem alvo são removidas.
 4. **Distribuição do alvo.** Interpretar o histograma e o boxplot, e a assimetria impressa.
 5. **Espectros brutos.** Ver os 50 espectros e a média ± desvio-padrão. Notar a diferença de altura entre espectros (efeito de espalhamento) e o aumento da reflectância com o comprimento de onda.
@@ -73,7 +73,7 @@ print(pd.cut(df[cfg.COL_ALVO], bins=[0, 15, 35, 60, 100]).value_counts().sort_in
 
 ## Exercícios
 
-1. Trocar `COL_ALVO` para `"mo"` em `config.py` e executar de novo o notebook. Comparar a distribuição e a assimetria com a da argila. A matéria orgânica exigiria transformação?
+1. Trocar [`COL_ALVO`](../pipeline_bssl/config.qmd#cb1-18) para `"mo"` em [`config.py`](../pipeline_bssl/config.qmd) e executar de novo o notebook. Comparar a distribuição e a assimetria com a da argila. A matéria orgânica exigiria transformação?
 2. Comparar o gráfico de correlação por banda dos dois atributos. Em que regiões a correlação muda de sinal ou é mais forte?
 3. Calcular o coeficiente de variação (desvio-padrão dividido pela média) de cada atributo e discutir qual teria mais variabilidade a ser explicada.
 4. Explicar por que remover amostras apenas para o atributo modelado, e não de todo o banco, é uma boa prática.
@@ -110,7 +110,7 @@ for i in idx:
 
 ## Problemas comuns
 
-- **A coluna alvo não é encontrada:** o nome em `COL_ALVO` precisa ser idêntico ao do CSV, com atenção a maiúsculas e acentos.
+- **A coluna alvo não é encontrada:** o nome em [`COL_ALVO`](../pipeline_bssl/config.qmd#cb1-18) precisa ser idêntico ao do CSV, com atenção a maiúsculas e acentos.
 - **Colunas espectrais não reconhecidas:** os nomes das bandas devem ser numéricos; se houver prefixo (por exemplo, `X350`), preencher `PREFIXO`.
 - **Erro de ordem das bandas:** `comprimentos_onda` exige ordem crescente; reordenar as colunas se necessário.
 - **Números lidos como texto:** CSV com vírgula decimal exige `pd.read_csv(..., decimal=",", sep=";")`.

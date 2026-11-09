@@ -23,7 +23,7 @@
 
 ## Material de aula: versão 1
 
-**Capítulo:** Modelagem preditiva. **Notebook:** `04_modelagem.ipynb` (seções 4 a 6).
+**Capítulo:** Modelagem preditiva. **Notebook:** [`04_modelagem.ipynb`](../pipeline_bssl/04_modelagem.ipynb) (seções 4 a 6).
 
 **Materiais:** notebook 04.
 
@@ -109,7 +109,7 @@ Tabela de métricas dos dois modelos (calibração e validação), cálculo manu
 
 ## Material de aula: versão 2
 
-**Capítulo:** Modelagem preditiva (Random Forest e métricas). **Notebook:** `04_modelagem.ipynb` (seções 4 a 6).
+**Capítulo:** Modelagem preditiva (Random Forest e métricas). **Notebook:** [`04_modelagem.ipynb`](../pipeline_bssl/04_modelagem.ipynb) (seções 4 a 6).
 
 #### Roteiro (120 min)
 

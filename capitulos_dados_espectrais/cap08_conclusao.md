@@ -21,7 +21,7 @@ Este trabalho teve como objetivo desenvolver e documentar um fluxo reprodutível
 
 ## 3. Contribuições
 
-O principal produto é um pipeline modular, composto por cinco notebooks, um arquivo de configuração e funções reutilizáveis, que pode ser aplicado a outros atributos do solo alterando apenas a coluna-alvo e os parâmetros em `config.py`. O modelo ajustado, as métricas e as figuras são salvos automaticamente, o que facilita a replicação, a auditoria e a comunicação dos resultados. A abordagem pode apoiar a triagem de amostras, o mapeamento de solos e a redução de análises convencionais, mais caras e demoradas.
+O principal produto é um pipeline modular, composto por cinco notebooks, um arquivo de configuração e funções reutilizáveis, que pode ser aplicado a outros atributos do solo alterando apenas a coluna-alvo e os parâmetros em [`config.py`](../pipeline_bssl/config.qmd). O modelo ajustado, as métricas e as figuras são salvos automaticamente, o que facilita a replicação, a auditoria e a comunicação dos resultados. A abordagem pode apoiar a triagem de amostras, o mapeamento de solos e a redução de análises convencionais, mais caras e demoradas.
 
 ## 4. Limitações
 

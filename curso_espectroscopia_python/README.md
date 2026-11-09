@@ -10,7 +10,7 @@
 
 **Carga horária:** 10 aulas de 2 horas (20 horas), cada uma associada a um capítulo do documento do projeto e a um notebook do pipeline.
 
-**Materiais:** capítulos do projeto, pasta `pipeline_bssl` (cinco notebooks, `config.py` e `utils.py`) e o gerador de dados sintéticos (`gerar_dados_sinteticos.py`), que permite praticar mesmo sem acesso ao banco real da BSSL. **[Baixe a pasta e veja os notebooks](../pipeline_bssl/index.qmd).**
+**Materiais:** capítulos do projeto, pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) (cinco notebooks, [`config.py`](../pipeline_bssl/config.qmd) e [`utils.py`](../pipeline_bssl/utils.qmd)) e o gerador de dados sintéticos (`gerar_dados_sinteticos.py`), que permite praticar mesmo sem acesso ao banco real da BSSL. **[Baixe a pasta e veja os notebooks](../pipeline_bssl/index.qmd).**
 
 **Estratégia didática:** cada aula alterna explicação curta do conceito, execução guiada do notebook, e um exercício em que o aluno modifica parâmetros e observa o efeito. Os dados sintéticos servem para ver o comportamento do método, e o banco real, para interpretar resultados.
 
@@ -54,7 +54,7 @@ As aulas 1 a 8 têm duas versões do material desenvolvido no documento original
 - **Relatório final (40%)**: coerência entre método, resultados e conclusão, e qualidade das figuras e das tabelas.
 - **Apresentação e discussão (20%)**: clareza, domínio do conteúdo e senso crítico sobre as limitações.
 
-**Critérios do relatório:** reprodutibilidade (qualquer pessoa consegue repetir com `config.py`), ausência de vazamento de informação, justificativa das escolhas de parâmetros e honestidade na interpretação das métricas.
+**Critérios do relatório:** reprodutibilidade (qualquer pessoa consegue repetir com [`config.py`](../pipeline_bssl/config.qmd)), ausência de vazamento de informação, justificativa das escolhas de parâmetros e honestidade na interpretação das métricas.
 
 ## 4. Glossário de termos-chave
 
@@ -71,7 +71,7 @@ As aulas 1 a 8 têm duas versões do material desenvolvido no documento original
 
 ## 5. Orientações para quem ministra
 
-1. Começar cada aula executando o notebook anterior, já que as etapas dependem das saídas da etapa anterior (pasta `resultados/`).
+1. Começar cada aula executando o notebook anterior, já que as etapas dependem das saídas da etapa anterior (pasta [`resultados/`](../pipeline_bssl/config.qmd#cb1-13)).
 2. Usar os dados sintéticos para demonstrar o efeito de cada parâmetro, e deixar claro que os números obtidos com eles não são resultados científicos.
 3. Pedir que cada aluno defina um atributo diferente (argila, matéria orgânica, CTC etc.) para comparar o desempenho entre atributos na aula final.
 4. Insistir na separação entre calibração e validação em todas as decisões, pois é o erro metodológico mais comum.

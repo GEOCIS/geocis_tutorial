@@ -31,7 +31,7 @@ Um modelo calibrado com espectros de um equipamento e de um protocolo pode perde
 
 Um estudo é reprodutível quando outra pessoa, com os mesmos dados e a descrição, obtém os mesmos resultados. Práticas:
 
-- **Parâmetros em um arquivo de configuração** (`config.py`) e **sementes aleatórias** fixas.
+- **Parâmetros em um arquivo de configuração** ([`config.py`](../pipeline_bssl/config.qmd)) e **sementes aleatórias** fixas.
 - **Ambiente registrado:** versão do Python e das bibliotecas (`pip freeze > requirements.txt`).
 - **Notebooks executados de cima para baixo** e saídas geradas por código.
 - **Controle de versão** (Git) e um repositório com README.

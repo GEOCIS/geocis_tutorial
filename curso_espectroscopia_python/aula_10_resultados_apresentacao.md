@@ -36,7 +36,7 @@
 
 #### Conteúdo
 
-**Do arquivo ao texto.** Os resultados vêm de arquivos em `resultados/`: a tabela de métricas (`metricas.csv`), as figuras (`resultados/figuras/`) e as predições (`predicoes_validacao.csv` e `predicoes_novas_amostras.csv`). O texto deve citar esses números e figuras, nunca valores de memória nem de dados sintéticos de teste.
+**Do arquivo ao texto.** Os resultados vêm de arquivos em [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): a tabela de métricas (`metricas.csv`), as figuras (`resultados/figuras/`) e as predições (`predicoes_validacao.csv` e `predicoes_novas_amostras.csv`). O texto deve citar esses números e figuras, nunca valores de memória nem de dados sintéticos de teste.
 
 Para montar a tabela de métricas do relatório a partir do arquivo:
 
@@ -98,7 +98,7 @@ Cada aluno ou dupla apresenta o próprio atributo e entrega o relatório. Os col
 | --- | --- | --- |
 | Coerência método, resultados e conclusão | 30% | O texto responde ao objetivo com base nos dados |
 | Qualidade das figuras e tabelas | 20% | Legendas, unidades e interpretação |
-| Reprodutibilidade | 20% | `config.py`, ordem dos notebooks e saídas organizadas |
+| Reprodutibilidade | 20% | [`config.py`](../pipeline_bssl/config.qmd), ordem dos notebooks e saídas organizadas |
 | Senso crítico | 20% | Limitações, sobreajuste e domínio de aplicação |
 | Clareza da apresentação | 10% | Tempo, estrutura e respostas |
 

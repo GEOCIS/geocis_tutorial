@@ -173,7 +173,7 @@ print('Log + retorno   :', {k: round(float(v), 2) for k, v in utils.avalia(y2, p
 
 1. Executar o relatório de qualidade para o atributo escolhido na aula 1 e listar os problemas encontrados e o tratamento proposto para cada um.
 2. Para cada situação, indicar se a exclusão é adequada: (a) um espectro com reflectância negativa em várias bandas; (b) uma amostra com argila de 105%; (c) a amostra com o maior erro de predição na validação; (d) amostras duplicadas, uma na calibração e outra na validação.
-3. Executar a atividade 4a para o atributo `argila` e comparar com os resultados da matéria orgânica. A transformação se justifica?
+3. Executar a atividade 4a para o atributo [`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) e comparar com os resultados da matéria orgânica. A transformação se justifica?
 
 <details>
 <summary>Gabarito</summary>

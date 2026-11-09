@@ -15,7 +15,7 @@
 - Caracterização dos grupos: estatísticas do atributo, espectros médios e tamanho dos grupos.
 - Usos na modelagem: divisão estratificada e modelos locais.
 
-**Prática:** notebook 03 (seções 2 e 3). Testar diferentes valores de `K` e justificar a escolha com cotovelo, silhueta e interpretação agronômica.
+**Prática:** notebook 03 (seções 2 e 3). Testar diferentes valores de [`K`](../pipeline_bssl/config.qmd#cb1-38) e justificar a escolha com cotovelo, silhueta e interpretação agronômica.
 
 **Entregável:** tabela descritiva por grupo e figura do espectro médio de cada grupo.
 
@@ -23,7 +23,7 @@
 
 ## Material de aula: versão 1
 
-**Capítulo:** Método do cotovelo e k-means. **Notebook:** `03_pca_clusterizacao.ipynb` (seções 2 e 3).
+**Capítulo:** Método do cotovelo e k-means. **Notebook:** [`03_pca_clusterizacao.ipynb`](../pipeline_bssl/03_pca_clusterizacao.ipynb) (seções 2 e 3).
 
 **Materiais:** notebook 03, saídas das aulas anteriores.
 
@@ -57,7 +57,7 @@ A clusterização é um método **não supervisionado**: agrupa amostras semelha
 #### Prática guiada
 
 1. Executar a seção 2 do notebook 03 e discutir a curva do cotovelo e da silhueta.
-2. Definir `K` em `config.py` conforme a análise e executar a seção 3. Comentar a tabela por grupo e o gráfico de espectros médios.
+2. Definir [`K`](../pipeline_bssl/config.qmd#cb1-38) em [`config.py`](../pipeline_bssl/config.qmd) conforme a análise e executar a seção 3. Comentar a tabela por grupo e o gráfico de espectros médios.
 3. **Comparação com outro método de agrupamento** (célula extra, em subamostra para economizar tempo):
 
 ```python
@@ -97,7 +97,7 @@ Tabela de K (2 a 5) com tamanho dos grupos e silhueta, o K escolhido com justifi
 
 ## Material de aula: versão 2
 
-**Capítulo:** Método do cotovelo e k-means. **Notebook:** `03_pca_clusterizacao.ipynb` (seções 2 e 3).
+**Capítulo:** Método do cotovelo e k-means. **Notebook:** [`03_pca_clusterizacao.ipynb`](../pipeline_bssl/03_pca_clusterizacao.ipynb) (seções 2 e 3).
 
 #### Roteiro (120 min)
 
@@ -124,7 +124,7 @@ Tabela de K (2 a 5) com tamanho dos grupos e silhueta, o K escolhido com justifi
 #### Prática guiada: notebook 03, seções 2 e 3
 
 1. Executar a célula do cotovelo e da silhueta (`K_MAX = 10`) e interpretar os dois gráficos.
-2. Definir `K` em `config.py` (por exemplo, 3) e executar a célula do k-means final.
+2. Definir [`K`](../pipeline_bssl/config.qmd#cb1-38) em [`config.py`](../pipeline_bssl/config.qmd) (por exemplo, 3) e executar a célula do k-means final.
 3. Ler a contagem de amostras por grupo e a estatística do atributo por grupo (`groupby`). Os grupos diferem no atributo?
 4. Interpretar o gráfico de escores com os centroides e os espectros médios por grupo.
 5. Conferir que `df_pp.pkl` foi atualizado com a coluna `cluster` e que `cluster_model.joblib` foi salvo.

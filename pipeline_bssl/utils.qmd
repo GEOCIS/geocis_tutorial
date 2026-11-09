@@ -1,0 +1,9 @@
+---
+title: "Funções: utils.py"
+code-line-numbers: true
+---
+
+Funções usadas pelos notebooks: leitura, pré-processamento, métricas, T² e Q, VIP e reamostragem. [Baixar `utils.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/utils.py) · [Voltar ao pipeline](index.qmd)
+
+```{.python include="utils.py"}
+```

@@ -23,7 +23,7 @@
 
 ## Material de aula: versão 1
 
-**Capítulo:** Análise de Componentes Principais (PCA). **Notebook:** `03_pca_clusterizacao.ipynb` (seção 1).
+**Capítulo:** Análise de Componentes Principais (PCA). **Notebook:** [`03_pca_clusterizacao.ipynb`](../pipeline_bssl/03_pca_clusterizacao.ipynb) (seção 1).
 
 **Materiais:** notebook 03, saídas do notebook 02.
 
@@ -91,7 +91,7 @@ print("PCs para 95% da variância:", n95)
 
 #### Exercícios
 
-1. Colorir os escores de PC1 e PC2 pelo atributo `mo` em vez de `argila` (alterando `COL_ALVO` e reexecutando os notebooks 01 e 02, ou carregando a coluna manualmente) e comparar os padrões.
+1. Colorir os escores de PC1 e PC2 pelo atributo [`mo`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-72) em vez de [`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) (alterando [`COL_ALVO`](../pipeline_bssl/config.qmd#cb1-18) e reexecutando os notebooks 01 e 02, ou carregando a coluna manualmente) e comparar os padrões.
 2. Identificar a região do espectro de maior peso absoluto no PC1 e no PC2 e relacioná-la a uma feição conhecida.
 3. Fazer o PCA sem aplicar o SNV (usando `X_suav`) e comparar a variância explicada pelo PC1.
 4. Explicar por que o PCA, sozinho, não garante um bom modelo preditivo do atributo.
@@ -114,7 +114,7 @@ Gráfico de escores colorido pelo atributo, gráfico de loadings dos três prime
 
 ## Material de aula: versão 2
 
-**Capítulo:** Análise de Componentes Principais (PCA). **Notebook:** `03_pca_clusterizacao.ipynb` (seção 1).
+**Capítulo:** Análise de Componentes Principais (PCA). **Notebook:** [`03_pca_clusterizacao.ipynb`](../pipeline_bssl/03_pca_clusterizacao.ipynb) (seção 1).
 
 #### Roteiro (120 min)
 
@@ -159,7 +159,7 @@ for alvo in (0.95, 0.99):
         print(f'{alvo:.0%}: não atingido com', len(acum), 'componentes')
 ```
 
-Se `N_PCS_EXPLORA` for pequeno demais para atingir 99%, aumentá-lo em `config.py`.
+Se `N_PCS_EXPLORA` for pequeno demais para atingir 99%, aumentá-lo em [`config.py`](../pipeline_bssl/config.qmd).
 
 2. **PCA nos espectros sem SNV versus com SNV.** Comparar a variância explicada por PC1:
 
@@ -182,7 +182,7 @@ for k in (2, 5, 10):
 plt.legend(); plt.xlabel('nm'); plt.show()
 ```
 
-4. Colorir o gráfico de escores pelo grupo (depois da aula 6) ou por um segundo atributo (`mo`), e comparar os padrões.
+4. Colorir o gráfico de escores pelo grupo (depois da aula 6) ou por um segundo atributo ([`mo`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-72)), e comparar os padrões.
 
 **Gabarito e observações:** (1) em espectros de solo, poucos componentes costumam explicar mais de 95% da variância. No banco sintético, 95% já é atingido com o PC1, e 99% não é atingido com 10 componentes (97,2%), o que mostra que a escolha do limiar muda bastante o número de componentes. (2) Sem o SNV, o PC1 concentra uma fração maior da variância (cerca de 99,3% no banco sintético, contra 96,1% com SNV), porque a diferença de intensidade geral entre espectros domina. Com o SNV, a variância se distribui mais entre os componentes, e eles passam a refletir a forma do espectro. (3) Com poucos componentes, a reconstrução acompanha a forma geral, e com mais componentes se aproxima das feições finas, o que mostra que os primeiros componentes resumem a informação principal.
 
