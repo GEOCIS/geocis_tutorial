@@ -50,7 +50,7 @@
 - escolhe o pré-tratamento com menor RMSECV (a menos que `TRATAMENTO_FIXO` esteja definido) e o número de LVs no mínimo da curva;
 - ajusta o PLSR final e calcula predições na calibração, na validação cruzada e na validação.
 
-**Referência com os dados sintéticos:** calibração de 590 amostras e validação de 253. RMSECV mínimo de cerca de 2,98 com 2 LVs para `sg`, 3,51 com 1 LV para `d1` e 3,29 com 2 LVs para `snv`; o `sg` é escolhido. Poucas LVs bastam porque os dados sintéticos têm pouca complexidade; com dados reais, valores de 8 a 15 LVs são comuns.
+**Referência com os dados sintéticos:** calibração de 590 amostras e validação de 254. RMSECV mínimo de cerca de 2,71 com 2 LVs para `sg`, 2,87 com 1 LV para `d1` e 2,74 com 1 LV para `snv`; o `sg` é escolhido. Poucas LVs bastam porque os dados sintéticos têm pouca complexidade; com dados reais, valores de 8 a 15 LVs são comuns.
 
 #### Prática guiada
 

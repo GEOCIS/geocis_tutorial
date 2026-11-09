@@ -1,0 +1,55 @@
+---
+title: "Pipeline BSSL: notebooks, funções e dados sintéticos"
+description: "Pasta pipeline_bssl usada no Curso prático, nos Fundamentos e no Texto de referência, com gerador de dados sintéticos para praticar sem o banco real."
+---
+
+A pasta `pipeline_bssl` é o código usado no [Curso prático](../curso_espectroscopia_python/index.qmd), nos
+[Fundamentos](../metodologia_espectroscopia/index.qmd) e no [Texto de referência](../capitulos_dados_espectrais/index.qmd).
+O gerador de dados sintéticos permite **praticar sem acesso ao banco real da BSSL**.
+
+[Baixar a pasta completa (.zip)](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/pipeline_bssl.zip){.btn .btn-primary}
+
+## Como usar
+
+1. Baixe e descompacte o `.zip`. Abra a pasta `pipeline_bssl` no VS Code.
+2. Instale as bibliotecas e gere os dados sintéticos:
+
+   ```bash
+   pip install -r requirements.txt
+   python gerar_dados_sinteticos.py
+   ```
+
+3. Execute os notebooks **na ordem**, de 01 a 05. Cada um lê os arquivos salvos pelo anterior na pasta
+   `resultados/`, e as figuras vão para `resultados/figuras/`. Com os dados sintéticos, os cinco rodam em cerca de 1 minuto.
+
+Para usar o banco real, coloque o arquivo em `dados/` e ajuste `ARQUIVO` e `COL_ALVO` em `config.py`
+(veja o `README.md` da pasta).
+
+## Notebooks
+
+Leia aqui no site, com as saídas de uma execução com os dados sintéticos, ou baixe cada arquivo.
+
+| Notebook | Conteúdo | Aulas do Curso prático | Arquivo |
+|---|---|---|---|
+| [01 · Leitura e análise exploratória](01_leitura_exploratoria.ipynb) | Leitura, estatística descritiva, limpeza e correlação por banda | 2 | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/01_leitura_exploratoria.ipynb) |
+| [02 · Pré-processamento](02_preprocessamento.ipynb) | Corte, absorbância, Savitzky-Golay, derivada, SNV e outliers (z-score, T² e Q) | 3 e 4 | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/02_preprocessamento.ipynb) |
+| [03 · PCA e clusterização](03_pca_clusterizacao.ipynb) | PCA, cotovelo, silhueta e k-means | 5 e 6 | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/03_pca_clusterizacao.ipynb) |
+| [04 · Modelagem](04_modelagem.ipynb) | PLSR com validação cruzada, Random Forest, métricas e domínio de aplicação | 7 e 8 | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/04_modelagem.ipynb) |
+| [05 · Visualização e predição](05_visualizacao_predicao.ipynb) | Observado × predito, resíduos, VIP e predição de amostras novas | 9 | [baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/05_visualizacao_predicao.ipynb) |
+
+## Arquivos de apoio
+
+| Arquivo | Função |
+|---|---|
+| [`config.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/config.py) | Caminhos e parâmetros de todas as etapas |
+| [`utils.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/utils.py) | Funções: leitura, pré-processamento, métricas, T² e Q, VIP e reamostragem |
+| [`gerar_dados_sinteticos.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/gerar_dados_sinteticos.py) | Gera `dados/bssl.csv` (900 amostras) e `dados/novas_amostras.csv` (50 amostras) |
+| [`requirements.txt`](https://github.com/GEOCIS/geocis_tutorial/raw/main/pipeline_bssl/requirements.txt) | Bibliotecas necessárias |
+
+::: {.callout-warning}
+## Dados sintéticos não são resultados científicos
+
+Os espectros sintéticos são "bem comportados" de propósito (feições simuladas só perto de 1400, 1900 e 2200 nm,
+ruído baixo), para mostrar o efeito de cada etapa. O desempenho obtido com eles é muito mais alto do que com dados
+reais, e os números não devem ser relatados como resultados.
+:::

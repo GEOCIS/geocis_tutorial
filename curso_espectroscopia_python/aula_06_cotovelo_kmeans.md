@@ -52,7 +52,7 @@ A clusterização é um método **não supervisionado**: agrupa amostras semelha
 
 **Caracterização dos grupos (seção 3):** contagem de amostras, estatísticas do atributo por grupo, espectro médio por grupo e gráfico dos grupos no espaço PC1 × PC2. Grupos espectrais **não** são classes taxonômicas de solo.
 
-**Referência com os dados sintéticos:** com K = 3, os grupos têm cerca de 306, 122 e 415 amostras, com argila média próxima de 43, 71 e 20 (a numeração dos grupos pode mudar).
+**Referência com os dados sintéticos:** com K = 3, os grupos têm cerca de 300, 320 e 224 amostras, com argila média próxima de 38, 16 e 65 (a numeração dos grupos pode mudar).
 
 #### Prática guiada
 
@@ -119,7 +119,7 @@ Tabela de K (2 a 5) com tamanho dos grupos e silhueta, o K escolhido com justifi
 - **Silhueta:** mede, para cada amostra, a proximidade ao próprio grupo em relação ao grupo vizinho (de -1 a 1). Valores próximos de 0,5 ou mais indicam grupos bem definidos, e valores baixos indicam sobreposição.
 - **Interpretabilidade e tamanho dos grupos:** os grupos devem fazer sentido agronômico e ter amostras suficientes.
 
-**Atenção didática importante:** no banco sintético, os espectros variam de forma contínua com a argila e a matéria orgânica, **sem grupos naturais**. Mesmo assim, o k-means sempre divide os dados, e a silhueta pode ficar moderada: em uma execução de teste, foi de cerca de 0,6 para k = 2 e caiu gradualmente até cerca de 0,4 para k = 8, sem um cotovelo nítido. Aproveitar para discutir que uma silhueta moderada não prova a existência de grupos reais, pois pode refletir apenas a partição de um contínuo. Em dados reais da BSSL, com solos de origens distintas, a estrutura de grupos tende a ser mais evidente.
+**Atenção didática importante:** no banco sintético, os espectros variam de forma contínua com a argila e a matéria orgânica, **sem grupos naturais**. Mesmo assim, o k-means sempre divide os dados, e a silhueta pode ficar moderada: em uma execução de teste, foi de cerca de 0,6 para k = 2 e caiu gradualmente até cerca de 0,45 para k = 10, sem um cotovelo nítido. Aproveitar para discutir que uma silhueta moderada não prova a existência de grupos reais, pois pode refletir apenas a partição de um contínuo. Em dados reais da BSSL, com solos de origens distintas, a estrutura de grupos tende a ser mais evidente.
 
 #### Prática guiada: notebook 03, seções 2 e 3
 
@@ -145,6 +145,8 @@ print('Concordância k-means × hierárquico (ARI):', round(adjusted_rand_score(
 3. **Estabilidade:** repetir o k-means com cinco sementes diferentes e medir a concordância entre elas:
 
 ```python
+from sklearn.metrics import adjusted_rand_score
+
 rots = [KMeans(cfg.K, n_init=10, random_state=s).fit_predict(Zc) for s in range(5)]
 for s in range(1, 5):
     print(f'semente 0 × {s}: ARI = {adjusted_rand_score(rots[0], rots[s]):.3f}')

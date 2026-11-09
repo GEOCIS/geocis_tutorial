@@ -46,7 +46,7 @@ Pontos a destacar:
 - **Seção 6 (correlação por banda):** correlação de cada banda com o atributo, calculada de forma vetorizada. Observar as regiões do espectro mais associadas ao atributo.
 - **Seção 7 (salvar):** grava `dados_brutos.npz` e `df_limpo.pkl` para o notebook 02.
 
-**Referência com os dados sintéticos:** 900 amostras com 431 bandas (350 a 2500 nm); 40 sem argila, restando 860; assimetria da argila de cerca de 0,75.
+**Referência com os dados sintéticos:** 900 amostras com 431 bandas (350 a 2500 nm); 40 sem argila, restando 860; assimetria da argila de cerca de 0,4.
 
 ## Prática guiada: o notebook 01, célula a célula
 

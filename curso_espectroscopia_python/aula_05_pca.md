@@ -58,7 +58,7 @@ Bandas vizinhas de um espectro medem praticamente a mesma coisa, de modo que as 
 
 **Cuidados:** variância explicada não é o mesmo que relevância para o atributo, pois um atributo pode depender de componentes de baixa variância. O PCA é sensível a outliers. E quando os escores forem usados em um modelo preditivo, o PCA deve ser ajustado apenas na calibração (o notebook 04 faz isso dentro de um `Pipeline`).
 
-**Referência com os dados sintéticos:** o PC1 explica cerca de 94,1% da variância e 10 PCs acumulam cerca de 96,2%. O PC1 tão dominante reflete a simplicidade dos dados sintéticos, e em dados reais a variância costuma se distribuir em mais componentes.
+**Referência com os dados sintéticos:** o PC1 explica cerca de 96,1% da variância e 10 PCs acumulam cerca de 97,2%. O PC1 tão dominante reflete a simplicidade dos dados sintéticos, e em dados reais a variância costuma se distribuir em mais componentes.
 
 #### Prática guiada
 
@@ -184,7 +184,7 @@ plt.legend(); plt.xlabel('nm'); plt.show()
 
 4. Colorir o gráfico de escores pelo grupo (depois da aula 6) ou por um segundo atributo (`mo`), e comparar os padrões.
 
-**Gabarito e observações:** (1) em espectros de solo, poucos componentes costumam explicar mais de 95% da variância. No banco sintético, 95% é atingido com cerca de 3 componentes, e 99% não é atingido com 10, o que mostra que a escolha do limiar muda bastante o número de componentes. (2) Sem o SNV, o PC1 costuma concentrar uma fração maior da variância, porque a diferença de intensidade geral entre espectros domina. Com o SNV, a variância se distribui mais entre os componentes, e eles passam a refletir a forma do espectro. (3) Com poucos componentes, a reconstrução acompanha a forma geral, e com mais componentes se aproxima das feições finas, o que mostra que os primeiros componentes resumem a informação principal.
+**Gabarito e observações:** (1) em espectros de solo, poucos componentes costumam explicar mais de 95% da variância. No banco sintético, 95% já é atingido com o PC1, e 99% não é atingido com 10 componentes (97,2%), o que mostra que a escolha do limiar muda bastante o número de componentes. (2) Sem o SNV, o PC1 concentra uma fração maior da variância (cerca de 99,3% no banco sintético, contra 96,1% com SNV), porque a diferença de intensidade geral entre espectros domina. Com o SNV, a variância se distribui mais entre os componentes, e eles passam a refletir a forma do espectro. (3) Com poucos componentes, a reconstrução acompanha a forma geral, e com mais componentes se aproxima das feições finas, o que mostra que os primeiros componentes resumem a informação principal.
 
 #### Perguntas de verificação
 

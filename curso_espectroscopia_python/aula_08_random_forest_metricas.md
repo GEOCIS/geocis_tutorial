@@ -57,13 +57,13 @@
 
 | Modelo | Conjunto | R² | RMSE | RPD | RPIQ | Viés |
 | --- | --- | --- | --- | --- | --- | --- |
-| PLSR | Calibração | 0,976 | 2,96 | 6,48 | 9,42 | 0,00 |
-| PLSR | Validação cruzada | 0,976 | 2,98 | 6,43 | 9,35 | 0,00 |
-| PLSR | Validação | 0,980 | 2,91 | 7,06 | 7,65 | 0,26 |
-| Random Forest | Calibração | 0,992 | 1,75 | 10,96 | 15,93 | 0,01 |
-| Random Forest | Validação | 0,981 | 2,84 | 7,22 | 7,83 | -0,01 |
+| PLSR | Calibração | 0,983 | 2,69 | 7,64 | 12,23 | 0,00 |
+| PLSR | Validação cruzada | 0,983 | 2,71 | 7,60 | 12,16 | 0,00 |
+| PLSR | Validação | 0,982 | 2,99 | 7,41 | 11,07 | -0,20 |
+| Random Forest | Calibração | 0,992 | 1,85 | 11,12 | 17,80 | 0,00 |
+| Random Forest | Validação | 0,970 | 3,85 | 5,75 | 8,59 | -0,57 |
 
-Os dois modelos têm desempenho muito parecido na validação, e o Random Forest tem um RMSE de calibração bem menor, mostrando o otimismo da calibração. Os valores de RPD acima de 7 só ocorrem porque os dados sintéticos são simples.
+Na validação, o PLSR teve desempenho melhor (RMSE 2,99 contra 3,85), embora o Random Forest tenha o menor RMSE de calibração: a diferença entre calibração e validação do Random Forest mostra o otimismo da calibração. Como a relação entre espectro e argila nos dados sintéticos é praticamente linear, o PLSR é favorecido. Os valores de RPD acima de 7 só ocorrem porque os dados sintéticos são simples.
 
 #### Prática guiada
 
@@ -173,7 +173,7 @@ print('RMSE na validação com a escolha incorreta:', round(min(erros_val), 3))
 
 **Gabarito do exercício 1:** o erro é 2, -2, 3 e -3, então o RMSE é a raiz de 6,5, cerca de 2,55. O desvio-padrão populacional de `y_obs` é cerca de 11,18, e o RPD é cerca de 4,39. O Q1 é 17,5 e o Q3 é 32,5, então a distância interquartílica é 15 e o RPIQ é cerca de 5,88. A soma de quadrados dos resíduos é 26 e a soma total é 500, então o R² é 0,948. O viés é 0.
 
-**Observações dos demais exercícios:** (2) a escolha olhando a validação produz um RMSE igual ou menor do que o resultado honesto, mas esse valor é otimista, pois a validação deixou de ser independente. Em um estudo real, esse procedimento invalida a estimativa de desempenho. (3) Em dados sintéticos, a diferença tende a ser pequena. Em dados reais, a busca costuma melhorar o resultado e reduzir o sobreajuste. (4) No banco sintético, a relação entre espectro e atributo é aproximadamente linear, e por isso os dois modelos devem ter desempenho próximo (em um teste, o RMSE de validação cruzada ficou em torno de 3,1 a 3,3 para ambos). A diferença é pequena e, com dados reais, a comparação pode mudar.
+**Observações dos demais exercícios:** (2) a escolha olhando a validação produz um RMSE igual ou menor do que o resultado honesto, mas esse valor é otimista, pois a validação deixou de ser independente. Em um estudo real, esse procedimento invalida a estimativa de desempenho. (3) Em dados sintéticos, a diferença tende a ser pequena. Em dados reais, a busca costuma melhorar o resultado e reduzir o sobreajuste. (4) No banco sintético, a relação entre espectro e atributo é aproximadamente linear, e por isso os dois modelos devem ter desempenho próximo (em um teste, o RMSE de validação cruzada ficou em torno de 2,7 no PLSR e 3,0 no Random Forest). A diferença é pequena e, com dados reais, a comparação pode mudar.
 
 #### Perguntas de verificação
 

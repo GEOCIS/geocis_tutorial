@@ -49,7 +49,7 @@ Os limites de T² e Q são o percentil `PERC_OUTLIER` (99). A amostra é sinaliz
 - **Regra de ouro:** a decisão se baseia nos espectros, nunca no valor do atributo-alvo, para não selecionar amostras que favoreçam o modelo.
 - Toda exclusão deve ser registrada (quantas, quais e por quê).
 
-**Referência com os dados sintéticos:** 9 amostras sinalizadas pelo z-score, 9 por T² e 9 por Q, em um total de 17 sinalizadas. O banco tem 8 espectros anômalos inseridos de propósito. Após a remoção, restam 843 de 860 amostras.
+**Referência com os dados sintéticos:** 7 amostras sinalizadas pelo z-score, 9 por T² e 9 por Q, em um total de 16 sinalizadas. O banco tem 8 espectros anômalos inseridos de propósito (S0000 a S0007), todos detectados; as outras 8 sinalizadas são amostras normais próximas dos limites, o que mostra por que cada sinalização deve ser inspecionada antes da remoção. Após a remoção, restam 844 de 860 amostras.
 
 ## Prática guiada
 
@@ -113,7 +113,7 @@ print('Presentes no banco e não detectados:',
 <summary>Gabarito comentado</summary>
 
 - (1) Os números crescem à medida que o percentil diminui: limites de percentil mais altos sinalizam menos amostras. Com 99,9, quase só as anomalias evidentes são sinalizadas; com 95, muitas amostras normais entram. A escolha depende do tamanho do banco e do custo de perder amostras válidas.
-- (2) Em um teste com os dados sintéticos, todos os 8 espectros anômalos foram detectados (17 amostras sinalizadas no total, no percentil 99), pois são aleatórios e não têm a forma típica de um espectro de solo.
+- (2) Em um teste com os dados sintéticos, todos os 8 espectros anômalos foram detectados (16 amostras sinalizadas no total, no percentil 99), pois são aleatórios e não têm a forma típica de um espectro de solo.
 - (3) No banco sintético, as amostras sinalizadas além dos anômalos costumam ser solos com valores extremos de argila ou de matéria orgânica, que seria sensato manter em um banco real, e esta é uma boa oportunidade para discutir que **nem todo ponto sinalizado é um erro**.
 - (5) T² alto com Q baixo: amostra extrema, mas com formato de espectro compatível com o conjunto (por exemplo, um solo muito argiloso). Q alto: o espectro tem feições que os PCs não representam, sugerindo erro de medição ou material diferente.
 - (6) Remover amostras com base no alvo seleciona justamente as que o modelo erra, e produz uma avaliação otimista e não confiável.

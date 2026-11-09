@@ -12,6 +12,9 @@ project:
     - "praticas/solucoes/*.ipynb"
     - "Trabalhos/index.qmd"
     - "Trabalhos/*.ipynb"
+    - "pipeline_bssl/index.qmd"
+    - "pipeline_bssl/*.ipynb"
+    - "!pipeline_bssl/README.md"
     # cópia duplicada do curso de espectroscopia dentro do curso de iniciantes
     - "!curso_iniciantes_ferramentas/curso_espectroscopia_python/"
   resources:
@@ -73,6 +76,9 @@ website:
           - href: curso_espectroscopia_python/aula_09_visualizacao_predicao.md
           - href: curso_espectroscopia_python/aula_10_resultados_apresentacao.md
           - href: curso_espectroscopia_python/apendice.md
+          - text: "---"
+          - text: "Pipeline BSSL: notebooks e dados sintéticos"
+            href: pipeline_bssl/index.qmd
       - text: Fundamentos
         menu:
           - text: "Apresentação do curso"
@@ -188,6 +194,14 @@ website:
           - curso_espectroscopia_python/aula_09_visualizacao_predicao.md
           - curso_espectroscopia_python/aula_10_resultados_apresentacao.md
           - curso_espectroscopia_python/apendice.md
+          - section: "Pipeline BSSL"
+            href: pipeline_bssl/index.qmd
+            contents:
+              - pipeline_bssl/01_leitura_exploratoria.ipynb
+              - pipeline_bssl/02_preprocessamento.ipynb
+              - pipeline_bssl/03_pca_clusterizacao.ipynb
+              - pipeline_bssl/04_modelagem.ipynb
+              - pipeline_bssl/05_visualizacao_predicao.ipynb
       - section: "3 · Fundamentos: por que fazer"
         href: metodologia_espectroscopia/index.qmd
         contents:

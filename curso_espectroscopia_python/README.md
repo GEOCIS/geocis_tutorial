@@ -10,7 +10,7 @@
 
 **Carga horária:** 10 aulas de 2 horas (20 horas), cada uma associada a um capítulo do documento do projeto e a um notebook do pipeline.
 
-**Materiais:** capítulos do projeto, pasta `pipeline_bssl` (cinco notebooks, `config.py` e `utils.py`) e o gerador de dados sintéticos (`gerar_dados_sinteticos.py`), que permite praticar mesmo sem acesso ao banco real da BSSL.
+**Materiais:** capítulos do projeto, pasta `pipeline_bssl` (cinco notebooks, `config.py` e `utils.py`) e o gerador de dados sintéticos (`gerar_dados_sinteticos.py`), que permite praticar mesmo sem acesso ao banco real da BSSL. **[Baixe a pasta e veja os notebooks](../pipeline_bssl/index.qmd).**
 
 **Estratégia didática:** cada aula alterna explicação curta do conceito, execução guiada do notebook, e um exercício em que o aluno modifica parâmetros e observa o efeito. Os dados sintéticos servem para ver o comportamento do método, e o banco real, para interpretar resultados.
 
