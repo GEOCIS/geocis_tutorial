@@ -47,7 +47,7 @@ Bandas vizinhas de um espectro medem praticamente a mesma coisa, de modo que as 
 - **Variância explicada:** fração da variação total capturada por cada PC. Em espectros de solo, poucos PCs costumam explicar mais de 95% da variância.
 - **Centralização:** o scikit-learn subtrai automaticamente a média de cada banda antes de calcular os PCs. Como as bandas têm a mesma unidade, não se padroniza cada banda.
 
-**O que o notebook faz:** ajusta um PCA com `N_PCS_EXPLORA` componentes (10) sobre os espectros com SNV, mostra a variância explicada e acumulada, plota os escores de PC1 e PC2 coloridos pelo atributo e plota os loadings dos três primeiros PCs.
+**O que o notebook faz:** ajusta um PCA com [`N_PCS_EXPLORA`](../pipeline_bssl/config.qmd#cb1-35) componentes (10) sobre os espectros com SNV, mostra a variância explicada e acumulada, plota os escores de PC1 e PC2 coloridos pelo atributo e plota os loadings dos três primeiros PCs.
 
 **Como ler os gráficos:**
 
@@ -56,7 +56,7 @@ Bandas vizinhas de um espectro medem praticamente a mesma coisa, de modo que as 
 - **Pontos isolados:** candidatos a outlier.
 - **Picos nos loadings:** relacionam o componente a feições conhecidas (água e hidroxila em 1400 e 1900 nm, argilominerais em 2200 nm, cor no visível).
 
-**Cuidados:** variância explicada não é o mesmo que relevância para o atributo, pois um atributo pode depender de componentes de baixa variância. O PCA é sensível a outliers. E quando os escores forem usados em um modelo preditivo, o PCA deve ser ajustado apenas na calibração (o notebook 04 faz isso dentro de um `Pipeline`).
+**Cuidados:** variância explicada não é o mesmo que relevância para o atributo, pois um atributo pode depender de componentes de baixa variância. O PCA é sensível a outliers. E quando os escores forem usados em um modelo preditivo, o PCA deve ser ajustado apenas na calibração (o notebook 04 faz isso dentro de um [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca)).
 
 **Referência com os dados sintéticos:** o PC1 explica cerca de 96,1% da variância e 10 PCs acumulam cerca de 97,2%. O PC1 tão dominante reflete a simplicidade dos dados sintéticos, e em dados reais a variância costuma se distribuir em mais componentes.
 
@@ -93,12 +93,12 @@ print("PCs para 95% da variância:", n95)
 
 1. Colorir os escores de PC1 e PC2 pelo atributo [`mo`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-72) em vez de [`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) (alterando [`COL_ALVO`](../pipeline_bssl/config.qmd#cb1-18) e reexecutando os notebooks 01 e 02, ou carregando a coluna manualmente) e comparar os padrões.
 2. Identificar a região do espectro de maior peso absoluto no PC1 e no PC2 e relacioná-la a uma feição conhecida.
-3. Fazer o PCA sem aplicar o SNV (usando `X_suav`) e comparar a variância explicada pelo PC1.
+3. Fazer o PCA sem aplicar o SNV (usando [`X_suav`](../pipeline_bssl/02_preprocessamento.ipynb#tratamentos-espectrais)) e comparar a variância explicada pelo PC1.
 4. Explicar por que o PCA, sozinho, não garante um bom modelo preditivo do atributo.
 
 **Gabarito comentado:**
 
-- (2) Em `pca.components_[0]`, `wl[np.argmax(np.abs(pca.components_[0]))]` indica a banda de maior peso. Com dados reais, é comum encontrar pesos fortes perto de 2200 nm (argilominerais) e no visível.
+- (2) Em [`pca.components_[0]`](../pipeline_bssl/03_pca_clusterizacao.ipynb#análise-de-componentes-principais), [`wl[np.argmax(np.abs(pca.components_[0]))]`](../pipeline_bssl/03_pca_clusterizacao.ipynb#análise-de-componentes-principais) indica a banda de maior peso. Com dados reais, é comum encontrar pesos fortes perto de 2200 nm (argilominerais) e no visível.
 - (3) Sem o SNV, o PC1 costuma capturar principalmente a diferença global de intensidade entre amostras (efeito de espalhamento), explicando uma fração maior da variância, mas com menos relação com a composição.
 - (4) O PCA maximiza a variância dos espectros, não a covariância com o atributo. A informação sobre o atributo pode estar em componentes de menor variância, e por isso o número de PCs deve ser decidido pelo desempenho do modelo.
 
@@ -133,7 +133,7 @@ Para explicar a ideia, usar a analogia de fotografar um objeto tridimensional: o
 **Pontos conceituais:**
 
 - **Variância explicada:** fração da variação total capturada por cada componente. A variância acumulada orienta quantos componentes reter.
-- **Centragem:** o `PCA` do scikit-learn subtrai a média de cada banda antes de calcular.
+- **Centragem:** o [`PCA`](../pipeline_bssl/03_pca_clusterizacao.ipynb#análise-de-componentes-principais) do scikit-learn subtrai a média de cada banda antes de calcular.
 - **Interpretação:** os loadings relacionam os componentes às feições espectrais (1400, 1900 e 2200 nm e a região do visível).
 - **Limitações:** variância não é o mesmo que relevância para o atributo, o PCA é sensível a outliers, e a combinação linear das bandas não corresponde necessariamente a um constituinte químico.
 - **Vazamento:** em modelos preditivos, o PCA deve ser ajustado só na calibração. Na etapa exploratória, pode ser ajustado ao conjunto todo.
@@ -141,7 +141,7 @@ Para explicar a ideia, usar a analogia de fotografar um objeto tridimensional: o
 #### Prática guiada: notebook 03, seção 1
 
 1. Carregar [`espectros_pp.npz`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) e [`df_pp.pkl`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) (células iniciais).
-2. Ajustar `PCA(n_components=cfg.N_PCS_EXPLORA)` aos espectros com SNV (`X_snv`).
+2. Ajustar [`PCA(n_components=cfg.N_PCS_EXPLORA)`](../pipeline_bssl/03_pca_clusterizacao.ipynb#análise-de-componentes-principais) aos espectros com SNV ([`X_snv`](../pipeline_bssl/02_preprocessamento.ipynb#tratamentos-espectrais)).
 3. Ler a variância explicada e a acumulada impressas, e o gráfico de *scree*.
 4. Interpretar o gráfico de escores (PC1 × PC2) colorido pelo atributo: há gradiente? Há agrupamentos? Há pontos isolados?
 5. Interpretar os loadings dos três primeiros componentes: em que comprimentos de onda aparecem picos e vales?
@@ -159,7 +159,7 @@ for alvo in (0.95, 0.99):
         print(f'{alvo:.0%}: não atingido com', len(acum), 'componentes')
 ```
 
-Se `N_PCS_EXPLORA` for pequeno demais para atingir 99%, aumentá-lo em [`config.py`](../pipeline_bssl/config.qmd).
+Se [`N_PCS_EXPLORA`](../pipeline_bssl/config.qmd#cb1-35) for pequeno demais para atingir 99%, aumentá-lo em [`config.py`](../pipeline_bssl/config.qmd).
 
 2. **PCA nos espectros sem SNV versus com SNV.** Comparar a variância explicada por PC1:
 

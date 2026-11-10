@@ -13,9 +13,9 @@
 - Por que a regressão linear múltipla falha com espectros (muitas bandas colineares) e como o PLSR contorna isso.
 - Divisão em calibração e validação (70/30), com estratificação pelos grupos.
 - Validação cruzada em 10 partições, curva de RMSECV e escolha do número de variáveis latentes. Subajuste e sobreajuste.
-- Comparação de pré-tratamentos (`sg`, `d1` e `snv`) pelo RMSECV.
+- Comparação de pré-tratamentos ([`sg`](../pipeline_bssl/utils.qmd#cb1-70), [`d1`](../pipeline_bssl/utils.qmd#cb1-71) e [`snv`](../pipeline_bssl/utils.qmd#cb1-72)) pelo RMSECV.
 
-**Prática:** notebook 04 (seções 1 a 3). Observar qual tratamento é escolhido e testar `TRATAMENTO_FIXO` para forçar outro.
+**Prática:** notebook 04 (seções 1 a 3). Observar qual tratamento é escolhido e testar [`TRATAMENTO_FIXO`](../pipeline_bssl/config.qmd#cb1-45) para forçar outro.
 
 **Entregável:** curva de RMSECV com o número de variáveis latentes escolhido e justificativa.
 
@@ -42,15 +42,15 @@
 
 **O número de variáveis latentes** é o principal parâmetro: poucas LVs levam a **subajuste** (modelo simples demais); muitas levam a **sobreajuste** (o modelo memoriza o ruído da calibração e generaliza mal).
 
-**Divisão dos dados (seção 1).** O conjunto é dividido em calibração (`1 - TEST_SIZE`) e validação ([`TEST_SIZE`](../pipeline_bssl/config.qmd#cb1-41)). A divisão é **estratificada pelos grupos do k-means**, para que todos os tipos de espectro estejam nos dois conjuntos. A validação não pode ser usada para tomar decisões; ela só serve para avaliar o resultado final.
+**Divisão dos dados (seção 1).** O conjunto é dividido em calibração ([`1 - TEST_SIZE`](../pipeline_bssl/config.qmd#cb1-41)) e validação ([`TEST_SIZE`](../pipeline_bssl/config.qmd#cb1-41)). A divisão é **estratificada pelos grupos do k-means**, para que todos os tipos de espectro estejam nos dois conjuntos. A validação não pode ser usada para tomar decisões; ela só serve para avaliar o resultado final.
 
-**Validação cruzada (seção 2).** A calibração é dividida em `CV_FOLDS` (10) partes; o modelo é treinado em nove e testado na restante, repetindo para todas. O erro resultante (**RMSECV**) estima o desempenho em amostras novas, usando apenas a calibração. O notebook:
+**Validação cruzada (seção 2).** A calibração é dividida em [`CV_FOLDS`](../pipeline_bssl/config.qmd#cb1-42) (10) partes; o modelo é treinado em nove e testado na restante, repetindo para todas. O erro resultante (**RMSECV**) estima o desempenho em amostras novas, usando apenas a calibração. O notebook:
 
-- calcula o RMSECV para 1 a `MAX_LV` variáveis latentes e para cada pré-tratamento (`sg`, `d1` e `snv`);
-- escolhe o pré-tratamento com menor RMSECV (a menos que `TRATAMENTO_FIXO` esteja definido) e o número de LVs no mínimo da curva;
+- calcula o RMSECV para 1 a [`MAX_LV`](../pipeline_bssl/config.qmd#cb1-43) variáveis latentes e para cada pré-tratamento ([`sg`](../pipeline_bssl/utils.qmd#cb1-70), [`d1`](../pipeline_bssl/utils.qmd#cb1-71) e [`snv`](../pipeline_bssl/utils.qmd#cb1-72));
+- escolhe o pré-tratamento com menor RMSECV (a menos que [`TRATAMENTO_FIXO`](../pipeline_bssl/config.qmd#cb1-45) esteja definido) e o número de LVs no mínimo da curva;
 - ajusta o PLSR final e calcula predições na calibração, na validação cruzada e na validação.
 
-**Referência com os dados sintéticos:** calibração de 590 amostras e validação de 254. RMSECV mínimo de cerca de 2,71 com 2 LVs para `sg`, 2,87 com 1 LV para `d1` e 2,74 com 1 LV para `snv`; o `sg` é escolhido. Poucas LVs bastam porque os dados sintéticos têm pouca complexidade; com dados reais, valores de 8 a 15 LVs são comuns.
+**Referência com os dados sintéticos:** calibração de 590 amostras e validação de 254. RMSECV mínimo de cerca de 2,71 com 2 LVs para [`sg`](../pipeline_bssl/utils.qmd#cb1-70), 2,87 com 1 LV para [`d1`](../pipeline_bssl/utils.qmd#cb1-71) e 2,74 com 1 LV para [`snv`](../pipeline_bssl/utils.qmd#cb1-72); o [`sg`](../pipeline_bssl/utils.qmd#cb1-70) é escolhido. Poucas LVs bastam porque os dados sintéticos têm pouca complexidade; com dados reais, valores de 8 a 15 LVs são comuns.
 
 #### Prática guiada
 
@@ -77,8 +77,8 @@ A curva de calibração sempre cai com mais LVs, enquanto a de validação cruza
 
 #### Exercícios
 
-1. Fixar `TRATAMENTO_FIXO = "d1"` e comparar as métricas de validação com as do tratamento escolhido automaticamente.
-2. Alterar `CV_FOLDS` para 5 e para 20 e observar o efeito sobre o RMSECV e o tempo de execução.
+1. Fixar [`TRATAMENTO_FIXO = "d1"`](../pipeline_bssl/config.qmd#cb1-45) e comparar as métricas de validação com as do tratamento escolhido automaticamente.
+2. Alterar [`CV_FOLDS`](../pipeline_bssl/config.qmd#cb1-42) para 5 e para 20 e observar o efeito sobre o RMSECV e o tempo de execução.
 3. Aplicar a regra do erro-padrão de forma aproximada: escolher o menor número de LVs cujo RMSECV esteja dentro de um erro-padrão do mínimo:
 
 ```python
@@ -95,14 +95,14 @@ print("LVs no mínimo:", nlv, "| regra do erro-padrão:", nlv_1se)
 **Gabarito comentado:**
 
 - (2) Com menos partições, o erro é estimado com modelos treinados em menos dados (mais pessimista) e o cálculo é mais rápido; com mais partições, o oposto. Dez é um compromisso comum.
-- (3) Em geral, `nlv_1se` é menor ou igual a `nlv`. Um modelo mais simples dentro da incerteza do mínimo tende a generalizar melhor e a ser mais interpretável.
+- (3) Em geral, [`nlv_1se`](../pipeline_bssl/04_modelagem.ipynb#plsr-final) é menor ou igual a [`nlv`](../pipeline_bssl/04_modelagem.ipynb#plsr-final). Um modelo mais simples dentro da incerteza do mínimo tende a generalizar melhor e a ser mais interpretável.
 - (4) O PCA busca direções de máxima variância nos espectros, sem usar o atributo; o PLSR busca direções que também sejam relevantes para o atributo.
 
 #### Problemas comuns
 
 - **Usar a validação para escolher parâmetros:** é o erro metodológico mais comum, e infla o desempenho.
-- **LVs demais para poucas amostras:** limitar `MAX_LV` ao tamanho do conjunto.
-- **Execução lenta:** reduzir `MAX_LV`, `CV_FOLDS` ou a quantidade de tratamentos comparados.
+- **LVs demais para poucas amostras:** limitar [`MAX_LV`](../pipeline_bssl/config.qmd#cb1-43) ao tamanho do conjunto.
+- **Execução lenta:** reduzir [`MAX_LV`](../pipeline_bssl/config.qmd#cb1-43), [`CV_FOLDS`](../pipeline_bssl/config.qmd#cb1-42) ou a quantidade de tratamentos comparados.
 
 #### Entregável
 
@@ -126,11 +126,11 @@ Gráfico do RMSECV por número de LVs, tabela de comparação dos pré-tratament
 
 **Compromisso entre subajuste e sobreajuste.** Poucas LVs levam a um modelo simples demais, que erra tanto na calibração quanto na validação. Muitas LVs ajustam o ruído: o erro na calibração cai, mas o da validação sobe. O número ótimo fica no meio, e deve ser escolhido com dados que **não** sejam os da validação final.
 
-**Divisão dos dados.** O notebook separa 70% para calibração e 30% para validação (`TEST_SIZE = 0.3`), estratificando pelos grupos da aula 6, para que todos os tipos de amostra estejam nos dois conjuntos. A validação é reservada para a avaliação final.
+**Divisão dos dados.** O notebook separa 70% para calibração e 30% para validação ([`TEST_SIZE = 0.3`](../pipeline_bssl/config.qmd#cb1-41)), estratificando pelos grupos da aula 6, para que todos os tipos de amostra estejam nos dois conjuntos. A validação é reservada para a avaliação final.
 
-**Validação cruzada (10 partições).** A calibração é dividida em 10 partes. Treina-se com 9 e prevê-se a 10ª, repetindo para cada parte. O erro obtido, o **RMSECV**, estima o desempenho em amostras novas sem tocar na validação. É calculado para cada número de LVs, de 1 a 20 (`MAX_LV`).
+**Validação cruzada (10 partições).** A calibração é dividida em 10 partes. Treina-se com 9 e prevê-se a 10ª, repetindo para cada parte. O erro obtido, o **RMSECV**, estima o desempenho em amostras novas sem tocar na validação. É calculado para cada número de LVs, de 1 a 20 ([`MAX_LV`](../pipeline_bssl/config.qmd#cb1-43)).
 
-**Escolha do pré-tratamento.** O notebook compara `sg`, `d1` e `snv` pelo menor RMSECV e escolhe o melhor, a menos que `TRATAMENTO_FIXO` esteja definido. Assim, o pré-tratamento também é tratado como um hiperparâmetro, decidido apenas com os dados de calibração.
+**Escolha do pré-tratamento.** O notebook compara [`sg`](../pipeline_bssl/utils.qmd#cb1-70), [`d1`](../pipeline_bssl/utils.qmd#cb1-71) e [`snv`](../pipeline_bssl/utils.qmd#cb1-72) pelo menor RMSECV e escolhe o melhor, a menos que [`TRATAMENTO_FIXO`](../pipeline_bssl/config.qmd#cb1-45) esteja definido. Assim, o pré-tratamento também é tratado como um hiperparâmetro, decidido apenas com os dados de calibração.
 
 #### Prática guiada: notebook 04, seções 1 a 3
 
@@ -141,7 +141,7 @@ Gráfico do RMSECV por número de LVs, tabela de comparação dos pré-tratament
 
 #### Exercícios
 
-1. Em [`config.py`](../pipeline_bssl/config.qmd), definir `TRATAMENTO_FIXO = 'snv'` e depois [`'d1'`](../pipeline_bssl/utils.qmd#cb1-71), executar o notebook e comparar o número de LVs e o RMSECV. Voltar a `None` ao final.
+1. Em [`config.py`](../pipeline_bssl/config.qmd), definir [`TRATAMENTO_FIXO = 'snv'`](../pipeline_bssl/config.qmd#cb1-45) e depois [`'d1'`](../pipeline_bssl/utils.qmd#cb1-71), executar o notebook e comparar o número de LVs e o RMSECV. Voltar a [`None`](../pipeline_bssl/config.qmd#cb1-45) ao final.
 2. **Regra do erro-padrão (1-SE).** Escolher o menor número de LVs cujo erro esteja dentro de um erro-padrão do mínimo, o que favorece modelos mais simples:
 
 ```python
@@ -166,7 +166,7 @@ nlv_1se = int(np.where(medias <= medias[i_min] + ses[i_min])[0][0]) + 1
 print('LVs pelo mínimo:', i_min + 1, '| LVs pela regra 1-SE:', nlv_1se)
 ```
 
-3. **Subajuste e sobreajuste na prática.** Comparar o erro de calibração com o de validação cruzada para 1, 5, `nlv` e 20 LVs:
+3. **Subajuste e sobreajuste na prática.** Comparar o erro de calibração com o de validação cruzada para 1, 5, [`nlv`](../pipeline_bssl/04_modelagem.ipynb#plsr-final) e 20 LVs:
 
 ```python
 for n in (1, 5, nlv, 20):

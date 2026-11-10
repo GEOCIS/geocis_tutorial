@@ -37,11 +37,11 @@ Cuidado: o SNV não deve ser aplicado a um espectro constante (desvio-padrão ze
 
 Espectros muito diferentes do conjunto prejudicam o PCA e os modelos. O notebook combina três critérios:
 
-- **z-score do espectro médio:** distância da média de cada espectro à média geral, em desvios-padrão (limite `Z_OUTLIER = 3`). Pega espectros com intensidade global muito diferente.
+- **z-score do espectro médio:** distância da média de cada espectro à média geral, em desvios-padrão (limite [`Z_OUTLIER = 3`](../pipeline_bssl/config.qmd#cb1-30)). Pega espectros com intensidade global muito diferente.
 - **T² de Hotelling:** distância de Mahalanobis da amostra ao centro da nuvem, no espaço dos primeiros componentes principais (`N_PCS_OUTLIER`). Detecta amostras extremas, mas coerentes com o padrão espectral.
 - **Resíduo Q (resíduo de reconstrução):** parte do espectro que os componentes retidos não reproduzem. Detecta espectros com feições anômalas (por exemplo, contaminação ou erro de medição).
 
-Os limites de T² e Q são o percentil `PERC_OUTLIER` (99). A amostra é sinalizada se ultrapassar qualquer um dos três limites.
+Os limites de T² e Q são o percentil [`PERC_OUTLIER`](../pipeline_bssl/config.qmd#cb1-32) (99). A amostra é sinalizada se ultrapassar qualquer um dos três limites.
 
 ### Pontos de método
 
@@ -93,7 +93,7 @@ print('Maiores Q: ', np.argsort(-q)[:10])
 
 ## Exercícios
 
-1. Alterar `PERC_OUTLIER` para 95, 99 e 99,9 (ou executar o experimento acima) e registrar quantas amostras são sinalizadas em cada caso. Explicar por que o número diminui com limites mais altos. Qual limite é mais razoável e por quê?
+1. Alterar [`PERC_OUTLIER`](../pipeline_bssl/config.qmd#cb1-32) para 95, 99 e 99,9 (ou executar o experimento acima) e registrar quantas amostras são sinalizadas em cada caso. Explicar por que o número diminui com limites mais altos. Qual limite é mais razoável e por quê?
 2. Verificar se os espectros anômalos do banco sintético (gerados nas 8 primeiras linhas do arquivo original) foram detectados. Como algumas dessas linhas podem ter sido removidas na limpeza do notebook 01 (se o valor de [`argila`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-73) estava ausente), a comparação deve usar o [`id`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-74) das amostras:
 
 ```python
@@ -124,7 +124,7 @@ print('Presentes no banco e não detectados:',
 
 - **Divisão por zero no SNV:** espectro constante (desvio-padrão zero). É sinal de medição inválida e deve ser removido.
 - **Muitas amostras sinalizadas:** conferir o percentil e se o banco é naturalmente heterogêneo.
-- **Índices desalinhados ao remover:** as máscaras booleanas devem ser aplicadas aos mesmos conjuntos (`X`, `y` e `df`); o notebook faz isso na seção 3.
+- **Índices desalinhados ao remover:** as máscaras booleanas devem ser aplicadas aos mesmos conjuntos ([`X`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`y`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) e [`df`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento)); o notebook faz isso na seção 3.
 
 ## Perguntas de verificação
 

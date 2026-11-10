@@ -52,7 +52,7 @@
 1. **Seção 1.** Interpretar os dois gráficos de observado × predito e os títulos com as métricas.
 2. **Seção 2.** Interpretar os resíduos e a tabela de RMSE por grupo.
 3. **Seção 3.** Interpretar o coeficiente e o VIP do PLSR e a importância dos componentes do Random Forest. No banco sintético, esperar importância nas regiões de 1400, 1900 e 2200 nm para a argila.
-4. **Seção 4.** Ler [`dados/novas_amostras.csv`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-82), pré-processar e predizer. Observar as colunas `T2`, `Q` e `dentro_dominio` do resultado.
+4. **Seção 4.** Ler [`dados/novas_amostras.csv`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-82), pré-processar e predizer. Observar as colunas [`T2`](../pipeline_bssl/05_visualizacao_predicao.ipynb#predição-de-amostras-novas), [`Q`](../pipeline_bssl/05_visualizacao_predicao.ipynb#predição-de-amostras-novas) e [`dentro_dominio`](../pipeline_bssl/05_visualizacao_predicao.ipynb#predição-de-amostras-novas) do resultado.
 5. **Seção 5.** Interpretar o gráfico das novas amostras sobre a nuvem de calibração.
 
 #### Exercícios

@@ -10,7 +10,7 @@
 
 **Conteúdo:**
 
-- Algoritmo k-means, inércia e sensibilidade à inicialização (`n_init`, `random_state`).
+- Algoritmo k-means, inércia e sensibilidade à inicialização ([`n_init`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos), [`random_state`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos)).
 - Método do cotovelo e coeficiente de silhueta, e a subjetividade da escolha de k.
 - Caracterização dos grupos: estatísticas do atributo, espectros médios e tamanho dos grupos.
 - Usos na modelagem: divisão estratificada e modelos locais.
@@ -40,9 +40,9 @@
 
 A clusterização é um método **não supervisionado**: agrupa amostras semelhantes sem usar o atributo-alvo. No projeto, serve para entender a estrutura do banco, estratificar a divisão entre calibração e validação e analisar o erro por grupo.
 
-**k-means em quatro passos:** escolher k centros iniciais; atribuir cada amostra ao centro mais próximo; recalcular cada centro como a média do grupo; repetir até estabilizar. Minimiza a **inércia** (soma dos quadrados das distâncias das amostras aos seus centros). Limitações: precisa de k definido antes, depende da inicialização (por isso `n_init=10` e `random_state`) e assume grupos aproximadamente esféricos.
+**k-means em quatro passos:** escolher k centros iniciais; atribuir cada amostra ao centro mais próximo; recalcular cada centro como a média do grupo; repetir até estabilizar. Minimiza a **inércia** (soma dos quadrados das distâncias das amostras aos seus centros). Limitações: precisa de k definido antes, depende da inicialização (por isso [`n_init=10`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos) e [`random_state`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos)) e assume grupos aproximadamente esféricos.
 
-**Por que usar os escores do PCA:** agrupar centenas de bandas colineares é dominado por redundância e ruído. O notebook agrupa os `N_PCS_CLUSTER` (5) primeiros componentes.
+**Por que usar os escores do PCA:** agrupar centenas de bandas colineares é dominado por redundância e ruído. O notebook agrupa os [`N_PCS_CLUSTER`](../pipeline_bssl/config.qmd#cb1-36) (5) primeiros componentes.
 
 **Escolha de K:**
 
@@ -76,7 +76,7 @@ print("Concordância (ARI) entre k-means e hierárquico:", round(adjusted_rand_s
 
 1. Executar a seção 3 com K = 2, 3, 4 e 5 e preencher uma tabela com o tamanho dos grupos e a silhueta de cada valor.
 2. Escolher o K final e justificar com três critérios (cotovelo, silhueta e interpretação).
-3. Mudar `N_PCS_CLUSTER` para 3 e para 10 e observar se os grupos mudam.
+3. Mudar [`N_PCS_CLUSTER`](../pipeline_bssl/config.qmd#cb1-36) para 3 e para 10 e observar se os grupos mudam.
 4. Discutir se os grupos obtidos podem ser chamados de classes de solo.
 
 **Gabarito comentado:**
@@ -87,9 +87,9 @@ print("Concordância (ARI) entre k-means e hierárquico:", round(adjusted_rand_s
 
 #### Problemas comuns
 
-- **Resultados diferentes a cada execução:** esquecer `random_state`.
+- **Resultados diferentes a cada execução:** esquecer [`random_state`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos).
 - **Grupos desbalanceados com poucas amostras:** reduzir K ou reavaliar a necessidade de estratificar.
-- **Silhueta lenta:** usar `sample_size`, como no notebook.
+- **Silhueta lenta:** usar [`sample_size`](../pipeline_bssl/03_pca_clusterizacao.ipynb#número-de-grupos-cotovelo-e-silhueta), como no notebook.
 
 #### Entregável
 
@@ -109,9 +109,9 @@ Tabela de K (2 a 5) com tamanho dos grupos e silhueta, o K escolhido com justifi
 
 #### Conteúdo
 
-**k-means.** O algoritmo escolhe k centros, atribui cada amostra ao centro mais próximo, recalcula os centros como a média de cada grupo e repete até estabilizar. Minimiza a **inércia** (soma das distâncias quadráticas entre as amostras e o centro do grupo). Limitações: k precisa ser definido antes, depende da inicialização (`n_init` e `random_state`) e assume grupos aproximadamente esféricos e de tamanhos semelhantes.
+**k-means.** O algoritmo escolhe k centros, atribui cada amostra ao centro mais próximo, recalcula os centros como a média de cada grupo e repete até estabilizar. Minimiza a **inércia** (soma das distâncias quadráticas entre as amostras e o centro do grupo). Limitações: k precisa ser definido antes, depende da inicialização ([`n_init`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos) e [`random_state`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos)) e assume grupos aproximadamente esféricos e de tamanhos semelhantes.
 
-**Por que agrupar nos escores do PCA?** Centenas de bandas correlacionadas tornam a distância euclidiana pouco informativa. Os cinco primeiros componentes (`N_PCS_CLUSTER = 5`) resumem a variação e reduzem o ruído.
+**Por que agrupar nos escores do PCA?** Centenas de bandas correlacionadas tornam a distância euclidiana pouco informativa. Os cinco primeiros componentes ([`N_PCS_CLUSTER = 5`](../pipeline_bssl/config.qmd#cb1-36)) resumem a variação e reduzem o ruído.
 
 **Escolha de k:**
 
@@ -123,15 +123,15 @@ Tabela de K (2 a 5) com tamanho dos grupos e silhueta, o K escolhido com justifi
 
 #### Prática guiada: notebook 03, seções 2 e 3
 
-1. Executar a célula do cotovelo e da silhueta (`K_MAX = 10`) e interpretar os dois gráficos.
+1. Executar a célula do cotovelo e da silhueta ([`K_MAX = 10`](../pipeline_bssl/config.qmd#cb1-37)) e interpretar os dois gráficos.
 2. Definir [`K`](../pipeline_bssl/config.qmd#cb1-38) em [`config.py`](../pipeline_bssl/config.qmd) (por exemplo, 3) e executar a célula do k-means final.
-3. Ler a contagem de amostras por grupo e a estatística do atributo por grupo (`groupby`). Os grupos diferem no atributo?
+3. Ler a contagem de amostras por grupo e a estatística do atributo por grupo ([`groupby`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos)). Os grupos diferem no atributo?
 4. Interpretar o gráfico de escores com os centroides e os espectros médios por grupo.
 5. Conferir que [`df_pp.pkl`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) foi atualizado com a coluna [`cluster`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos) e que [`cluster_model.joblib`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos) foi salvo.
 
 #### Exercícios
 
-1. Testar `K = 2`, `3` e `5`. Para cada um, registrar a silhueta, o tamanho dos grupos e o que muda no gráfico de escores. Escolher um valor e justificar.
+1. Testar [`K = 2`](../pipeline_bssl/config.qmd#cb1-38), `3` e `5`. Para cada um, registrar a silhueta, o tamanho dos grupos e o que muda no gráfico de escores. Escolher um valor e justificar.
 2. **Comparar com outro método de agrupamento** (hierárquico) e medir a concordância:
 
 ```python
@@ -154,7 +154,7 @@ for s in range(1, 5):
 
 4. Descrever, em um parágrafo, os grupos: tamanho, média do atributo e diferença no espectro médio.
 
-**Gabarito e observações:** (1) em dados sem grupos naturais, a silhueta tende a cair gradualmente quando k aumenta e não mostra um pico claro. Valores moderados (próximos de 0,5) não devem ser lidos como prova de grupos reais. (2) O índice ARI varia de 0 (concordância ao acaso) a 1 (idêntico). Valores moderados entre k-means e hierárquico indicam que os grupos não são bem definidos. (3) Com `n_init=10`, as sementes diferentes tendem a produzir soluções parecidas, e valores de ARI próximos de 1 indicam solução estável. (4) Os grupos do banco sintético se organizam ao longo do gradiente de argila e de matéria orgânica, o que aparece como diferenças de média do atributo entre grupos.
+**Gabarito e observações:** (1) em dados sem grupos naturais, a silhueta tende a cair gradualmente quando k aumenta e não mostra um pico claro. Valores moderados (próximos de 0,5) não devem ser lidos como prova de grupos reais. (2) O índice ARI varia de 0 (concordância ao acaso) a 1 (idêntico). Valores moderados entre k-means e hierárquico indicam que os grupos não são bem definidos. (3) Com [`n_init=10`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos), as sementes diferentes tendem a produzir soluções parecidas, e valores de ARI próximos de 1 indicam solução estável. (4) Os grupos do banco sintético se organizam ao longo do gradiente de argila e de matéria orgânica, o que aparece como diferenças de média do atributo entre grupos.
 
 #### Perguntas de verificação
 

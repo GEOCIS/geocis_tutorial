@@ -10,8 +10,8 @@
 
 **Conteúdo:**
 
-- Random Forest: árvores, amostragem aleatória e média das predições; uso de escores do PCA como entrada e `Pipeline` para evitar vazamento.
-- Hiperparâmetros principais e busca aleatória (`RandomizedSearchCV`).
+- Random Forest: árvores, amostragem aleatória e média das predições; uso de escores do PCA como entrada e [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) para evitar vazamento.
+- Hiperparâmetros principais e busca aleatória ([`RandomizedSearchCV`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca)).
 - Métricas: R², RMSE, RPD, RPIQ e viés. Interpretação do RPD segundo a classificação de Chang et al. (2001).
 - Comparação entre calibração, validação cruzada e validação para detectar sobreajuste.
 
@@ -30,7 +30,7 @@
 #### Roteiro (120 min)
 
 - 0 a 10 min: revisão e dúvidas.
-- 10 a 35 min: Random Forest, `Pipeline` e busca de hiperparâmetros.
+- 10 a 35 min: Random Forest, [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) e busca de hiperparâmetros.
 - 35 a 70 min: métricas de avaliação (cálculo manual e interpretação).
 - 70 a 100 min: execução das seções 4 a 6 e comparação dos modelos.
 - 100 a 120 min: experimentos e entregável.
@@ -39,11 +39,11 @@
 
 **Random Forest.** Treina centenas de árvores de decisão, cada uma com uma amostra aleatória dos dados (com reposição) e, a cada divisão, um subconjunto aleatório das variáveis. A predição final é a média das árvores. Captura relações não lineares, é robusto a ruído e exige pouca preparação, mas não extrapola além da faixa dos dados de treino.
 
-**Escores do PCA como entrada e `Pipeline`.** Em vez de dar centenas de bandas colineares à floresta, o notebook usa os escores de um PCA ajustado dentro de um `Pipeline` (PCA seguido do Random Forest). Assim, em qualquer validação cruzada ou predição, o PCA é ajustado apenas nos dados de treino, evitando vazamento de informação.
+**Escores do PCA como entrada e [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca).** Em vez de dar centenas de bandas colineares à floresta, o notebook usa os escores de um PCA ajustado dentro de um [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) (PCA seguido do Random Forest). Assim, em qualquer validação cruzada ou predição, o PCA é ajustado apenas nos dados de treino, evitando vazamento de informação.
 
-**Hiperparâmetros e busca.** Com `BUSCA_RF = True`, a busca aleatória (`RandomizedSearchCV`, `N_ITER_BUSCA` combinações, validação cruzada de 5 partições na calibração) testa o número de componentes do PCA, `max_features` e `min_samples_leaf`. Com `False`, usa `N_PCS_RF` componentes e parâmetros padrão.
+**Hiperparâmetros e busca.** Com [`BUSCA_RF = True`](../pipeline_bssl/config.qmd#cb1-47), a busca aleatória ([`RandomizedSearchCV`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca), [`N_ITER_BUSCA`](../pipeline_bssl/config.qmd#cb1-48) combinações, validação cruzada de 5 partições na calibração) testa o número de componentes do PCA, [`max_features`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) e [`min_samples_leaf`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca). Com [`False`](../pipeline_bssl/config.qmd#cb1-47), usa [`N_PCS_RF`](../pipeline_bssl/config.qmd#cb1-50) componentes e parâmetros padrão.
 
-**Métricas de avaliação** (função `utils.avalia`):
+**Métricas de avaliação** (função [`utils.avalia`](../pipeline_bssl/utils.qmd#cb1-97)):
 
 - **R²:** proporção da variância explicada. Depende da amplitude dos dados.
 - **RMSE:** erro típico, na unidade do atributo. Quanto menor, melhor.
@@ -83,9 +83,9 @@ print(utils.avalia(obs, prd))
 
 #### Exercícios
 
-1. Conferir o cálculo manual do item 1 com `utils.avalia`.
-2. Definir `BUSCA_RF = False` e `N_PCS_RF` igual a 5, 20 e 40, comparando o RMSE de validação.
-3. Alterar `N_ARVORES` para 50, 200 e 500 e observar o efeito sobre o desempenho e o tempo.
+1. Conferir o cálculo manual do item 1 com [`utils.avalia`](../pipeline_bssl/utils.qmd#cb1-97).
+2. Definir [`BUSCA_RF = False`](../pipeline_bssl/config.qmd#cb1-47) e [`N_PCS_RF`](../pipeline_bssl/config.qmd#cb1-50) igual a 5, 20 e 40, comparando o RMSE de validação.
+3. Alterar [`N_ARVORES`](../pipeline_bssl/config.qmd#cb1-49) para 50, 200 e 500 e observar o efeito sobre o desempenho e o tempo.
 4. Explicar por que o RMSE do Random Forest na calibração é muito menor que na validação.
 5. Decidir, com base nas métricas, qual modelo seria recomendado para triagem de amostras e justificar (considere RPD, RPIQ, viés e simplicidade).
 
@@ -101,7 +101,7 @@ print(utils.avalia(obs, prd))
 
 - **Comparar modelos pelas métricas de calibração:** use sempre a validação (ou a validação cruzada).
 - **Interpretar R² isolado:** olhar também RMSE, RPD e RPIQ.
-- **Busca de hiperparâmetros muito lenta:** reduzir `N_ITER_BUSCA` e `N_ARVORES` durante os testes.
+- **Busca de hiperparâmetros muito lenta:** reduzir [`N_ITER_BUSCA`](../pipeline_bssl/config.qmd#cb1-48) e [`N_ARVORES`](../pipeline_bssl/config.qmd#cb1-49) durante os testes.
 
 #### Entregável
 
@@ -123,7 +123,7 @@ Tabela de métricas dos dois modelos (calibração e validação), cálculo manu
 
 **Random Forest.** Conjunto de árvores de decisão, cada uma treinada com uma amostra aleatória (com reposição) dos dados e, a cada divisão, com um subconjunto aleatório de variáveis. A previsão é a média das árvores. Captura relações não lineares, é robusto a ruído e dispensa suposições sobre a distribuição dos dados.
 
-**Random Forest sobre escores de PCA.** No notebook, o PCA e o Random Forest formam um `Pipeline`. O PCA é ajustado só nos dados de treino em cada etapa (inclusive dentro da validação cruzada da busca de hiperparâmetros), o que evita vazamento. Com `BUSCA_RF = True`, uma busca aleatória testa combinações de número de componentes (10, 20 ou 30), `max_features` e `min_samples_leaf`, com validação cruzada na calibração.
+**Random Forest sobre escores de PCA.** No notebook, o PCA e o Random Forest formam um [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca). O PCA é ajustado só nos dados de treino em cada etapa (inclusive dentro da validação cruzada da busca de hiperparâmetros), o que evita vazamento. Com [`BUSCA_RF = True`](../pipeline_bssl/config.qmd#cb1-47), uma busca aleatória testa combinações de número de componentes (10, 20 ou 30), [`max_features`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) e [`min_samples_leaf`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca), com validação cruzada na calibração.
 
 **Métricas.** Para os valores observados `y` e preditos `ŷ`:
 
@@ -147,7 +147,7 @@ Orientação de Chang et al. (2001) para o RPD: abaixo de 1,4, modelo pouco conf
 
 #### Exercícios
 
-1. **Cálculo manual das métricas.** Com os valores abaixo, calcular RMSE, RPD, RPIQ, R² e viés à mão e depois conferir com `utils.avalia`:
+1. **Cálculo manual das métricas.** Com os valores abaixo, calcular RMSE, RPD, RPIQ, R² e viés à mão e depois conferir com [`utils.avalia`](../pipeline_bssl/utils.qmd#cb1-97):
 
 ```python
 y_obs  = np.array([10, 20, 30, 40])
@@ -168,7 +168,7 @@ print('LVs escolhidas olhando a validação (incorreto):', nlv_trapaca)
 print('RMSE na validação com a escolha incorreta:', round(min(erros_val), 3))
 ```
 
-3. **Importância dos hiperparâmetros.** Comparar o Random Forest do notebook com um sem busca (`BUSCA_RF = False`, 20 componentes) e registrar a diferença de RMSE na validação.
+3. **Importância dos hiperparâmetros.** Comparar o Random Forest do notebook com um sem busca ([`BUSCA_RF = False`](../pipeline_bssl/config.qmd#cb1-47), 20 componentes) e registrar a diferença de RMSE na validação.
 4. Escrever um parágrafo comparando PLSR e Random Forest com os números da tabela, incluindo se há sinal de sobreajuste.
 
 **Gabarito do exercício 1:** o erro é 2, -2, 3 e -3, então o RMSE é a raiz de 6,5, cerca de 2,55. O desvio-padrão populacional de `y_obs` é cerca de 11,18, e o RPD é cerca de 4,39. O Q1 é 17,5 e o Q3 é 32,5, então a distância interquartílica é 15 e o RPIQ é cerca de 5,88. A soma de quadrados dos resíduos é 26 e a soma total é 500, então o R² é 0,948. O viés é 0.
@@ -179,7 +179,7 @@ print('RMSE na validação com a escolha incorreta:', round(min(erros_val), 3))
 
 1. **Quando o RPIQ é mais indicado que o RPD?** Quando a distribuição do atributo é assimétrica ou tem valores extremos, que inflam o desvio-padrão sem refletir a variabilidade típica.
 2. **Um R² alto na calibração garante um bom modelo?** Não. O que importa é o desempenho em amostras independentes. O R² da calibração pode ser alto por sobreajuste.
-3. **Por que o PCA entra no `Pipeline` do Random Forest?** Para ser ajustado apenas nos dados de treino de cada partição de validação cruzada, evitando que informação das amostras de teste influencie os componentes.
+3. **Por que o PCA entra no [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) do Random Forest?** Para ser ajustado apenas nos dados de treino de cada partição de validação cruzada, evitando que informação das amostras de teste influencie os componentes.
 
 #### Entregável
 
