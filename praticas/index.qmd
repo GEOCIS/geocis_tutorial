@@ -26,4 +26,4 @@ Baixe estes arquivos e coloque-os na mesma pasta dos notebooks. Os gabaritos fic
 - [`curso_utils.py`](curso_utils.qmd): funções das aulas, importadas por cada notebook ([baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/curso_utils.py)).
 - [`visualizacao.py`](visualizacao.qmd): funções de gráficos ([baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/visualizacao.py)).
 
-Os dados ([`Atributos_VIS.NIR_SP.csv`](curso_utils.qmd#cb1-21) e [`Atributos_MIR_SP.csv`](curso_utils.qmd#cb1-22)) ficam na pasta [`Data/`](curso_utils.qmd#cb1-17), um nível acima da pasta dos notebooks.
+Os dados ([`Atributos_VIS.NIR_SP.csv`](curso_utils.qmd#cb1-21) e [`Atributos_MIR_SP.csv`](curso_utils.qmd#cb1-22)) ficam na pasta `Data/`, um nível acima da pasta dos notebooks.
