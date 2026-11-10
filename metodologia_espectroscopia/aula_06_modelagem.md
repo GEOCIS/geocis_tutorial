@@ -38,7 +38,7 @@ Não há modelo universalmente melhor. A escolha é empírica, por atributo, e �
 
 ### Hiperparâmetros
 
-Parâmetros que não são aprendidos diretamente dos dados (número de LVs, número de árvores, `max_features`, `C` do SVR etc.). Devem ser ajustados por validação cruzada na calibração, com busca em grade ou aleatória. A validação final não participa.
+Parâmetros que não são aprendidos diretamente dos dados (número de LVs, número de árvores, [`max_features`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca), `C` do SVR etc.). Devem ser ajustados por validação cruzada na calibração, com busca em grade ou aleatória. A validação final não participa.
 
 ### Parcimônia
 

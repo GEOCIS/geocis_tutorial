@@ -1,0 +1,9 @@
+---
+title: "Gráficos: visualizacao.py"
+code-line-numbers: true
+---
+
+Funções de gráficos usadas nas práticas. [Baixar `visualizacao.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/visualizacao.py) · [Voltar às práticas](index.qmd)
+
+```{.python include="visualizacao.py"}
+```

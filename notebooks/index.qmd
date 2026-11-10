@@ -4,7 +4,7 @@ title: "Notebooks: análise espectral de solos com o pacote geocis_espectral"
 
 Notebooks Jupyter das aulas práticas, com o código e os resultados de cada etapa. Leia aqui no site ou baixe o arquivo `.ipynb` para rodar no VS Code ou no Jupyter.
 
-Para executar, você precisa do pacote `geocis_espectral` e dos dados do projeto. A configuração está explicada na Aula 0.
+Para executar, você precisa do pacote [`geocis_espectral`](../scripts/pacote.qmd) e dos dados do projeto. A configuração está explicada na Aula 0.
 
 | Aula | Conteúdo | Arquivo |
 |---|---|---|

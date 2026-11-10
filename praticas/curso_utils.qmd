@@ -1,0 +1,9 @@
+---
+title: "Funções de apoio: curso_utils.py"
+code-line-numbers: true
+---
+
+Funções das aulas, importadas por cada notebook de prática. [Baixar `curso_utils.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/curso_utils.py) · [Voltar às práticas](index.qmd)
+
+```{.python include="curso_utils.py"}
+```

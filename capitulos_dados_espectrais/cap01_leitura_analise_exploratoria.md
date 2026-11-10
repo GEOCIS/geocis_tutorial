@@ -42,7 +42,7 @@ cols_ref = [c for c in df.columns if c not in cols_esp]
 print(df.shape, len(cols_esp), 'bandas')
 ```
 
-O critério usado identifica como espectrais as colunas cujo nome é numérico. Essa separação deve ser conferida visualmente, com `df.head()` e `df.dtypes`, para garantir que nenhuma variável de laboratório foi classificada como banda e vice-versa. Em seguida, os comprimentos de onda são extraídos dos nomes das colunas e os espectros são organizados em uma matriz numpy `X` (amostras × bandas), enquanto o atributo de interesse fica no vetor `y`.
+O critério usado identifica como espectrais as colunas cujo nome é numérico. Essa separação deve ser conferida visualmente, com [`df.head()`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura) e [`df.dtypes`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura), para garantir que nenhuma variável de laboratório foi classificada como banda e vice-versa. Em seguida, os comprimentos de onda são extraídos dos nomes das colunas e os espectros são organizados em uma matriz numpy [`X`](../pipeline_bssl/01_leitura_exploratoria.ipynb#limpeza) (amostras × bandas), enquanto o atributo de interesse fica no vetor [`y`](../pipeline_bssl/01_leitura_exploratoria.ipynb#limpeza).
 
 ```python
 wl = np.array([float(str(c).replace(PREFIXO, '')) for c in cols_esp])
@@ -84,8 +84,8 @@ display(df[cols_ref].isna().mean().sort_values(ascending=False).head(10))
 
 O tratamento depende da natureza da variável:
 
-- **Atributo-alvo ausente**: a amostra não pode ser usada para calibrar ou validar o modelo daquele atributo e é removida (`df.dropna(subset=[COL_ALVO])`). Cada atributo é, portanto, modelado com o seu próprio subconjunto de amostras.
-- **Bandas espectrais ausentes**: devem ser verificadas separadamente (`df[cols_esp].isna().sum().sum()`). Se poucas amostras forem afetadas, elas podem ser descartadas; se houver falhas em bandas específicas, pode-se interpolar ao longo do eixo espectral.
+- **Atributo-alvo ausente**: a amostra não pode ser usada para calibrar ou validar o modelo daquele atributo e é removida ([`df.dropna(subset=[COL_ALVO])`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura)). Cada atributo é, portanto, modelado com o seu próprio subconjunto de amostras.
+- **Bandas espectrais ausentes**: devem ser verificadas separadamente ([`df[cols_esp].isna().sum().sum()`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura)). Se poucas amostras forem afetadas, elas podem ser descartadas; se houver falhas em bandas específicas, pode-se interpolar ao longo do eixo espectral.
 - **Covariáveis auxiliares**: só devem ser imputadas se forem realmente necessárias, e a imputação precisa ser registrada, para não introduzir informação artificial.
 
 ```python

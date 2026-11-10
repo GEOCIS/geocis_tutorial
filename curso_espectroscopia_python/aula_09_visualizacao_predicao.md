@@ -57,7 +57,7 @@
 
 #### Exercícios
 
-1. **Forçar uma amostra fora do domínio.** Em uma célula nova, depois de ler `Xn`, substituir uma das novas amostras por um espectro aleatório (que não parece um solo) e verificar que ele é sinalizado:
+1. **Forçar uma amostra fora do domínio.** Em uma célula nova, depois de ler [`Xn`](../pipeline_bssl/05_visualizacao_predicao.ipynb#predição-de-amostras-novas), substituir uma das novas amostras por um espectro aleatório (que não parece um solo) e verificar que ele é sinalizado:
 
 ```python
 rng = np.random.default_rng(0)

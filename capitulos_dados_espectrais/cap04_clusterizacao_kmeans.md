@@ -54,7 +54,7 @@ plt.title('Método do cotovelo')
 plt.show()
 ```
 
-O parâmetro `n_init=10` executa o algoritmo dez vezes com inicializações diferentes e mantém a melhor solução, reduzindo o risco de mínimos locais; `random_state` garante a reprodutibilidade dos resultados.
+O parâmetro [`n_init=10`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos) executa o algoritmo dez vezes com inicializações diferentes e mantém a melhor solução, reduzindo o risco de mínimos locais; [`random_state`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos) garante a reprodutibilidade dos resultados.
 
 Na prática, o cotovelo nem sempre é nítido, e a escolha de k envolve julgamento. Quando a curva é suave, vale combinar o método com outros critérios:
 
@@ -70,7 +70,7 @@ for k in range(2, 9):
     print(k, round(silhouette_score(Z, rotulos), 3))
 ```
 
-Em bancos grandes, o cálculo da silhueta pode ser demorado, e é possível estimá-lo em uma subamostra por meio do argumento `sample_size`.
+Em bancos grandes, o cálculo da silhueta pode ser demorado, e é possível estimá-lo em uma subamostra por meio do argumento [`sample_size`](../pipeline_bssl/03_pca_clusterizacao.ipynb#número-de-grupos-cotovelo-e-silhueta).
 
 ## 5. Aplicação do k-means e visualização dos grupos
 
@@ -108,7 +108,7 @@ plt.xlabel('Comprimento de onda (nm)'); plt.ylabel('Absorbância')
 plt.legend(); plt.show()
 ```
 
-**c) Tamanho dos grupos e outros atributos.** Contar as amostras por grupo (`df['cluster'].value_counts()`) e comparar outros atributos de laboratório, ou informações de origem (região, tipo de solo, profundidade), ajuda a dar significado agronômico aos agrupamentos.
+**c) Tamanho dos grupos e outros atributos.** Contar as amostras por grupo ([`df['cluster'].value_counts()`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura)) e comparar outros atributos de laboratório, ou informações de origem (região, tipo de solo, profundidade), ajuda a dar significado agronômico aos agrupamentos.
 
 É importante lembrar que os grupos refletem semelhança espectral e não correspondem necessariamente a classes taxonômicas de solo. Seu significado deve ser verificado, e não presumido.
 
@@ -119,14 +119,14 @@ Os resultados da clusterização podem apoiar a modelagem de duas formas:
 - **Divisão estratificada dos dados**: ao separar calibração e validação, a seleção das amostras de cada grupo garante que todos os tipos de solo estejam representados nos dois conjuntos, o que torna a avaliação mais confiável.
 - **Modelos locais**: calibrar um modelo separado para cada grupo pode melhorar a predição quando os grupos são muito distintos, desde que cada um tenha amostras suficientes. Por outro lado, modelos globais, treinados com todas as amostras, tendem a ser mais robustos quando a variabilidade interna dos grupos é alta ou os grupos são pequenos. A decisão deve ser tomada comparando o desempenho dos dois tipos de modelo em validação independente.
 
-Vale lembrar que, quando a clusterização for usada para dividir os dados, os rótulos dos grupos de uma nova amostra devem ser obtidos com `km.predict`, aplicado aos escores calculados com o mesmo PCA e o mesmo pré-processamento usados na calibração.
+Vale lembrar que, quando a clusterização for usada para dividir os dados, os rótulos dos grupos de uma nova amostra devem ser obtidos com [`km.predict`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos), aplicado aos escores calculados com o mesmo PCA e o mesmo pré-processamento usados na calibração.
 
 ## 8. Cuidados metodológicos
 
-1. **Reprodutibilidade**: definir `random_state` e registrar os parâmetros de PCA e k-means, pois a inicialização aleatória pode alterar os grupos.
+1. **Reprodutibilidade**: definir [`random_state`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos) e registrar os parâmetros de PCA e k-means, pois a inicialização aleatória pode alterar os grupos.
 2. **Escolha de k é subjetiva**: justificar a decisão com mais de um critério (cotovelo, silhueta e interpretação dos grupos).
 3. **Pressupostos do algoritmo**: o k-means assume grupos aproximadamente esféricos e de tamanhos semelhantes. Caso a estrutura dos dados seja mais complexa, métodos alternativos, como misturas gaussianas ou clusterização hierárquica, podem ser testados.
-4. **Outliers**: espectros atípicos podem deslocar centroides ou formar grupos próprios de uma só amostra. Por isso a clusterização usa `X_final`, do qual os outliers já foram removidos no capítulo 2.
+4. **Outliers**: espectros atípicos podem deslocar centroides ou formar grupos próprios de uma só amostra. Por isso a clusterização usa [`X_final`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), do qual os outliers já foram removidos no capítulo 2.
 5. **Ausência de verdade de referência**: como a clusterização não é supervisionada, não há acerto ou erro absoluto, e a qualidade do agrupamento é julgada por critérios internos e pela interpretabilidade.
 
 ## 9. Síntese e encaminhamentos

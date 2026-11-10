@@ -23,7 +23,7 @@ A biblioteca scikit-learn centraliza os dados (subtrai a média de cada banda) a
 
 ## 3. Aplicação aos espectros pré-processados
 
-O PCA é aplicado à matriz `X_final` do capítulo anterior, isto é, aos espectros com corte das bordas, suavização e SNV e **já sem os outliers** (removidos pelos critérios z-score, T² e Q). Assim, os componentes refletem a variação química e mineralógica, e não ruído, efeitos físicos ou poucas amostras anômalas:
+O PCA é aplicado à matriz [`X_final`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) do capítulo anterior, isto é, aos espectros com corte das bordas, suavização e SNV e **já sem os outliers** (removidos pelos critérios z-score, T² e Q). Assim, os componentes refletem a variação química e mineralógica, e não ruído, efeitos físicos ou poucas amostras anômalas:
 
 ```python
 from sklearn.decomposition import PCA
@@ -87,7 +87,7 @@ O PCA fornece dois indicadores complementares para avaliar se uma amostra é tí
 - **T² de Hotelling** (distância de Mahalanobis no espaço dos PCs retidos): mede o quanto a amostra está afastada do centro da nuvem, ponderando cada componente pela sua variância. T² alto indica uma amostra extrema, mas com formato de espectro coerente com o conjunto (por exemplo, um solo muito argiloso).
 - **Q** (resíduo de reconstrução): mede a parte do espectro que os PCs retidos não reproduzem. Q alto indica feições que o restante do conjunto não tem, como contaminação ou erro de medição.
 
-Como a remoção já foi feita no capítulo 2, aqui os indicadores servem de diagnóstico: o gráfico T² × Q de `X_final` mostra como as amostras restantes se distribuem e quais estão perto dos limites.
+Como a remoção já foi feita no capítulo 2, aqui os indicadores servem de diagnóstico: o gráfico T² × Q de [`X_final`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) mostra como as amostras restantes se distribuem e quais estão perto dos limites.
 
 ```python
 k = 5
@@ -117,9 +117,9 @@ Para o PLSR, o PCA não é necessário, pois o método já constrói suas própr
 
 ## 6. Cuidados metodológicos
 
-1. **Evitar vazamento de informação**: na etapa exploratória, o PCA pode ser ajustado ao conjunto todo. Porém, quando os escores forem usados como entrada de um modelo preditivo, o PCA deve ser ajustado apenas nos dados de calibração e depois aplicado (`transform`) aos dados de validação.
+1. **Evitar vazamento de informação**: na etapa exploratória, o PCA pode ser ajustado ao conjunto todo. Porém, quando os escores forem usados como entrada de um modelo preditivo, o PCA deve ser ajustado apenas nos dados de calibração e depois aplicado ([`transform`](../pipeline_bssl/03_pca_clusterizacao.ipynb#análise-de-componentes-principais)) aos dados de validação.
 2. **Variância não é relevância**: os primeiros componentes capturam a maior variância dos espectros, que nem sempre é a mais relacionada ao atributo de interesse. Um atributo pode depender de componentes de menor variância, por isso o número de PCs deve ser definido também pelo desempenho do modelo.
-3. **Sensibilidade a outliers**: poucos espectros extremos podem dominar os primeiros componentes. Por isso o PCA deste capítulo é ajustado em `X_final`, depois da remoção de outliers do capítulo 2.
+3. **Sensibilidade a outliers**: poucos espectros extremos podem dominar os primeiros componentes. Por isso o PCA deste capítulo é ajustado em [`X_final`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), depois da remoção de outliers do capítulo 2.
 4. **Interpretação cautelosa**: os componentes são combinações lineares das bandas e não correspondem necessariamente a um constituinte químico específico do solo.
 
 ## 7. Síntese e encaminhamentos

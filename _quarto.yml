@@ -7,7 +7,7 @@ project:
     - "notebooks/index.qmd"
     - "notebooks/*.ipynb"
     - "scripts/*.qmd"
-    - "praticas/index.qmd"
+    - "praticas/*.qmd"
     - "praticas/*.ipynb"
     - "praticas/solucoes/*.ipynb"
     - "Trabalhos/index.qmd"
@@ -261,6 +261,8 @@ website:
           - praticas/aula_08_clustering.ipynb
           - praticas/aula_09_modelos_validacao.ipynb
           - praticas/aula_10_shap_rastreabilidade.ipynb
+          - praticas/curso_utils.qmd
+          - praticas/visualizacao.qmd
           - section: "Gabaritos"
             contents:
               - href: praticas/solucoes/aula_01_projeto_configuracao.ipynb

@@ -38,7 +38,7 @@ Cuidado: o SNV não deve ser aplicado a um espectro constante (desvio-padrão ze
 Espectros muito diferentes do conjunto prejudicam o PCA e os modelos. O notebook combina três critérios:
 
 - **z-score do espectro médio:** distância da média de cada espectro à média geral, em desvios-padrão (limite [`Z_OUTLIER = 3`](../pipeline_bssl/config.qmd#cb1-30)). Pega espectros com intensidade global muito diferente.
-- **T² de Hotelling:** distância de Mahalanobis da amostra ao centro da nuvem, no espaço dos primeiros componentes principais (`N_PCS_OUTLIER`). Detecta amostras extremas, mas coerentes com o padrão espectral.
+- **T² de Hotelling:** distância de Mahalanobis da amostra ao centro da nuvem, no espaço dos primeiros componentes principais ([`N_PCS_OUTLIER`](../pipeline_bssl/config.qmd#cb1-31)). Detecta amostras extremas, mas coerentes com o padrão espectral.
 - **Resíduo Q (resíduo de reconstrução):** parte do espectro que os componentes retidos não reproduzem. Detecta espectros com feições anômalas (por exemplo, contaminação ou erro de medição).
 
 Os limites de T² e Q são o percentil [`PERC_OUTLIER`](../pipeline_bssl/config.qmd#cb1-32) (99). A amostra é sinalizada se ultrapassar qualquer um dos três limites.
@@ -56,7 +56,7 @@ Os limites de T² e Q são o percentil [`PERC_OUTLIER`](../pipeline_bssl/config.
 1. Executar as seções 2 e 3 do notebook 02 (detecção de outliers).
 2. No gráfico T² × Q (pontos vermelhos fora dos limites), interpretar as quatro regiões: baixo T² e baixo Q (normal); alto T² e baixo Q (extremo, mas coerente); baixo T² e alto Q (feição anômala); alto T² e alto Q (muito atípico).
 3. Observar o gráfico dos espectros sinalizados (em vermelho) contra os normais.
-4. Olhar a tabela das amostras removidas (`df.loc[out, cols_ref]`) e discutir cada uma.
+4. Olhar a tabela das amostras removidas ([`df.loc[out, cols_ref]`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura)) e discutir cada uma.
 5. **Inspecionar as amostras sinalizadas** em uma célula extra:
 
 ```python
@@ -78,7 +78,7 @@ plt.show()
 
 ### Experimento: sensibilidade do limite
 
-Em uma célula nova, depois de calcular `z`, `t2` e `q`, variar o percentil:
+Em uma célula nova, depois de calcular [`z`](../pipeline_bssl/02_preprocessamento.ipynb#snv-e-detecção-de-outliers), [`t2`](../pipeline_bssl/02_preprocessamento.ipynb#snv-e-detecção-de-outliers) e [`q`](../pipeline_bssl/02_preprocessamento.ipynb#snv-e-detecção-de-outliers), variar o percentil:
 
 ```python
 for perc in (95, 99, 99.9):

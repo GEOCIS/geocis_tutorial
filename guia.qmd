@@ -11,7 +11,7 @@ Todas as seções tratam do **mesmo pipeline** de análise espectral (leitura, p
 | [Curso prático](curso_espectroscopia_python/index.qmd) | **Como fazer** cada etapa? | 10 aulas com prática guiada | executar o pipeline passo a passo, em sala ou sozinho |
 | [Fundamentos](metodologia_espectroscopia/index.qmd) | **Por que** fazer assim e quais as alternativas? | 8 aulas de discussão e experimentos | justificar escolhas, evitar armadilhas e escrever a metodologia |
 | [Texto de referência](capitulos_dados_espectrais/index.qmd) | **Como relatar** o trabalho? | 8 capítulos corridos | ler o pipeline completo de uma vez ou usar como modelo de relatório, TCC ou dissertação |
-| [Notebooks](notebooks/index.qmd) | Como usar o pacote `geocis_espectral`? | 6 notebooks executados | rodar as rotinas do grupo nos dados do GeoCiS |
+| [Notebooks](notebooks/index.qmd) | Como usar o pacote [`geocis_espectral`](scripts/pacote.qmd)? | 6 notebooks executados | rodar as rotinas do grupo nos dados do GeoCiS |
 | [Práticas](praticas/index.qmd) | Eu sei fazer sozinho? | 10 exercícios com gabarito | treinar cada etapa e conferir |
 | [Estudo de caso](Trabalhos/index.qmd) | Como fica um pipeline aplicado e configurável? | 5 notebooks encadeados | aplicar o fluxo completo a dados próprios (NIR e MIR) |
 | [Scripts](scripts/index.qmd) | O que tem dentro do pacote? | código-fonte comentado | consultar ou adaptar uma função |

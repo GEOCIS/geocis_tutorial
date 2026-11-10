@@ -11,7 +11,7 @@
 - Tipos de variação indesejada e o tratamento adequado a cada um: ruído (corte das bordas e suavização Savitzky-Golay); deslocamento de linha de base (derivadas); espalhamento multiplicativo e aditivo (SNV e MSC); não linearidade (absorbância).
 - Parâmetros (janela, grau, ordem da derivada) como hiperparâmetros a serem definidos por validação cruzada na calibração.
 - Vazamento de informação: transformações que usam estatísticas do conjunto (MSC, centragem, PCA) devem ser ajustadas só na calibração e aplicadas depois à validação. SNV e Savitzky-Golay são por espectro e não têm esse problema.
-- Uso de `Pipeline` para encadear transformações e modelo de modo seguro.
+- Uso de [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) para encadear transformações e modelo de modo seguro.
 - Mais tratamento não é sempre melhor: comparar com o dado bruto como linha de base.
 
 **Antes da aula:** executar a [célula de preparação](00_preparacao.md#célula-de-preparação-executar-no-início-das-aulas-2-a-8).
@@ -51,13 +51,13 @@ Ocorre quando informação das amostras de validação (ou de amostras que não 
 2. seleção de bandas ou de variáveis usando o atributo-alvo em todo o conjunto antes da validação cruzada;
 3. escolha de parâmetros olhando a validação.
 
-O efeito é desempenho **otimista**, que desaparece quando o modelo vai a dados realmente novos. A defesa é encadear as transformações e o modelo em um `Pipeline`, que as reajusta apenas nos dados de treino de cada partição de validação cruzada.
+O efeito é desempenho **otimista**, que desaparece quando o modelo vai a dados realmente novos. A defesa é encadear as transformações e o modelo em um [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca), que as reajusta apenas nos dados de treino de cada partição de validação cruzada.
 
 SNV e Savitzky-Golay atuam por espectro e **não** vazam informação. MSC, que usa o espectro médio, precisa ser ajustado só na calibração.
 
 ## Atividade 1: comparar tratamentos com linha de base
 
-Cada candidato é um `Pipeline` (tratamento + PLSR), com o número de variáveis latentes escolhido por validação cruzada dentro da calibração. O MSC é implementado como um transformador, o que permite usá-lo dentro do `Pipeline`:
+Cada candidato é um [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) (tratamento + PLSR), com o número de variáveis latentes escolhido por validação cruzada dentro da calibração. O MSC é implementado como um transformador, o que permite usá-lo dentro do [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca):
 
 ```python
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -196,8 +196,8 @@ Com os resultados da atividade 1, cada aluno escreve um parágrafo de justificat
 ## Perguntas de verificação
 
 1. **Por que incluir o dado sem tratamento (apenas absorbância) na comparação?** Para saber se os tratamentos realmente ajudam. Sem linha de base, não se pode afirmar que o pré-processamento melhorou o modelo.
-2. **O que é um vazamento de informação e como se evita?** Quando informação da validação influencia o ajuste do modelo ou das transformações. Evita-se ajustando tudo apenas nos dados de treino, com `Pipeline`.
-3. **Como o `Pipeline` evita o vazamento?** Ele reajusta todas as transformações apenas com os dados de treino de cada partição, e as aplica à parte de validação sem recalculá-las.
+2. **O que é um vazamento de informação e como se evita?** Quando informação da validação influencia o ajuste do modelo ou das transformações. Evita-se ajustando tudo apenas nos dados de treino, com [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca).
+3. **Como o [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) evita o vazamento?** Ele reajusta todas as transformações apenas com os dados de treino de cada partição, e as aplica à parte de validação sem recalculá-las.
 4. **Por que o MSC exige cuidado com a divisão dos dados e o SNV não?** O MSC usa o espectro médio da calibração como referência, e portanto depende do conjunto. O SNV usa apenas estatísticas do próprio espectro.
 5. **Por que o mesmo tratamento pode ajudar um atributo e prejudicar outro?** Porque o tratamento remove um tipo de variação, e o atributo pode depender justamente dela.
 

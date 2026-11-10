@@ -37,4 +37,4 @@ O texto e os comentários do código estão em português. As mensagens impressa
 
 ## Dados e resultados
 
-Os dados (`Atributos_VIS.NIR_SP.csv` e `Atributos_MIR_SP.csv`) ficam na pasta `Data/` do projeto. Os resultados de cada etapa são salvos em `Outputs/pipeline/`, e as figuras em `Outputs/pipeline/Figures/`.
+Os dados ([`Atributos_VIS.NIR_SP.csv`](01_pipeline_visualizacion_qc.ipynb#fundamentação-teórica) e [`Atributos_MIR_SP.csv`](01_pipeline_visualizacion_qc.ipynb#fundamentação-teórica)) ficam na pasta `Data/` do projeto. Os resultados de cada etapa são salvos em `Outputs/pipeline/`, e as figuras em `Outputs/pipeline/Figures/`.

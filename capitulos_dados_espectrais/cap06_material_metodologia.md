@@ -89,7 +89,7 @@ def preprocessa(X_raw, wl_raw, wl_min=450, wl_max=2450, janela=11, grau=2):
 joblib.dump({'pls': pls, 'pca': pca_m, 'rf': rf, 'wl': wl_orig}, 'modelo_solo.joblib')
 ```
 
-O objeto `wl_orig` corresponde ao vetor de comprimentos de onda original, antes do corte das bordas. Em seguida, as novas amostras são lidas, pré-processadas e submetidas ao modelo:
+O objeto [`wl_orig`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura) corresponde ao vetor de comprimentos de onda original, antes do corte das bordas. Em seguida, as novas amostras são lidas, pré-processadas e submetidas ao modelo:
 
 ```python
 modelo = joblib.load('modelo_solo.joblib')

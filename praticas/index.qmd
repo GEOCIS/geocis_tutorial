@@ -2,7 +2,7 @@
 title: "Práticas: exercícios do curso de espectroscopia"
 ---
 
-Exercícios em Jupyter Notebook, um por aula. Em cada notebook você escreve a função da aula. As funções das aulas anteriores já vêm prontas em `curso_utils.py`, então cada notebook roda sozinho.
+Exercícios em Jupyter Notebook, um por aula. Em cada notebook você escreve a função da aula. As funções das aulas anteriores já vêm prontas em [`curso_utils.py`](curso_utils.qmd), então cada notebook roda sozinho.
 
 Tente resolver antes de abrir o **gabarito**.
 
@@ -23,7 +23,7 @@ Tente resolver antes de abrir o **gabarito**.
 
 Baixe estes arquivos e coloque-os na mesma pasta dos notebooks. Os gabaritos ficam numa subpasta `solucoes/`.
 
-- [`curso_utils.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/curso_utils.py): funções das aulas, importadas por cada notebook.
-- [`visualizacao.py`](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/visualizacao.py): funções de gráficos.
+- [`curso_utils.py`](curso_utils.qmd): funções das aulas, importadas por cada notebook ([baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/curso_utils.py)).
+- [`visualizacao.py`](visualizacao.qmd): funções de gráficos ([baixar](https://github.com/GEOCIS/geocis_tutorial/raw/main/praticas/visualizacao.py)).
 
-Os dados (`Atributos_VIS.NIR_SP.csv` e `Atributos_MIR_SP.csv`) ficam na pasta `Data/`, um nível acima da pasta dos notebooks.
+Os dados ([`Atributos_VIS.NIR_SP.csv`](curso_utils.qmd#cb1-21) e [`Atributos_MIR_SP.csv`](curso_utils.qmd#cb1-22)) ficam na pasta `Data/`, um nível acima da pasta dos notebooks.

@@ -83,7 +83,7 @@ y_rf = rf.predict(Zte)
 
 ### 4.2 Hiperparâmetros
 
-Os hiperparâmetros mais influentes são o número de árvores (`n_estimators`), o número de variáveis consideradas em cada divisão (`max_features`) e o tamanho mínimo das folhas (`min_samples_leaf`). Embora os valores padrão costumem ter bom desempenho, o ajuste por busca em grade ou aleatória, com validação cruzada na calibração, pode melhorar o resultado. O número de componentes principais de entrada também pode ser tratado como hiperparâmetro.
+Os hiperparâmetros mais influentes são o número de árvores ([`n_estimators`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca)), o número de variáveis consideradas em cada divisão ([`max_features`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca)) e o tamanho mínimo das folhas ([`min_samples_leaf`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca)). Embora os valores padrão costumem ter bom desempenho, o ajuste por busca em grade ou aleatória, com validação cruzada na calibração, pode melhorar o resultado. O número de componentes principais de entrada também pode ser tratado como hiperparâmetro.
 
 ## 5. Métricas de avaliação
 

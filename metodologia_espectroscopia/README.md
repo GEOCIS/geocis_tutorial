@@ -84,7 +84,7 @@ Conferir os dados completos das referências antes de distribuí-las.
 - CHANG, C.-W. et al. Near-infrared reflectance spectroscopy–principal components regression analyses of soil properties. *Soil Science Society of America Journal*, 2001.
 - STENBERG, B. et al. Visible and near infrared spectroscopy in soil science. *Advances in Agronomy*, 2010.
 - WOLD, S.; SJÖSTRÖM, M.; ERIKSSON, L. PLS-regression: a basic tool of chemometrics. *Chemometrics and Intelligent Laboratory Systems*, 2001.
-- Documentação do scikit-learn sobre validação cruzada, `Pipeline` e métricas de regressão.
+- Documentação do scikit-learn sobre validação cruzada, [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) e métricas de regressão.
 
 ## 6. Orientações para quem ministra
 

@@ -114,7 +114,7 @@ print('z-score:', (z > 3).sum(), '| T²:', (t2 > np.percentile(t2, 99)).sum(),
 
 Os limites (z > 3 e percentil 99 para T² e Q, ou pontos de corte das distribuições teóricas) são uma escolha do analista. Duas recomendações importantes: a remoção deve ser baseada nos espectros e não no valor do atributo-alvo, para não enviesar a avaliação do modelo; e cada amostra sinalizada deve ser inspecionada antes de ser removida, relatando-se o número de amostras antes e depois da limpeza.
 
-Depois da inspeção, as amostras confirmadas como outliers são removidas. **`X_final` e `y_final` passam a ser os dados de entrada de todos os capítulos seguintes** (PCA, clusterização e modelagem):
+Depois da inspeção, as amostras confirmadas como outliers são removidas. **[`X_final`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) e [`y_final`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) passam a ser os dados de entrada de todos os capítulos seguintes** (PCA, clusterização e modelagem):
 
 ```python
 X_final, y_final = X_snv[~outlier], y[~outlier]
@@ -123,6 +123,6 @@ print('Amostras antes:', X_snv.shape[0], '| depois:', X_final.shape[0])
 
 ## 8. Síntese e encaminhamentos
 
-O pré-processamento transformou os espectros brutos em dados mais adequados à modelagem: bordas ruidosas foram removidas, a reflectância foi convertida em absorbância, o ruído foi atenuado pelo filtro de Savitzky-Golay, os efeitos de espalhamento foram corrigidos pelo SNV e as amostras atípicas foram identificadas (z-score, T² e Q) e removidas, resultando em `X_final` e `y_final`. A primeira derivada fica como alternativa ao SNV para remover a linha de base, e a melhor combinação de tratamentos deve ser escolhida comparando o desempenho dos modelos em validação cruzada.
+O pré-processamento transformou os espectros brutos em dados mais adequados à modelagem: bordas ruidosas foram removidas, a reflectância foi convertida em absorbância, o ruído foi atenuado pelo filtro de Savitzky-Golay, os efeitos de espalhamento foram corrigidos pelo SNV e as amostras atípicas foram identificadas (z-score, T² e Q) e removidas, resultando em [`X_final`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) e [`y_final`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento). A primeira derivada fica como alternativa ao SNV para remover a linha de base, e a melhor combinação de tratamentos deve ser escolhida comparando o desempenho dos modelos em validação cruzada.
 
 Com os espectros tratados, o próximo passo é explorar a estrutura dos dados com a análise de componentes principais (PCA) e a clusterização pelo método do cotovelo, antes de calibrar os modelos PLSR e Random Forest.
