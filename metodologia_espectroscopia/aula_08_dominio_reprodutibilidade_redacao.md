@@ -10,7 +10,7 @@
 
 - Domínio de aplicação: T², Q e alavancagem, limites definidos na calibração, e o tratamento de amostras fora do domínio (sinalizar, descartar, ampliar a calibração).
 - Transferência entre instrumentos e protocolos: o problema e as soluções mais comuns (padronização, inclusão de amostras do novo instrumento).
-- Reprodutibilidade: parâmetros centralizados em arquivo de configuração, sementes aleatórias, versões das bibliotecas (`requirements.txt`), notebooks executados de cima para baixo e controle de versão com Git.
+- Reprodutibilidade: parâmetros centralizados em arquivo de configuração, sementes aleatórias, versões das bibliotecas ([`requirements.txt`](../pipeline_bssl/index.qmd#como-usar)), notebooks executados de cima para baixo e controle de versão com Git.
 - Gestão dos dados: o que pode ser publicado, licenças, e cuidado com dados de terceiros.
 - Redação da seção de metodologia: material, pré-processamento, divisão dos dados, modelos, validação e métricas, com detalhe suficiente para que outra pessoa repita o trabalho.
 

@@ -4,14 +4,14 @@
 
 ## Pré-requisitos
 
-- **Pipeline executado:** a turma deve ter a pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) com os dados sintéticos gerados (`python gerar_dados_sinteticos.py`) e os notebooks 01 a 04 executados, com os dados sintéticos ou com a BSSL. As atividades reutilizam os arquivos da pasta [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): [`dados_brutos.npz`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), [`df_limpo.pkl`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), [`df_pp.pkl`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`espectros_pp.npz`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`modelo_solo.joblib`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento) e [`predicoes_validacao.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento).
+- **Pipeline executado:** a turma deve ter a pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) com os dados sintéticos gerados ([`python gerar_dados_sinteticos.py`](../pipeline_bssl/index.qmd#como-usar)) e os notebooks 01 a 04 executados, com os dados sintéticos ou com a BSSL. As atividades reutilizam os arquivos da pasta [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): [`dados_brutos.npz`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), [`df_limpo.pkl`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), [`df_pp.pkl`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`espectros_pp.npz`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`modelo_solo.joblib`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento) e [`predicoes_validacao.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento).
 - **Dados sintéticos:** foram gerados apenas para treinar o método. São muito "bem comportados" (relação praticamente linear e ruído baixo), então o desempenho é alto. Isso é útil para mostrar o efeito de cada decisão, mas **os números não são resultados científicos** e não devem ser relatados como tais.
 - **Valores de referência:** os números citados nos gabaritos vêm de execuções de teste com os dados sintéticos, com [`SEED = 42`](../pipeline_bssl/config.qmd#cb1-22) e as bibliotecas instaladas na época. Servem como ordem de grandeza: os alunos obterão valores parecidos, mas não idênticos, e eles devem ser conferidos antes da aula. O que importa em cada atividade é o **padrão** observado, e não o valor exato.
 - **Banco real:** com a BSSL, ajustar [`config.py`](../pipeline_bssl/config.qmd) e a coluna de identificação das amostras ([`id`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-74)) usada na célula de preparação. Em bancos grandes, usar uma subamostra se as atividades ficarem lentas.
 
 ## Célula de preparação (executar no início das aulas 2 a 8)
 
-Em um notebook novo na pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) (por exemplo, `metodologia_aula02.ipynb`), executar:
+Em um notebook novo na pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd) (por exemplo, [`metodologia_aula02.ipynb`](#célula-de-preparação-executar-no-início-das-aulas-2-a-8)), executar:
 
 ```python
 import warnings; warnings.filterwarnings('ignore')
@@ -60,16 +60,16 @@ Variáveis disponíveis depois da célula:
 
 | Variável | Conteúdo |
 | --- | --- |
-| `Xraw`, [`wl_orig`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura) | Reflectância bruta e comprimentos de onda originais |
+| [`Xraw`](../pipeline_bssl/01_leitura_exploratoria.ipynb#salvar), [`wl_orig`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura) | Reflectância bruta e comprimentos de onda originais |
 | [`X_abs`](../pipeline_bssl/02_preprocessamento.ipynb#tratamentos-espectrais) / `Xabs` | Absorbância, sem suavização |
-| `X_sg`, [`X_snv`](../pipeline_bssl/02_preprocessamento.ipynb#tratamentos-espectrais) | Absorbância suavizada (Savitzky-Golay), com e sem SNV, calculadas na hora |
-| `Xsg`, `Xd1`, `Xsnv` | Os mesmos tratamentos (e a 1ª derivada) salvos pelo notebook 02 |
+| [`X_sg`](../pipeline_bssl/utils.qmd#cb1-70), [`X_snv`](../pipeline_bssl/02_preprocessamento.ipynb#tratamentos-espectrais) | Absorbância suavizada (Savitzky-Golay), com e sem SNV, calculadas na hora |
+| [`Xsg`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`Xd1`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento), [`Xsnv`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) | Os mesmos tratamentos (e a 1ª derivada) salvos pelo notebook 02 |
 | [`y`](../pipeline_bssl/01_leitura_exploratoria.ipynb#limpeza), [`wl`](../pipeline_bssl/02_preprocessamento.ipynb#tratamentos-espectrais) | Atributo-alvo (argila) e comprimentos de onda após o corte |
 | [`df`](../pipeline_bssl/01_leitura_exploratoria.ipynb#leitura), [`df_pp`](../pipeline_bssl/02_preprocessamento.ipynb#remoção-e-salvamento) | Tabelas do banco limpo e do banco sem outliers (com a coluna [`cluster`](../pipeline_bssl/03_pca_clusterizacao.ipynb#k-means-final-e-caracterização-dos-grupos)) |
 | [`modelo`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento) | Dicionário do modelo final do notebook 04 ([`nlv`](../pipeline_bssl/04_modelagem.ipynb#plsr-final), [`tratamento`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento) etc.) |
 | [`Xtr`](../pipeline_bssl/04_modelagem.ipynb#plsr-final), [`Xte`](../pipeline_bssl/04_modelagem.ipynb#plsr-final), [`ytr`](../pipeline_bssl/04_modelagem.ipynb#divisão-calibraçãovalidação), [`yte`](../pipeline_bssl/04_modelagem.ipynb#divisão-calibraçãovalidação) | Divisão calibração/validação sobre [`X_snv`](../pipeline_bssl/02_preprocessamento.ipynb#tratamentos-espectrais) |
-| [`cv`](../pipeline_bssl/04_modelagem.ipynb#comparação-de-tratamentos-rmsecv-do-plsr), `rmse`, `rmsecv`, [`nlv`](../pipeline_bssl/04_modelagem.ipynb#plsr-final) | Validação cruzada de 10 partições, funções de erro e nº de LVs escolhido |
+| [`cv`](../pipeline_bssl/04_modelagem.ipynb#comparação-de-tratamentos-rmsecv-do-plsr), [`rmse`](#célula-de-preparação-executar-no-início-das-aulas-2-a-8), [`rmsecv`](#célula-de-preparação-executar-no-início-das-aulas-2-a-8), [`nlv`](../pipeline_bssl/04_modelagem.ipynb#plsr-final) | Validação cruzada de 10 partições, funções de erro e nº de LVs escolhido |
 
 Os dados desta célula **já têm os outliers removidos** (notebook 02), o que importa: com espectros anômalos no conjunto, os resultados das atividades mudam muito.
 
-> Observação: no material original havia duas células de preparação (uma carregando os arquivos com [`cfg.PASTA`](../pipeline_bssl/config.qmd#cb1-13) e outra com `'resultados/...'`). Elas foram unificadas aqui. O `assert` confirma que os espectros salvos e os recalculados correspondem às mesmas amostras; se ele falhar, verificar a coluna de identificação usada em `mant`.
+> Observação: no material original havia duas células de preparação (uma carregando os arquivos com [`cfg.PASTA`](../pipeline_bssl/config.qmd#cb1-13) e outra com [`'resultados/...'`](../pipeline_bssl/config.qmd#cb1-13)). Elas foram unificadas aqui. O [`assert`](#célula-de-preparação-executar-no-início-das-aulas-2-a-8) confirma que os espectros salvos e os recalculados correspondem às mesmas amostras; se ele falhar, verificar a coluna de identificação usada em [`mant`](#célula-de-preparação-executar-no-início-das-aulas-2-a-8).

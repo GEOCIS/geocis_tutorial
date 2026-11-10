@@ -167,7 +167,7 @@ print('Escala original :', {k: round(float(v), 2) for k, v in utils.avalia(y2, p
 print('Log + retorno   :', {k: round(float(v), 2) for k, v in utils.avalia(y2, p2).items()})
 ```
 
-**Gabarito e observações:** no banco sintético, a relação espectro-argila é aproximadamente linear, e por isso a transformação **piora** o resultado (na execução de teste, o RMSE passou de cerca de 2,9 para cerca de 8,5). A retransformação com `exp` amplifica os erros nos valores altos. Em dados reais assimétricos o efeito pode ser o contrário, e por isso a decisão deve ser tomada comparando as métricas na escala original, e não por hábito.
+**Gabarito e observações:** no banco sintético, a relação espectro-argila é aproximadamente linear, e por isso a transformação **piora** o resultado (na execução de teste, o RMSE passou de cerca de 2,9 para cerca de 8,5). A retransformação com [`exp`](#atividade-4-transformação-do-alvo) amplifica os erros nos valores altos. Em dados reais assimétricos o efeito pode ser o contrário, e por isso a decisão deve ser tomada comparando as métricas na escala original, e não por hábito.
 
 ## Exercícios
 

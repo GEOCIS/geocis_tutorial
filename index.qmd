@@ -69,7 +69,7 @@ O pipeline completo em capítulos corridos, da leitura dos espectros à conclus�
 - **Navegação:** cada curso tem um menu no topo com todas as aulas na ordem. No fim de cada página há links para a anterior e a próxima.
 - **Busca:** use a lupa no topo (ou tecle `/`) para encontrar qualquer termo, como `Savitzky-Golay` ou `git commit`.
 - **Código:** passe o mouse sobre um bloco de código e clique no ícone para copiá-lo.
-- **Notebooks:** os [notebooks das aulas práticas](notebooks/index.qmd) podem ser lidos no site ou baixados como `.ipynb`.
+- **Notebooks:** os [notebooks das aulas práticas](notebooks/index.qmd) podem ser lidos no site ou baixados como [`.ipynb`](curso_iniciantes_ferramentas/aula_05_jupyter_notebook.md).
 - **Scripts:** o [código-fonte do pacote `geocis_espectral`](scripts/index.qmd), usado pelos notebooks.
 - **Práticas:** [exercícios por aula](praticas/index.qmd), com gabarito para conferir depois de tentar.
 - **Estudo de caso:** um [pipeline aplicado e configurável](Trabalhos/index.qmd) para NIR e MIR, do controle de qualidade à modelagem com SHAP, para usar com dados próprios.

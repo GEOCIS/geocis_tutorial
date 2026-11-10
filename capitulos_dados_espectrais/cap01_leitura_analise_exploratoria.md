@@ -12,7 +12,7 @@ Neste trabalho, os dados espectrais são provenientes da Biblioteca Espectral de
 
 ## 2. Ambiente e importação das bibliotecas
 
-O VS Code, com a extensão Jupyter, permite executar o código em células, visualizar gráficos inline e manter o documento reprodutível, pois código, resultados e comentários ficam no mesmo arquivo `.ipynb`. As bibliotecas usadas nesta etapa são:
+O VS Code, com a extensão Jupyter, permite executar o código em células, visualizar gráficos inline e manter o documento reprodutível, pois código, resultados e comentários ficam no mesmo arquivo [`.ipynb`](../curso_iniciantes_ferramentas/aula_05_jupyter_notebook.md). As bibliotecas usadas nesta etapa são:
 
 - **pandas**: leitura, organização e estatística descritiva de tabelas;
 - **numpy**: operações matriciais sobre os espectros;

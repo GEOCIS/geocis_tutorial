@@ -179,8 +179,8 @@ Com os resultados da atividade 1, cada aluno escreve um parágrafo de justificat
 
 ## Exercícios
 
-1. Repetir a atividade 1 para a matéria orgânica, incluindo uma versão `sg` sem SNV, e comparar com o resultado da argila. Concluir sobre a escolha do tratamento para cada atributo.
-2. Na atividade 3a, repetir com `k=5` e com `k=100` variáveis selecionadas e registrar o efeito sobre o R² com vazamento.
+1. Repetir a atividade 1 para a matéria orgânica, incluindo uma versão [`sg`](../pipeline_bssl/utils.qmd#cb1-70) sem SNV, e comparar com o resultado da argila. Concluir sobre a escolha do tratamento para cada atributo.
+2. Na atividade 3a, repetir com [`k=5`](#atividade-3-demonstração-de-vazamento-de-informação) e com [`k=100`](#atividade-3-demonstração-de-vazamento-de-informação) variáveis selecionadas e registrar o efeito sobre o R² com vazamento.
 3. Explicar por que o SNV não vaza informação, mas o MSC pode.
 4. Escrever dois parágrafos de metodologia sobre o pré-processamento do atributo escolhido, descrevendo as alternativas comparadas e o critério de escolha.
 
