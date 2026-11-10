@@ -73,7 +73,7 @@ plt.xlabel("Variáveis latentes"); plt.ylabel("RMSE"); plt.legend(); plt.show()
 
 A curva de calibração sempre cai com mais LVs, enquanto a de validação cruzada para de cair ou sobe. A distância entre as duas indica sobreajuste.
 
-3. **Variabilidade da divisão.** Alterar `SEED` em [`config.py`](../pipeline_bssl/config.qmd) (por exemplo, 1, 2 e 3), reexecutar o notebook e anotar o RMSECV e o número de LVs. Discutir a estabilidade.
+3. **Variabilidade da divisão.** Alterar [`SEED`](../pipeline_bssl/config.qmd#cb1-22) em [`config.py`](../pipeline_bssl/config.qmd) (por exemplo, 1, 2 e 3), reexecutar o notebook e anotar o RMSECV e o número de LVs. Discutir a estabilidade.
 
 #### Exercícios
 

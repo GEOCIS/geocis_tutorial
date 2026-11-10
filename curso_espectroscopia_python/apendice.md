@@ -15,8 +15,8 @@ Saídas esperadas em [`resultados/`](../pipeline_bssl/config.qmd#cb1-13): [`dado
 
 **Erros mais comuns em sala:**
 
-- **`ModuleNotFoundError: config`:** o notebook foi aberto fora da pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd). Abrir a pasta inteira no VS Code.
-- **`FileNotFoundError` para [`dados/bssl.csv`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-81):** os dados ainda não foram gerados ou o caminho em [`config.py`](../pipeline_bssl/config.qmd) está incorreto.
-- **`FileNotFoundError` para arquivos de [`resultados/`](../pipeline_bssl/config.qmd#cb1-13):** um notebook anterior não foi executado.
+- **[`ModuleNotFoundError: config`](../pipeline_bssl/index.qmd#como-usar):** o notebook foi aberto fora da pasta [`pipeline_bssl`](../pipeline_bssl/index.qmd). Abrir a pasta inteira no VS Code.
+- **[`FileNotFoundError`](../pipeline_bssl/index.qmd#como-usar) para [`dados/bssl.csv`](../pipeline_bssl/gerar_dados_sinteticos.qmd#cb1-81):** os dados ainda não foram gerados ou o caminho em [`config.py`](../pipeline_bssl/config.qmd) está incorreto.
+- **[`FileNotFoundError`](../pipeline_bssl/index.qmd#como-usar) para arquivos de [`resultados/`](../pipeline_bssl/config.qmd#cb1-13):** um notebook anterior não foi executado.
 - **Notebook 04 muito lento:** reduzir [`N_ITER_BUSCA`](../pipeline_bssl/config.qmd#cb1-48) ou [`N_ARVORES`](../pipeline_bssl/config.qmd#cb1-49) em [`config.py`](../pipeline_bssl/config.qmd), ou usar uma subamostra do banco.
-- **Resultados diferentes entre alunos:** conferir as versões das bibliotecas e se `SEED` não foi alterado.
+- **Resultados diferentes entre alunos:** conferir as versões das bibliotecas e se [`SEED`](../pipeline_bssl/config.qmd#cb1-22) não foi alterado.

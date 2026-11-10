@@ -131,7 +131,7 @@ Tabela de K (2 a 5) com tamanho dos grupos e silhueta, o K escolhido com justifi
 
 #### Exercícios
 
-1. Testar [`K = 2`](../pipeline_bssl/config.qmd#cb1-38), `3` e `5`. Para cada um, registrar a silhueta, o tamanho dos grupos e o que muda no gráfico de escores. Escolher um valor e justificar.
+1. Testar [`K = 2`](../pipeline_bssl/config.qmd#cb1-38), [`3`](../pipeline_bssl/config.qmd#cb1-38) e [`5`](../pipeline_bssl/config.qmd#cb1-38). Para cada um, registrar a silhueta, o tamanho dos grupos e o que muda no gráfico de escores. Escolher um valor e justificar.
 2. **Comparar com outro método de agrupamento** (hierárquico) e medir a concordância:
 
 ```python

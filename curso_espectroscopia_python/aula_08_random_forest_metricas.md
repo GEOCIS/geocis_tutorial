@@ -67,7 +67,7 @@ Na validação, o PLSR teve desempenho melhor (RMSE 2,99 contra 3,85), embora o 
 
 #### Prática guiada
 
-1. **Cálculo manual das métricas** (sem computador, depois conferindo no Python). Com valores observados `[10, 20, 30, 40]` e preditos `[12, 18, 33, 38]`, calcular erro, RMSE, R², RPD, RPIQ e viés.
+1. **Cálculo manual das métricas** (sem computador, depois conferindo no Python). Com valores observados [`[10, 20, 30, 40]`](../pipeline_bssl/utils.qmd#cb1-97) e preditos [`[12, 18, 33, 38]`](../pipeline_bssl/utils.qmd#cb1-97), calcular erro, RMSE, R², RPD, RPIQ e viés.
 
 ```python
 import numpy as np
@@ -125,15 +125,15 @@ Tabela de métricas dos dois modelos (calibração e validação), cálculo manu
 
 **Random Forest sobre escores de PCA.** No notebook, o PCA e o Random Forest formam um [`Pipeline`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca). O PCA é ajustado só nos dados de treino em cada etapa (inclusive dentro da validação cruzada da busca de hiperparâmetros), o que evita vazamento. Com [`BUSCA_RF = True`](../pipeline_bssl/config.qmd#cb1-47), uma busca aleatória testa combinações de número de componentes (10, 20 ou 30), [`max_features`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca) e [`min_samples_leaf`](../pipeline_bssl/04_modelagem.ipynb#random-forest-sobre-escores-de-pca), com validação cruzada na calibração.
 
-**Métricas.** Para os valores observados `y` e preditos `ŷ`:
+**Métricas.** Para os valores observados [`y`](../pipeline_bssl/utils.qmd#cb1-97) e preditos `ŷ`:
 
 | Métrica | O que mede | Como interpretar |
 | --- | --- | --- |
 | R² | Fração da variância explicada | Próximo de 1 é melhor; depende da amplitude dos dados |
 | RMSE | Erro típico, na unidade do atributo | Menor é melhor |
-| RPD | Desvio-padrão de `y` dividido pelo RMSE | Maior é melhor; perto de 1 é pouco melhor que a média |
-| RPIQ | Distância interquartílica de `y` dividida pelo RMSE | Mais adequado para distribuições assimétricas |
-| Viés | Média de `ŷ - y` | Perto de 0 indica ausência de tendência |
+| RPD | Desvio-padrão de [`y`](../pipeline_bssl/utils.qmd#cb1-97) dividido pelo RMSE | Maior é melhor; perto de 1 é pouco melhor que a média |
+| RPIQ | Distância interquartílica de [`y`](../pipeline_bssl/utils.qmd#cb1-97) dividida pelo RMSE | Mais adequado para distribuições assimétricas |
+| Viés | Média de [`ŷ - y`](../pipeline_bssl/utils.qmd#cb1-108) | Perto de 0 indica ausência de tendência |
 
 Orientação de Chang et al. (2001) para o RPD: abaixo de 1,4, modelo pouco confiável; de 1,4 a 2,0, razoável; acima de 2,0, bom a excelente. São referências, e não regras rígidas: a exigência depende do atributo e do uso pretendido.
 
@@ -143,7 +143,7 @@ Orientação de Chang et al. (2001) para o RPD: abaixo de 1,4, modelo pouco conf
 
 1. **Random Forest.** Executar a busca de hiperparâmetros (pode levar alguns minutos) e ler os melhores parâmetros e o RMSECV impressos.
 2. **Tabela de métricas.** Interpretar as linhas de PLSR (calibração, validação cruzada e validação) e de Random Forest (calibração e validação). Comparar o PLSR e o Random Forest na validação.
-3. **Domínio de aplicação e salvamento.** Entender o PCA do domínio (`N_PCS_DOMINIO`) e os limites de T² e Q guardados. Conferir os arquivos [`modelo_solo.joblib`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento), [`metricas.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento) e [`predicoes_validacao.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento).
+3. **Domínio de aplicação e salvamento.** Entender o PCA do domínio ([`N_PCS_DOMINIO`](../pipeline_bssl/config.qmd#cb1-53)) e os limites de T² e Q guardados. Conferir os arquivos [`modelo_solo.joblib`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento), [`metricas.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento) e [`predicoes_validacao.csv`](../pipeline_bssl/04_modelagem.ipynb#domínio-de-aplicação-e-salvamento).
 
 #### Exercícios
 
@@ -171,7 +171,7 @@ print('RMSE na validação com a escolha incorreta:', round(min(erros_val), 3))
 3. **Importância dos hiperparâmetros.** Comparar o Random Forest do notebook com um sem busca ([`BUSCA_RF = False`](../pipeline_bssl/config.qmd#cb1-47), 20 componentes) e registrar a diferença de RMSE na validação.
 4. Escrever um parágrafo comparando PLSR e Random Forest com os números da tabela, incluindo se há sinal de sobreajuste.
 
-**Gabarito do exercício 1:** o erro é 2, -2, 3 e -3, então o RMSE é a raiz de 6,5, cerca de 2,55. O desvio-padrão populacional de `y_obs` é cerca de 11,18, e o RPD é cerca de 4,39. O Q1 é 17,5 e o Q3 é 32,5, então a distância interquartílica é 15 e o RPIQ é cerca de 5,88. A soma de quadrados dos resíduos é 26 e a soma total é 500, então o R² é 0,948. O viés é 0.
+**Gabarito do exercício 1:** o erro é 2, -2, 3 e -3, então o RMSE é a raiz de 6,5, cerca de 2,55. O desvio-padrão populacional de [`y_obs`](../pipeline_bssl/utils.qmd#cb1-97) é cerca de 11,18, e o RPD é cerca de 4,39. O Q1 é 17,5 e o Q3 é 32,5, então a distância interquartílica é 15 e o RPIQ é cerca de 5,88. A soma de quadrados dos resíduos é 26 e a soma total é 500, então o R² é 0,948. O viés é 0.
 
 **Observações dos demais exercícios:** (2) a escolha olhando a validação produz um RMSE igual ou menor do que o resultado honesto, mas esse valor é otimista, pois a validação deixou de ser independente. Em um estudo real, esse procedimento invalida a estimativa de desempenho. (3) Em dados sintéticos, a diferença tende a ser pequena. Em dados reais, a busca costuma melhorar o resultado e reduzir o sobreajuste. (4) No banco sintético, a relação entre espectro e atributo é aproximadamente linear, e por isso os dois modelos devem ter desempenho próximo (em um teste, o RMSE de validação cruzada ficou em torno de 2,7 no PLSR e 3,0 no Random Forest). A diferença é pequena e, com dados reais, a comparação pode mudar.
 
