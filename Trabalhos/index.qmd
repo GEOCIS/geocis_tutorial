@@ -12,8 +12,8 @@ Ela se diferencia da seção [Notebooks](../notebooks/index.qmd):
 |---|---|---|
 | Objetivo | Aulas didáticas: uma técnica por vez | Pipeline aplicado, do início ao fim |
 | Código | Funções do pacote `geocis_espectral` | Notebooks independentes, encadeados por arquivos |
-| Dados | Base pareada VIS-NIR-SWIR + MIR do curso | Seus arquivos de NIR e MIR, separados, em `Data/` |
-| Parâmetros | Definidos em cada aula | Centralizados em `Reference/parameters.yaml` |
+| Dados | Base pareada VIS-NIR-SWIR + MIR do curso | Seus arquivos de NIR e MIR, separados, em [`Data/`](01_pipeline_visualizacion_qc.ipynb#fundamentação-teórica) |
+| Parâmetros | Definidos em cada aula | Centralizados em [`Reference/parameters.yaml`](01_pipeline_visualizacion_qc.ipynb#fundamentação-teórica) |
 | Agrupamento | k-means e ISODATA, com escolha de k pela silhueta e pelo cotovelo | k-means com escolha de $K$ pelo cotovelo quantitativo de Shi (2021) |
 | Modelagem | PLSR, Random Forest e XGBoost, um modelo por atributo e faixa | PLSR, Random Forest, Cubist e HistGradientBoosting, um modelo por atributo e domínio; o grupo espectral de cada amostra é anexado às predições |
 
@@ -37,4 +37,4 @@ O texto e os comentários do código estão em português. As mensagens impressa
 
 ## Dados e resultados
 
-Os dados ([`Atributos_VIS.NIR_SP.csv`](01_pipeline_visualizacion_qc.ipynb#fundamentação-teórica) e [`Atributos_MIR_SP.csv`](01_pipeline_visualizacion_qc.ipynb#fundamentação-teórica)) ficam na pasta `Data/` do projeto. Os resultados de cada etapa são salvos em `Outputs/pipeline/`, e as figuras em `Outputs/pipeline/Figures/`.
+Os dados ([`Atributos_VIS.NIR_SP.csv`](01_pipeline_visualizacion_qc.ipynb#fundamentação-teórica) e [`Atributos_MIR_SP.csv`](01_pipeline_visualizacion_qc.ipynb#fundamentação-teórica)) ficam na pasta [`Data/`](01_pipeline_visualizacion_qc.ipynb#fundamentação-teórica) do projeto. Os resultados de cada etapa são salvos em `Outputs/pipeline/`, e as figuras em `Outputs/pipeline/Figures/`.
